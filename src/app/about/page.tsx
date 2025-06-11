@@ -763,13 +763,13 @@ export default function About() {
             </p>
             <p>
               <strong>Career breaks are underrated.</strong> Stepping away gave me space to explore 
-              what I actually want to build, not just what I'm assigned to build. Sometimes the best 
+              what I actually want to build, not just what I&apos;m assigned to build. Sometimes the best 
               career move is taking time to remember why you started coding in the first place.
             </p>
             <p>
-              <strong>Learning never stops, but now it&apos;s fun.</strong> Whether it's Spanish, photography, 
-              or the latest AI models — I've learned that curiosity is a superpower, and the skills 
-              you pick up 'for fun' often become your biggest advantages.
+              <strong>Learning never stops, but now it&apos;s fun.</strong> Whether it&apos;s Spanish, photography, 
+              or the latest AI models — I&apos;ve learned that curiosity is a superpower, and the skills 
+              you pick up &apos;for fun&apos; often become your biggest advantages.
             </p>
           </div>
         </motion.div>

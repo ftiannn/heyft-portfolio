@@ -5,8 +5,8 @@
 import { motion } from "framer-motion"
 import { 
   Download, FileText, Award, Coffee, Clock, Users, 
-  MapPin, Mail, Phone, Linkedin, Github, ExternalLink,
-  Zap, Target, Brain, Heart, Star, ArrowRight
+  MapPin, Mail, Linkedin, Github, 
+  Zap, Target, Brain, Heart, ArrowRight
 } from "lucide-react"
 import { useState } from "react"
 import toast, { Toaster } from 'react-hot-toast'
@@ -391,7 +391,7 @@ export default function Resume() {
                 >
                   <div className="text-center w-full">
                     <p className="font-medium mb-3 leading-relaxed">
-                      "{humbleBrags[currentBrag]}"
+                      &quot;{humbleBrags[currentBrag]}&ldquo;
                     </p>
                     <div className="flex items-center justify-center gap-2 text-sm text-white/80">
                       <ArrowRight className="h-4 w-4" />
@@ -451,11 +451,11 @@ export default function Resume() {
             className="text-center"
           >
             <div className="card bg-gradient-primary text-white">
-              <h3 className="text-2xl font-bold mb-4">Let's Build Something Together</h3>
+              <h3 className="text-2xl font-bold mb-4">Let&apos;s Build Something Together</h3>
               <p className="text-lg leading-relaxed mb-6 max-w-3xl mx-auto">
-                Whether you're looking for a full-stack developer who thinks like a product owner, 
+                Whether you&apos;re looking for a full-stack developer who thinks like a product owner, 
                 or someone who can bridge the gap between technical complexity and user experience, 
-                I'd love to hear about what you're building.
+                I&apos;d love to hear about what you&apos;re building.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a href="mailto:tanft25@gmail.com" className="btn-secondary bg-white text-primary-pink border-white hover:bg-gray-100">

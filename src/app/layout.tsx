@@ -8,12 +8,12 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'FT Tan - Developer & Creator',
-  description: 'Bold developer with cheeky confidence. Full-stack creator who codes by moonlight.',
+  description: 'Full-stack creator who codes by moonlight.',
   keywords: ['developer', 'full-stack', 'react', 'next.js', 'singapore'],
   authors: [{ name: 'FT Tan' }],
   openGraph: {
     title: 'FT Tan - Developer & Creator',
-    description: 'Bold developer with cheeky confidence',
+    description: 'Full-stack creator who codes by moonlight.',
     url: 'https://fttan.dev',
     siteName: 'FT Tan Portfolio',
     locale: 'en_US',

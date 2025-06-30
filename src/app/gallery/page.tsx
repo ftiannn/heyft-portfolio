@@ -1,9 +1,8 @@
 "use client"
 
 import { allPhotos, countryStats, countries, countryCounts } from "@/constants/gallery"
-import { Photo } from "@/types/gallery.type"
 import { motion, AnimatePresence } from "framer-motion"
-import { Camera, Filter, ChevronRight, MapPin, Calendar } from "lucide-react"
+import { Camera, Filter, ChevronRight, MapPin } from "lucide-react"
 import Image from "next/image"
 import { useState, useMemo } from "react"
 

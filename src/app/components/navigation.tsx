@@ -34,8 +34,8 @@ export function Navigation() {
                 key={item.name}
                 href={item.href}
                 className={`font-medium transition-colors ${pathname === item.href
-                    ? "text-primary-pink"
-                    : "text-text-gray hover:text-primary-pink"
+                  ? "text-primary-pink"
+                  : "text-text-gray hover:text-primary-pink"
                   }`}
               >
                 {item.name}
@@ -67,8 +67,8 @@ export function Navigation() {
                   href={item.href}
                   onClick={() => setIsOpen(false)}
                   className={`block px-4 py-2 rounded-lg font-medium transition-colors ${pathname === item.href
-                      ? "text-primary-pink bg-pink-50 dark:bg-pink-500/10"
-                      : "text-text-gray hover:text-primary-pink hover:bg-pink-50 dark:hover:bg-pink-500/10"
+                    ? "text-primary-pink bg-pink-50 dark:bg-pink-500/10"
+                    : "text-text-gray hover:text-primary-pink hover:bg-pink-50 dark:hover:bg-pink-500/10"
                     }`}
                 >
                   {item.name}

@@ -1,14 +1,38 @@
 "use client"
 
 import { allPhotos, countryStats, countries, countryCounts } from "@/constants/gallery"
+import { Photo } from "@/types/gallery.type"
 import { motion, AnimatePresence } from "framer-motion"
 import { Camera, Filter, ChevronRight, MapPin } from "lucide-react"
 import Image from "next/image"
-import { useState, useMemo } from "react"
+import { useState, useMemo, useEffect } from "react"
 
 export default function Gallery() {
     const [selectedCountry, setSelectedCountry] = useState<string | null>(null)
     const [showCountryFilter, setShowCountryFilter] = useState(false)
+    const [activePhoto, setActivePhoto] = useState<Photo | null>(null)
+
+    // Handle escape key to close modal
+    useEffect(() => {
+        const handleEscape = (e: KeyboardEvent) => {
+            if (e.key === 'Escape' && activePhoto) {
+                setActivePhoto(null)
+            }
+        }
+
+        if (activePhoto) {
+            document.addEventListener('keydown', handleEscape)
+            // Prevent background scrolling when modal is open
+            document.body.style.overflow = 'hidden'
+        } else {
+            document.body.style.overflow = 'unset'
+        }
+
+        return () => {
+            document.removeEventListener('keydown', handleEscape)
+            document.body.style.overflow = 'unset'
+        }
+    }, [activePhoto])
 
     const filteredPhotos = selectedCountry
         ? allPhotos.filter(photo => photo.country === selectedCountry)
@@ -73,77 +97,71 @@ export default function Gallery() {
                     </div>
                 </motion.div>
 
-                {/* Elegant Country Filter */}
+                {/* Country Filter */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2, duration: 0.6 }}
                     className="mb-16"
                 >
+                    {/* Toggle Control */}
                     <div className="flex justify-center mb-6">
                         <button
                             onClick={() => setShowCountryFilter(!showCountryFilter)}
-                            className="glass-card px-8 py-4 rounded-full font-medium transition-all duration-300 flex items-center gap-3 hover:scale-105 border-2 border-transparent hover:border-primary-pink/20 text-lg"
+                            className="inline-flex items-center gap-2 text-sm px-5 py-2 border border-gray-300 dark:border-slate-600 rounded-full text-gray-700 dark:text-gray-200 hover:border-primary-pink transition-all"
                         >
-                            <Filter className="h-5 w-5 text-primary-pink" />
-                            <span className="text-gray-700 dark:text-gray-300">
-                                {selectedCountry ? `${selectedCountry} (${countryCounts[selectedCountry]})` : `All Photos (${allPhotos.length})`}
-                            </span>
-                            <ChevronRight className={`h-4 w-4 text-gray-400 transition-transform duration-200 ${showCountryFilter ? 'rotate-90' : ''}`} />
+                            <Filter className="w-4 h-4 text-primary-pink" />
+                            {selectedCountry
+                                ? `${selectedCountry} (${countryCounts[selectedCountry]})`
+                                : `All Photos (${allPhotos.length})`}
+                            <ChevronRight
+                                className={`w-3 h-3 transition-transform duration-300 ${showCountryFilter ? "rotate-90" : ""
+                                    }`}
+                            />
                         </button>
                     </div>
 
+                    {/* Filter Pills */}
                     <AnimatePresence>
                         {showCountryFilter && (
                             <motion.div
                                 initial={{ opacity: 0, height: 0 }}
-                                animate={{ opacity: 1, height: 'auto' }}
+                                animate={{ opacity: 1, height: "auto" }}
                                 exit={{ opacity: 0, height: 0 }}
                                 transition={{ duration: 0.3 }}
                                 className="overflow-hidden"
                             >
-                                <div className="glass-card p-8 max-w-5xl mx-auto">
-                                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                                <div className="flex flex-wrap justify-center gap-3 px-4 py-4 bg-white/70 dark:bg-slate-800/40 backdrop-blur-md rounded-2xl border border-gray-200 dark:border-slate-700 max-w-5xl mx-auto">
+                                    {/* All Photos Pill */}
+                                    <button
+                                        onClick={() => {
+                                            setSelectedCountry(null)
+                                            setShowCountryFilter(false)
+                                        }}
+                                        className={`px-4 py-2 rounded-full text-sm font-medium border transition-all duration-200 ${!selectedCountry
+                                            ? "bg-primary-pink text-white border-primary-pink"
+                                            : "bg-transparent text-gray-700 dark:text-gray-200 border-gray-300 dark:border-slate-600 hover:border-primary-pink"
+                                            }`}
+                                    >
+                                        All Photos ({allPhotos.length})
+                                    </button>
+
+                                    {/* Country Pills */}
+                                    {countries.map((country) => (
                                         <button
+                                            key={country}
                                             onClick={() => {
-                                                setSelectedCountry(null)
+                                                setSelectedCountry(country)
                                                 setShowCountryFilter(false)
                                             }}
-                                            className={`p-6 rounded-2xl transition-all duration-300 flex flex-col items-center gap-3 group hover:scale-105 ${!selectedCountry
-                                                ? 'bg-gradient-to-br from-primary-pink to-purple-600 text-white shadow-xl'
-                                                : 'bg-white/60 dark:bg-slate-700/60 hover:bg-primary-pink/10 text-gray-700 dark:text-gray-300'
+                                            className={`px-4 py-2 rounded-full text-sm font-medium border transition-all duration-200 ${selectedCountry === country
+                                                ? "bg-secondary-teal text-white border-secondary-teal"
+                                                : "bg-transparent text-gray-700 dark:text-gray-200 border-gray-300 dark:border-slate-600 hover:border-secondary-teal"
                                                 }`}
                                         >
-                                            <Camera className="h-6 w-6" />
-                                            <span className="font-semibold text-sm">All Photos</span>
-                                            <span className="text-xs opacity-70 font-medium">
-                                                {allPhotos.length}
-                                            </span>
+                                            {country} ({countryCounts[country]})
                                         </button>
-
-                                        {countries.map((country) => {
-                                            const firstPhoto = allPhotos.find(p => p.country === country);
-                                            return (
-                                                <button
-                                                    key={country}
-                                                    onClick={() => {
-                                                        setSelectedCountry(country)
-                                                        setShowCountryFilter(false)
-                                                    }}
-                                                    className={`p-6 rounded-2xl transition-all duration-300 flex flex-col items-center gap-3 group hover:scale-105 ${selectedCountry === country
-                                                        ? 'bg-gradient-to-br from-secondary-teal to-blue-600 text-white shadow-xl'
-                                                        : 'bg-white/60 dark:bg-slate-700/60 hover:bg-secondary-teal/10 text-gray-700 dark:text-gray-300'
-                                                        }`}
-                                                >
-                                                    <span className="text-2xl">{firstPhoto?.flag}</span>
-                                                    <span className="font-semibold text-sm text-center leading-tight">{country}</span>
-                                                    <span className="text-xs opacity-70 font-medium">
-                                                        {countryCounts[country]}
-                                                    </span>
-                                                </button>
-                                            );
-                                        })}
-                                    </div>
+                                    ))}
                                 </div>
                             </motion.div>
                         )}
@@ -172,7 +190,10 @@ export default function Gallery() {
                                 }}
                                 className="break-inside-avoid mb-6 group"
                             >
-                                <div className="glass-card overflow-hidden hover:shadow-2xl transition-all duration-700 hover:scale-[1.02] relative">
+                                <div
+                                    onClick={() => setActivePhoto(photo)}
+                                    className="glass-card overflow-hidden hover:shadow-2xl transition-all duration-700 hover:scale-[1.02] relative cursor-zoom-in"
+                                >
                                     {/* Photo Container - maintains aspect ratio */}
                                     <div className="relative w-full">
                                         <Image
@@ -180,7 +201,7 @@ export default function Gallery() {
                                             alt={photo.title}
                                             width={photo.layout.width}
                                             height={photo.layout.minHeight}
-                                            className="w-full h-auto group-hover:scale-105 transition-transform duration-1000 rounded-xl"
+                                            className="w-full h-auto rounded-xl group-hover:scale-105 transition-transform duration-1000"
                                             loading={index < 8 ? 'eager' : 'lazy'}
                                             style={{
                                                 minHeight: `${photo.layout.minHeight}px`,
@@ -191,17 +212,10 @@ export default function Gallery() {
                                         {/* Elegant overlay with photo info */}
                                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 rounded-xl" />
 
-                                        <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
-                                            <div className="flex items-center gap-2 mb-2">
-                                                <span className="text-lg">{photo.flag}</span>
-                                                <h3 className="font-semibold text-lg">{photo.country}</h3>
-                                            </div>
-                                        </div>
-
                                         {/* Country Tag */}
-                                        <div className="absolute top-4 right-4 glass-tag flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-all duration-300">
-                                            <MapPin className="h-3 w-3" />
-                                            <span className="text-xs font-medium">{photo.country}</span>
+                                        <div className="absolute top-4 right-4 glass-tag flex items-center gap-2 opacity-0 group-hover:opacity-100 bg-black/60 px-2 py-1 rounded transition-all duration-300">
+                                            <MapPin className="h-3 w-3 text-white" />
+                                            <span className="text-xs font-medium text-white">{photo.country}</span>
                                         </div>
 
                                         {/* Artistic corner accent */}
@@ -240,6 +254,39 @@ export default function Gallery() {
                     </div>
                 </motion.div>
             </div>
+
+            {/* Fullscreen Modal */}
+            <AnimatePresence>
+                {activePhoto && (
+                    <motion.div
+                        key="modal"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4"
+                        onClick={() => setActivePhoto(null)}
+                    >
+                        <div
+                            className="relative max-w-6xl max-h-[90vh] w-full h-[90vh] overflow-hidden rounded-lg shadow-lg"
+                            onClick={(e) => e.stopPropagation()} // prevent closing when clicking the image
+                        >
+                            <Image
+                                src={activePhoto.src}
+                                alt={activePhoto.title}
+                                fill
+                                className="object-contain"
+                            />
+                            <button
+                                className="absolute top-4 right-4 text-white text-3xl font-bold hover:text-primary-pink transition-colors duration-200"
+                                onClick={() => setActivePhoto(null)}
+                            >
+                                ×
+                            </button>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
 
             <style jsx global>{`
                 .glass-card {

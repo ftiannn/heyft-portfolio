@@ -17,7 +17,7 @@ export default function Home() {
     <main className="relative min-h-screen">
       {/* Theme Toggle */}
       <div className="fixed bottom-6 left-6 z-50">
-      <ThemeToggle />
+        <ThemeToggle />
       </div>
 
       {/* Hero Section */}

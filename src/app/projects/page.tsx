@@ -250,10 +250,10 @@ export default function Projects() {
             <span className="gradient-text">My Projects</span>
           </h1>
           <p className="text-md text-text-gray dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
-            A curated collection of projects spanning web applications, mobile apps, and
-            experimental prototypes. Each represents a different challenge, technology, or
-            creative problem I&apos;ve tackled. From production applications serving real users
-            to learning exercises that expanded my skillset—every project has contributed
+            A collection of projects spanning web applications, mobile apps, and
+            experimental prototypes. Each represents a different challenge and
+            creative problem that I have tackled. From production applications serving real users,
+            to practice exercises that honed my skillset — each project here has contributed
             to my growth as a developer.
           </p>
 
@@ -565,10 +565,10 @@ export default function Projects() {
               Like What You See?
             </h3>
             <p className="text-md leading-relaxed mb-6">
-              These projects reflect the craft, care, and curiosity I bring into everything I build — whether it&apos;s
-              solving real-world problems, refining user experiences, or exploring emerging tech.
+              These projects reflect the craft, care, and curiosity in everything I build — whether it&apos;s
+              solving real-world problems, refining user experience, or exploring new technology.
               <br />
-              <span className="font-semibold">Currently:</span> Open to new opportunities, side quests, and meaningful conversations.
+              <span className="font-semibold">Currently</span> open to new opportunities, side quests, and meaningful conversations.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/about" className="btn-secondary bg-white text-primary-pink border-white hover:bg-gray-100">

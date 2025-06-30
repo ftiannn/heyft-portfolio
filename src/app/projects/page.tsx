@@ -1,27 +1,88 @@
-// src/app/projects/page.tsx - Refactored with Even Grid
-
 "use client"
 
 import { motion } from "framer-motion"
-import { Github, ExternalLink, X, Clock, Coffee, Zap, Heart, Sparkles, Calendar, Users, Play, FileText } from "lucide-react"
+import { Github, ExternalLink, X, Clock, Zap, Heart, Sparkles, Calendar, Users, Play, FileText, Brain, Rocket, Building, GraduationCap, User, Briefcase, Globe } from "lucide-react"
 import { useState } from "react"
 import { Dialog } from "@headlessui/react"
 import Link from "next/link"
 import { projects, categories, statusColors } from "@/constants/projects"
-import { Project, ProjectCategory } from "@/types/projects.type"
+import { Project, ProjectCategory, ProjectComplexity, ProjectImpact } from "@/types/projects.type"
 
-const CoffeeRating = ({ rating }: { rating: number }) => (
-  <div className="flex items-center gap-1">
-    {[...Array(5)].map((_, i) => (
-      <Coffee
-        key={i}
-        className={`h-3 w-3 ${i < rating ? 'text-amber-500' : 'text-gray-300'}`}
-        fill={i < rating ? 'currentColor' : 'none'}
-      />
-    ))}
-  </div>
-)
+// Complexity Indicator Component
+const ComplexityIndicator = ({ complexity }: { complexity: ProjectComplexity }) => {
+  const config = {
+    Simple: {
+      icon: Zap,
+      color: "text-green-600",
+      bg: "bg-green-50 border-green-200",
+      label: "Simple"
+    },
+    Moderate: {
+      icon: Brain,
+      color: "text-blue-600",
+      bg: "bg-blue-50 border-blue-200",
+      label: "Moderate"
+    },
+    Complex: {
+      icon: Rocket,
+      color: "text-purple-600",
+      bg: "bg-purple-50 border-purple-200",
+      label: "Complex"
+    },
+    Enterprise: {
+      icon: Building,
+      color: "text-orange-600",
+      bg: "bg-orange-50 border-orange-200",
+      label: "Enterprise"
+    }
+  };
 
+  const { icon: Icon, color, bg, label } = config[complexity];
+
+  return (
+    <div className={`flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium border ${bg}`}>
+      <Icon className={`h-3 w-3 ${color}`} />
+      <span className={color}>{label}</span>
+    </div>
+  );
+};
+
+// Impact Indicator Component
+const ImpactIndicator = ({ impact }: { impact: ProjectImpact }) => {
+  const config = {
+    Learning: {
+      icon: GraduationCap,
+      color: "text-amber-600",
+      label: "Learning"
+    },
+    Personal: {
+      icon: User,
+      color: "text-teal-600",
+      label: "Personal"
+    },
+    Professional: {
+      icon: Briefcase,
+      color: "text-blue-600",
+      label: "Professional"
+    },
+    Production: {
+      icon: Globe,
+      color: "text-green-600",
+      label: "Production"
+    }
+  };
+
+  const { icon: Icon, color, label } = config[impact];
+
+  return (
+    <div className="flex items-center gap-1 text-xs text-gray-600">
+      <Icon className={`h-3 w-3 ${color}`} />
+      <span>{label}</span>
+    </div>
+  );
+};
+
+// Updated Project Card Component
 const ProjectCard = ({ project, index, onClick }: { project: Project; index: number; onClick: () => void }) => (
   <motion.div
     initial={{ opacity: 0, y: 30 }}
@@ -41,7 +102,7 @@ const ProjectCard = ({ project, index, onClick }: { project: Project; index: num
             <Sparkles className="h-4 w-4 text-amber-500 flex-shrink-0 mt-1" />
           )}
         </div>
-        <p className="text-sm font-medium text-secondary-teal mb-2 leading-tight">
+        <p className="text-sm font-medium text-secondary-teal mb-2 leading-tight h-[3.6rem] overflow-hidden">
           {project.tagline}
         </p>
         {project.year && (
@@ -55,7 +116,7 @@ const ProjectCard = ({ project, index, onClick }: { project: Project; index: num
         <span className={`px-2 py-1 rounded-full text-xs font-medium border whitespace-nowrap ${statusColors[project.status]}`}>
           {project.status}
         </span>
-        <CoffeeRating rating={project.coffeeRating} />
+        <ComplexityIndicator complexity={project.complexity} />
       </div>
     </div>
 
@@ -97,6 +158,7 @@ const ProjectCard = ({ project, index, onClick }: { project: Project; index: num
           <Clock className="h-3 w-3" />
           {project.timeInvested}
         </div>
+        <ImpactIndicator impact={project.impact} />
         {project.teamSize && (
           <div className="flex items-center gap-1">
             <Users className="h-3 w-3" />
@@ -140,7 +202,7 @@ const ProjectCard = ({ project, index, onClick }: { project: Project; index: num
       </div>
     </div>
   </motion.div>
-)
+);
 
 const renderContent = (text: string) => {
   if (!text.includes("http")) return text;
@@ -281,6 +343,8 @@ export default function Projects() {
                           {selectedProject.status}
                         </span>
 
+                        <ComplexityIndicator complexity={selectedProject.complexity} />
+
                         {selectedProject.year && (
                           <div className="flex items-center gap-1">
                             <Calendar className="h-4 w-4" />
@@ -295,10 +359,7 @@ export default function Projects() {
                           </div>
                         )}
 
-                        <div className="flex items-center gap-2">
-                          <Coffee className="h-4 w-4 text-amber-500" />
-                          <CoffeeRating rating={selectedProject.coffeeRating} />
-                        </div>
+                        <ImpactIndicator impact={selectedProject.impact} />
                       </div>
                     </div>
 
@@ -378,23 +439,6 @@ export default function Projects() {
                             </div>
                           </div>
                         )}
-
-                        {/* Metrics */}
-                        {selectedProject.metrics && (
-                          <div>
-                            <h4 className="font-bold text-secondary-teal mb-3">Project Metrics</h4>
-                            <div className="space-y-2">
-                              {Object.entries(selectedProject.metrics).map(([key, value]) => (
-                                <div key={key} className="flex justify-between items-center pr-4">
-                                  <span className="text-text-gray dark:text-gray-300 capitalize">
-                                    {key.replace(/([A-Z])/g, ' $1').trim()}:
-                                  </span>
-                                  <span className="font-semibold text-accent-blue">{value}</span>
-                                </div>
-                              ))}
-                            </div>
-                          </div>
-                        )}
                       </div>
 
                       {/* Right Column */}
@@ -406,6 +450,16 @@ export default function Projects() {
                             <div className="flex justify-between items-start pr-2 ">
                               <span className="text-text-gray dark:text-gray-300">Time Invested:</span>
                               <span className="font-semibold text-right">{selectedProject.timeInvested}</span>
+                            </div>
+
+                            <div className="flex justify-between items-start pr-2">
+                              <span className="text-text-gray dark:text-gray-300">Complexity:</span>
+                              <span className="font-semibold text-right">{selectedProject.complexity}</span>
+                            </div>
+
+                            <div className="flex justify-between items-start pr-2">
+                              <span className="text-text-gray dark:text-gray-300">Impact:</span>
+                              <span className="font-semibold text-right">{selectedProject.impact}</span>
                             </div>
 
                             {selectedProject.role && (
@@ -423,32 +477,14 @@ export default function Projects() {
                             </div>
                           </div>
                         </div>
+                      </div>
 
-                        {/* Key Lesson */}
-                        <div className="pr-2">
-                          <h4 className="font-bold text-secondary-teal mb-3">Key Lesson</h4>
-                          <p className="text-sm text-text-gray dark:text-gray-300 italic leading-relaxed">
-                            &quot;{selectedProject.lessonsLearned}&quot;
-                          </p>
-                        </div>
-
-                        {/* Design Tools
-                        {selectedProject.designTools && selectedProject.designTools.length > 0 && (
-                          <div>
-                            <h4 className="font-bold text-secondary-teal mb-3">Design Tools</h4>
-                            <div className="flex flex-wrap gap-2">
-                              {selectedProject.designTools.map((tool) => (
-                                <span
-                                  key={tool}
-                                  className="px-3 py-1 bg-accent-blue/10 text-accent-blue 
-                                           text-sm rounded-full border border-accent-blue/20"
-                                >
-                                  {tool}
-                                </span>
-                              ))}
-                            </div>
-                          </div>
-                        )} */}
+                      {/* Key Lesson */}
+                      <div className="col-span-1 lg:col-span-2">
+                        <h4 className="font-bold text-secondary-teal mb-3">Key Lesson</h4>
+                        <p className="text-sm text-text-gray dark:text-gray-300 italic leading-relaxed">
+                          &quot;{selectedProject.lessonsLearned}&quot;
+                        </p>
                       </div>
                     </div>
 

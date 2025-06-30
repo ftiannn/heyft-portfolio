@@ -5,7 +5,7 @@ export const projects: Project[] = [
         id: 1,
         title: "🏆 Habitly",
         slug: "habitly",
-        tagline: "Habit tracking aspp",
+        tagline: "Habit tracking app",
         description: "A cross-platform habit tracker built to support users with empathy and positive reinforcement.",
         details: [
             {
@@ -52,10 +52,11 @@ export const projects: Project[] = [
         category: "Featured",
         status: "Live",
         featured: true,
-        coffeeRating: 5,
+        complexity: "Complex",
+        impact: "Production",
         timeInvested: "3 months",
         lessonsLearned: "Involving real users early—even in the design phase—made a huge difference. Their feedback helped shape both UX decisions and feature priorities. I also learned how much discipline Terraform requires for stable, repeatable deployments.",
-        wouldBuildAgain: "Absolutely. Next time, I’d invest even earlier in observability and structured user onboarding, and continue building with feedback loops from day one.",
+        wouldBuildAgain: "Absolutely. Next time, I'd invest even earlier in observability and structured user onboarding, and continue building with feedback loops from day one.",
         metrics: {
             "Launch": "June 2025",
             "Status": "Recently launched",
@@ -94,7 +95,7 @@ export const projects: Project[] = [
                 content: [
                     "Interactive Figma prototype validated before development",
                     "Responsive first, with fluid layouts optimized from mobile to desktop",
-                    "Color palette and typography selected to match PT’s personal branding"
+                    "Color palette and typography selected to match PT's personal branding"
                 ]
             },
             {
@@ -106,7 +107,6 @@ export const projects: Project[] = [
                 ]
             }
         ],
-
         image: "/api/placeholder/600/400",
         stack: ["Next.js", "React", "TailwindCSS", "TypeScript", "Vercel"],
         github: "#",
@@ -114,7 +114,8 @@ export const projects: Project[] = [
         category: "Professional",
         status: "Live",
         featured: true,
-        coffeeRating: 3,
+        complexity: "Simple",
+        impact: "Professional",
         timeInvested: "2 weeks",
         lessonsLearned: "Hands-on feedback from the client and early user sessions underscored the importance of clarity in calls-to-action and booking flows.",
         wouldBuildAgain: "Yes — in a future version I'd include analytics to track conversions, A/B test scheduling copy, and add a client dashboard.",
@@ -175,10 +176,11 @@ export const projects: Project[] = [
         category: "Featured",
         status: "Live",
         featured: true,
-        coffeeRating: 4,
+        complexity: "Moderate",
+        impact: "Professional",
         timeInvested: "2.5 weeks",
         lessonsLearned: "Showcasing yourself is harder than it seems — the challenge was balancing tone, content, and UI to feel authentic yet polished.",
-        wouldBuildAgain: "Yes. I’d automate content updates via CMS or MDX, and eventually expand it into a mini design/dev playground.",
+        wouldBuildAgain: "Yes. I'd automate content updates via CMS or MDX, and eventually expand it into a mini design/dev playground.",
         metrics: {
             "Lines of Code": "Between 100 and existential crisis",
             "Build Time": "Shorter than my career crisis",
@@ -201,7 +203,7 @@ export const projects: Project[] = [
                 heading: "The Why",
                 content: [
                     "Built to explore frontend fundamentals using Angular",
-                    "The name 'Dudoo' is a playful spin on 'To-Do' — because productivity apps don’t always have to sound serious.",
+                    "The name 'Dudoo' is a playful spin on 'To-Do' — because productivity apps don't always have to sound serious.",
                     "I wanted to build something simple, fast, and reliable with a clean UI",
                 ]
             },
@@ -237,7 +239,8 @@ export const projects: Project[] = [
         category: "Fun",
         status: "Complete",
         featured: false,
-        coffeeRating: 2,
+        complexity: "Simple",
+        impact: "Personal",
         timeInvested: "Weekend project",
         lessonsLearned: "Frameworks shape how you think — Angular helped me rethink component structure and app flow.",
         wouldBuildAgain: "Yes, especially with more complex task grouping and animations.",
@@ -250,7 +253,6 @@ export const projects: Project[] = [
         role: "Frontend Developer",
         tags: ["task-management", "animations", "revamp", "fun-project"],
         videoDemo: "",
-
     },
     {
         id: 5,
@@ -293,7 +295,6 @@ export const projects: Project[] = [
                 ]
             }
         ],
-
         image: "/api/placeholder/600/400",
         stack: ["Node.js", "TypeScript", "File System"],
         github: "https://github.com/ftiannn/valet-car-parking-system",
@@ -301,7 +302,8 @@ export const projects: Project[] = [
         category: "Learning",
         status: "Complete",
         featured: false,
-        coffeeRating: 3,
+        complexity: "Moderate",
+        impact: "Learning",
         timeInvested: "3 days",
         lessonsLearned: "Pure backend logic builds muscle memory for data flow and state tracking. Not relying on a DB makes you think twice about every read/write.",
         wouldBuildAgain: "Would love to wrap it in a REST API or even a dashboard next time.",
@@ -315,7 +317,6 @@ export const projects: Project[] = [
         teamSize: "Solo",
         role: "Backend Developer",
         tags: ["backend", "parking-system", "cli-app", "object-oriented"],
-
     },
     {
         id: 6,
@@ -365,10 +366,11 @@ export const projects: Project[] = [
         category: "Learning",
         status: "Learning Project",
         featured: false,
-        coffeeRating: 4,
+        complexity: "Moderate",
+        impact: "Learning",
         timeInvested: "2 weeks",
         lessonsLearned: "Enterprise Java has opinions about everything",
-        wouldBuildAgain: "If I had to, I’d probably rebuild this as a web app.",
+        wouldBuildAgain: "If I had to, I'd probably rebuild this as a web app.",
         year: "2018",
         teamSize: "Solo",
         role: "Backend Developer",
@@ -420,7 +422,6 @@ export const projects: Project[] = [
                 ]
             }
         ],
-
         image: "/api/placeholder/600/400",
         stack: ["React", "JavaScript", "Weather API", "CSS3"],
         github: "https://github.com/ftiannn/todays-weather",
@@ -428,9 +429,10 @@ export const projects: Project[] = [
         category: "Needs Love",
         status: "Needs Revamp",
         featured: false,
-        coffeeRating: 1,
+        complexity: "Simple",
+        impact: "Personal",
         timeInvested: "1 week years ago",
-        lessonsLearned: "Revisiting the basics helps sharpen intuition. Good design doesn’t need complexity.",
+        lessonsLearned: "Revisiting the basics helps sharpen intuition. Good design doesn't need complexity.",
         wouldBuildAgain: "Would add geolocation and a cleaner way to handle units (C/F).",
     },
     {
@@ -482,7 +484,8 @@ export const projects: Project[] = [
         category: "Coming Soon",
         status: "Planning",
         featured: false,
-        coffeeRating: 5,
+        complexity: "Complex",
+        impact: "Learning",
         timeInvested: "Future",
         lessonsLearned: "AI is everywhere, but good AI products are rare",
         wouldBuildAgain: "Haven't built it yet!",
@@ -522,8 +525,8 @@ export const projects: Project[] = [
             {
                 heading: "Reflections",
                 content: [
-                    "Unreal Engine’s power is unreal — but so is the learning curve.",
-                    "This was my first taste of structured programming logic, debugging hell, and the joy of ‘it finally works!’",
+                    "Unreal Engine's power is unreal — but so is the learning curve.",
+                    "This was my first taste of structured programming logic, debugging hell, and the joy of 'it finally works!'",
                     "Looking back, I can laugh at the bugs… now."
                 ]
             }
@@ -535,8 +538,9 @@ export const projects: Project[] = [
         category: "Learning",
         status: "Complete",
         featured: false,
-        coffeeRating: 2,
-        timeInvested: "1 year (Final Year Project)",
+        complexity: "Complex",
+        impact: "Learning",
+        timeInvested: "1 year",
         lessonsLearned: "Game dev teaches discipline, precision, and how to think in systems.",
         wouldBuildAgain: "For fun — but not for a deadline again.",
         metrics: {
@@ -579,7 +583,7 @@ export const projects: Project[] = [
                 content: [
                     "VR development is humbling — between modeling, motion design, and performance testing, every detail matters.",
                     "Even simple interactions require thoughtful design, especially in immersive spaces.",
-                    "Lesson learned: back up often. Crashing Unity scenes don’t forgive."
+                    "Lesson learned: back up often. Crashing Unity scenes don't forgive."
                 ]
             }
         ],
@@ -590,7 +594,8 @@ export const projects: Project[] = [
         category: "Learning",
         status: "Complete",
         featured: false,
-        coffeeRating: 3,
+        complexity: "Complex",
+        impact: "Learning",
         timeInvested: "6 months",
         lessonsLearned: "Performance constraints are real — build light, iterate fast, and smash Ctrl+S before hitting play.",
         wouldBuildAgain: "Yes — especially with latest technology!",
@@ -652,7 +657,8 @@ export const projects: Project[] = [
         category: "Learning",
         status: 'Needs Revamp',
         featured: false,
-        coffeeRating: 2,
+        complexity: "Simple",
+        impact: "Learning",
         timeInvested: "3 weeks",
         lessonsLearned: "UX research grounds creativity in real needs — and emotional insight is just as valuable as usability testing.",
         wouldBuildAgain: "Yes — next step would be a working MVP with real users.",
@@ -682,4 +688,3 @@ export const statusColors: Record<ProjectStatus, string> = {
     "Needs Revamp": "bg-orange-100 text-orange-800 border-orange-200",
     "Planning": "bg-gray-100 text-gray-800 border-gray-200"
 };
-

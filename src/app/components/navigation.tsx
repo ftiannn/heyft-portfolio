@@ -11,7 +11,7 @@ const navigation = [
   { name: "Projects", href: "/projects" },
   { name: "About", href: "/about" },
   { name: "Resume", href: "/resume" },
-  { name: "Blog", href: "/blog" },
+  { name: "Gallery", href: "/gallery" },
 ]
 
 export function Navigation() {
@@ -33,11 +33,10 @@ export function Navigation() {
               <Link
                 key={item.name}
                 href={item.href}
-                className={`font-medium transition-colors ${
-                  pathname === item.href
+                className={`font-medium transition-colors ${pathname === item.href
                     ? "text-primary-pink"
                     : "text-text-gray hover:text-primary-pink"
-                }`}
+                  }`}
               >
                 {item.name}
               </Link>
@@ -67,11 +66,10 @@ export function Navigation() {
                   key={item.name}
                   href={item.href}
                   onClick={() => setIsOpen(false)}
-                  className={`block px-4 py-2 rounded-lg font-medium transition-colors ${
-                    pathname === item.href
+                  className={`block px-4 py-2 rounded-lg font-medium transition-colors ${pathname === item.href
                       ? "text-primary-pink bg-pink-50 dark:bg-pink-500/10"
                       : "text-text-gray hover:text-primary-pink hover:bg-pink-50 dark:hover:bg-pink-500/10"
-                  }`}
+                    }`}
                 >
                   {item.name}
                 </Link>

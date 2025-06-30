@@ -86,12 +86,12 @@ const countryStats: CountryStat[] = [
     },
     {
         label: "Years Traveling",
-        value: "3+ Years",
+        value: "3+",
         color: "text-accent-blue"
     },
     {
         label: "Continents",
-        value: "4 Continents",
+        value: "4",
         color: "text-purple-500"
     }
 ]

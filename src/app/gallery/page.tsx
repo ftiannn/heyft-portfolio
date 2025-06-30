@@ -76,6 +76,17 @@ export default function Gallery() {
                         that make each destination unique.
                     </p>
 
+                    {/* Gear Spec */}
+                    <div className="flex justify-center mb-6">
+                        <div className="inline-flex items-center gap-2 px-4 py-1 bg-white/70 dark:bg-slate-700/50 border border-gray-200 dark:border-slate-600 rounded-full text-xs text-gray-600 dark:text-gray-300 font-medium backdrop-blur-sm shadow-sm">
+                            <Camera className="w-4 h-4 text-primary-pink" />
+                            Canon R10 · Sigma 17–50mm · iPhone 14 Pro
+                        </div>
+                    </div>
+
+
+
+
                     {/* Stats */}
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto">
                         {countryStats.map((stat, index) => (

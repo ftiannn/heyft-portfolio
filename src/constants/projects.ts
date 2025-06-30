@@ -674,7 +674,7 @@ export const projects: Project[] = [
         role: "UX Researcher, Designer",
         tags: ["ux", "figma", "budgeting-app", "research"],
         designTools: ["Figma"],
-        slidesLink: "https://docs.google.com/presentation/d/1L9zNNnrLT9kbwBrjximdTrmGit9WxQZ1wSMeHoUf_-4/edit?usp=sharing",
+        slidesLink: "https://drive.google.com/file/d/1QwGPHmlJq45uErax2G_CZ5NPwZSopLTJ/view?usp=sharing",
     }
 ];
 

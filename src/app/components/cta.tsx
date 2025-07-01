@@ -3,7 +3,7 @@
 import { motion } from "framer-motion"
 import { usePathname } from "next/navigation"
 
-export function CTA() {
+export function Cta() {
     const pathname = usePathname()
 
     const getSecondButton = () => {

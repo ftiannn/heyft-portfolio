@@ -1,13 +1,12 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Github, ExternalLink, X, Clock, Zap, Heart, Sparkles, Calendar, Users, Play, FileText, Brain, Rocket, Building, GraduationCap, User, Briefcase, Globe } from "lucide-react"
+import { Github, ExternalLink, X, Clock, Zap, Sparkles, Calendar, Users, Play, FileText, Brain, Rocket, Building, GraduationCap, User, Briefcase, Globe } from "lucide-react"
 import { useState } from "react"
 import { Dialog } from "@headlessui/react"
-import Link from "next/link"
 import { projects, categories, statusColors } from "@/constants/projects"
 import { Project, ProjectCategory, ProjectComplexity, ProjectImpact } from "@/types/projects.type"
-import { CTA } from "../components"
+import { Cta } from "../components"
 
 const ComplexityIndicator = ({ complexity }: { complexity: ProjectComplexity }) => {
   const config = {
@@ -551,7 +550,7 @@ export default function Projects() {
         </Dialog>
 
 
-        <CTA />
+        <Cta />
       </div>
     </main>
   )

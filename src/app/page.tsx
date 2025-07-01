@@ -10,7 +10,6 @@ import { ThemeToggle } from '@/app/components'
 export default function Home() {
   const router = useRouter()
   const isNavigating = useRef(false)
-  const scrollTimeout = useRef<NodeJS.Timeout | null>(null)
   const touchStartY = useRef<number | null>(null)
   const [isTransitioning, setIsTransitioning] = useState(false)
 
@@ -28,28 +27,27 @@ export default function Home() {
     isNavigating.current = true
     setIsTransitioning(true)
 
+    sessionStorage.setItem('navigationSource', 'home')
+
     setTimeout(() => {
       router.push('/about')
-    }, 200)
+    }, 80)
   }
 
   useEffect(() => {
-    let wheelTimeout: NodeJS.Timeout | null = null
+    let wheelAccumulator = 0
+    const wheelThreshold = 100
 
     const navigateToAbout = () => {
       if (!isNavigating.current) {
         isNavigating.current = true
         setIsTransitioning(true)
 
+        sessionStorage.setItem('navigationSource', 'home')
+
         setTimeout(() => {
           router.push('/about')
-        }, 150)
-      }
-    }
-
-    const handleWheelTimeout = () => {
-      if (!isNavigating.current) {
-        navigateToAbout()
+        }, 50)
       }
     }
 
@@ -57,24 +55,15 @@ export default function Home() {
       if (isNavigating.current) return
 
       if (event.deltaY > 0) {
-        if (wheelTimeout) {
-          clearTimeout(wheelTimeout)
+        wheelAccumulator += event.deltaY
+
+        if (wheelAccumulator > wheelThreshold) {
+          event.preventDefault()
+          navigateToAbout()
         }
-
-        wheelTimeout = setTimeout(handleWheelTimeout, 100)
-
-        event.preventDefault()
+      } else {
+        wheelAccumulator = 0
       }
-    }
-
-    const handleTouchNavigation = () => {
-      isNavigating.current = true
-      setIsTransitioning(true)
-      touchStartY.current = null
-
-      setTimeout(() => {
-        router.push('/about')
-      }, 100)
     }
 
     const handleTouchStart = (event: TouchEvent) => {
@@ -93,15 +82,22 @@ export default function Home() {
       if (touch) {
         const deltaY = touchStartY.current - touch.clientY
 
-        if (deltaY > 50) {
+        if (deltaY > 60) {
           event.preventDefault()
-          handleTouchNavigation()
+          isNavigating.current = true
+          setIsTransitioning(true)
+          touchStartY.current = null
+
+          sessionStorage.setItem('navigationSource', 'home')
+
+          setTimeout(() => {
+            router.push('/about')
+          }, 30)
         }
       }
     }
 
     window.addEventListener('wheel', handleWheel, { passive: false })
-
     window.addEventListener('touchstart', handleTouchStart, { passive: true })
     window.addEventListener('touchmove', handleTouchMove, { passive: false })
 
@@ -109,32 +105,24 @@ export default function Home() {
       window.removeEventListener('wheel', handleWheel)
       window.removeEventListener('touchstart', handleTouchStart)
       window.removeEventListener('touchmove', handleTouchMove)
-      if (wheelTimeout) {
-        clearTimeout(wheelTimeout)
-      }
-      if (scrollTimeout.current) {
-        clearTimeout(scrollTimeout.current)
-      }
     }
   }, [router])
 
   return (
     <main className="relative min-h-screen">
-
+      {/* Simplified transition overlay */}
       {isTransitioning && (
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.3, ease: "easeOut" }}
-          className="fixed inset-0 z-50 bg-gradient-to-br from-primary-pink/15 via-purple-500/15 to-accent-blue/15 backdrop-blur-sm pointer-events-none"
+          transition={{ duration: 0.2, ease: "easeOut" }}
+          className="fixed inset-0 z-50 bg-gradient-to-br from-primary-pink/10 via-purple-500/10 to-accent-blue/10 backdrop-blur-sm pointer-events-none"
         />
       )}
-
 
       <div className="fixed bottom-6 left-6 z-50">
         <ThemeToggle />
       </div>
-
 
       <motion.section
         initial={{ opacity: 0 }}
@@ -149,7 +137,6 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -183,7 +170,6 @@ export default function Home() {
               />
             </motion.div>
 
-
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -212,7 +198,6 @@ export default function Home() {
                 Let&apos;s Talk
               </button>
             </motion.div>
-
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}

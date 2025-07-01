@@ -9,7 +9,6 @@ interface PageTransitionProps {
 }
 
 const getTransitionForRoute = (pathname: string, previousPath: string | null) => {
-
     if (previousPath === '/' && pathname === '/about') {
         return {
             variants: {
@@ -40,6 +39,36 @@ const getTransitionForRoute = (pathname: string, previousPath: string | null) =>
         }
     }
 
+    if (previousPath === '/about' && pathname === '/') {
+        return {
+            variants: {
+                initial: { opacity: 0, y: -100, scale: 0.96 },
+                in: {
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                    transition: {
+                        duration: 1.0,
+                        ease: [0.16, 1, 0.3, 1],
+                        opacity: { duration: 0.6 },
+                        y: { duration: 1.0 },
+                        scale: { duration: 0.8 }
+                    }
+                },
+                out: {
+                    opacity: 0,
+                    y: 30,
+                    scale: 1.02,
+                    transition: {
+                        duration: 0.4,
+                        ease: [0.4, 0, 0.2, 1]
+                    }
+                }
+            },
+            hasCustomTransition: true
+        }
+    }
+
     return {
         variants: {
             initial: { opacity: 1 },
@@ -53,11 +82,22 @@ const getTransitionForRoute = (pathname: string, previousPath: string | null) =>
 export function PageTransition({ children }: Readonly<PageTransitionProps>) {
     const pathname = usePathname()
     const previousPath = useRef<string | null>(null)
+    const isFirstRender = useRef(true)
 
     const { variants, hasCustomTransition } = getTransitionForRoute(pathname, previousPath.current)
 
     useEffect(() => {
-        previousPath.current = pathname
+        if (isFirstRender.current) {
+            isFirstRender.current = false
+            previousPath.current = pathname
+            return
+        }
+
+        const timeoutId = setTimeout(() => {
+            previousPath.current = pathname
+        }, 100)
+
+        return () => clearTimeout(timeoutId)
     }, [pathname])
 
     if (!hasCustomTransition) {

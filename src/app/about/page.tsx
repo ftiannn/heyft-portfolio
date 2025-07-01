@@ -6,7 +6,7 @@ import { motion, useScroll, useTransform } from "framer-motion"
 import { ChevronRight, X, ArrowUpRight } from "lucide-react"
 import { quickFacts, professionalJourney, skillCategories, personalInterests, drivingPrinciples } from "@/constants/about"
 import { ProfessionalExperience } from "@/types/about.type"
-import { CTA } from "../components"
+import { Cta } from "../components"
 
 interface ModalProps {
   isOpen: boolean;
@@ -478,7 +478,7 @@ export default function About() {
 
 
 
-        <CTA />
+        <Cta />
       </div>
 
 

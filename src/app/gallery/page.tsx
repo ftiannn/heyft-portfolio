@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Camera, Filter, ChevronRight, MapPin } from "lucide-react"
 import Image from "next/image"
 import { useState, useMemo, useEffect } from "react"
-import { CTA } from "../components"
+import { Cta } from "../components"
 
 export default function Gallery() {
     const [selectedCountry, setSelectedCountry] = useState<string | null>(null)
@@ -240,7 +240,7 @@ export default function Gallery() {
                 </motion.div>
 
 
-                <CTA />
+                <Cta />
             </div>
 
 

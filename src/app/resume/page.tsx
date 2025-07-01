@@ -7,7 +7,7 @@ import {
   Target, Building, Code, Briefcase
 } from "lucide-react"
 import { useState } from "react"
-import { CTA } from "../components"
+import { Cta } from "../components"
 
 const quickStats = [
   {
@@ -360,7 +360,7 @@ export default function Resume() {
         </div>
 
 
-        <CTA />
+        <Cta />
       </div>
     </main>
   )

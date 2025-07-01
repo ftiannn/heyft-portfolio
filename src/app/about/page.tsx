@@ -3,7 +3,7 @@
 import Image from "next/image"
 import { useState, useRef } from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
-import { ChevronRight, Heart, X, ArrowUpRight } from "lucide-react"
+import { ChevronRight, X, ArrowUpRight } from "lucide-react"
 import { quickFacts, professionalJourney, skillCategories, personalInterests, drivingPrinciples } from "@/constants/about"
 import { ProfessionalExperience } from "@/types/about.type"
 import { CTA } from "../components"

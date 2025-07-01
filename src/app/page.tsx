@@ -169,11 +169,11 @@ export default function Home() {
               <Typewriter
                 options={{
                   strings: [
-                    "I am passionate about solving real world problems 🛠️",
-                    "I create user-friendly interfaces 🌐",
-                    "I translate ambiguous goals into features 💻",
-                    "I build scalable web applications 🚀",
-                    "I love learning new technologies 📚"
+                    "I am passionate about solving real world problems",
+                    "I create user-friendly interfaces",
+                    "I translate ambiguous goals into features",
+                    "I build scalable web applications",
+                    "I love learning new technologies"
                   ],
                   autoStart: true,
                   loop: true,

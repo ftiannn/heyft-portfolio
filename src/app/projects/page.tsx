@@ -7,6 +7,7 @@ import { Dialog } from "@headlessui/react"
 import Link from "next/link"
 import { projects, categories, statusColors } from "@/constants/projects"
 import { Project, ProjectCategory, ProjectComplexity, ProjectImpact } from "@/types/projects.type"
+import { CTA } from "../components"
 
 const ComplexityIndicator = ({ complexity }: { complexity: ProjectComplexity }) => {
   const config = {
@@ -88,7 +89,7 @@ const ProjectCard = ({ project, index, onClick }: { project: Project; index: num
     className="card cursor-pointer group hover:scale-[1.02] transition-all duration-300 flex flex-col h-full"
     onClick={onClick}
   >
-    {/* Project Header */}
+
     <div className="flex items-start justify-between mb-4 min-h-[80px]">
       <div className="flex-1 min-w-0 pr-3">
         <div className="flex items-start gap-2 mb-2">
@@ -117,21 +118,21 @@ const ProjectCard = ({ project, index, onClick }: { project: Project; index: num
       </div>
     </div>
 
-    {/* Project Image Placeholder */}
+
     <div className="aspect-video bg-gradient-primary rounded-lg mb-4 overflow-hidden flex items-center justify-center text-white text-3xl font-bold flex-shrink-0">
       {project.title.split(' ')[0]}
     </div>
 
-    {/* Project Description */}
+
     <div className="flex-1 mb-4">
       <p className="text-text-gray dark:text-gray-300 leading-relaxed text-sm">
         {project.description}
       </p>
     </div>
 
-    {/* Project Meta */}
+
     <div className="space-y-3">
-      {/* Tech Stack */}
+
       <div className="flex flex-wrap gap-1">
         {project.stack.slice(0, 4).map((tech) => (
           <span
@@ -149,7 +150,7 @@ const ProjectCard = ({ project, index, onClick }: { project: Project; index: num
         )}
       </div>
 
-      {/* Project Stats */}
+
       <div className="flex items-center justify-between text-xs text-text-gray">
         <div className="flex items-center gap-1">
           <Clock className="h-3 w-3" />
@@ -164,7 +165,7 @@ const ProjectCard = ({ project, index, onClick }: { project: Project; index: num
         )}
       </div>
 
-      {/* Action Links */}
+
       <div className="flex gap-3 pt-2">
         {project.github !== "#" && project.github !== "" && (
           <a
@@ -236,7 +237,7 @@ export default function Projects() {
   return (
     <main className="min-h-screen bg-gradient-light dark:bg-gradient-dark">
       <div className="container-custom section-padding">
-        {/* Header */}
+
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -254,7 +255,7 @@ export default function Projects() {
             to my growth as a developer.
           </p>
 
-          {/* Fun Stats */}
+
           <div className="flex justify-center gap-8 mt-8 flex-wrap">
             <div className="text-center">
               <div className="text-2xl font-bold text-primary-pink">12</div>
@@ -271,7 +272,7 @@ export default function Projects() {
           </div>
         </motion.div>
 
-        {/* Category Filter */}
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -292,7 +293,7 @@ export default function Projects() {
           ))}
         </motion.div>
 
-        {/* Projects Grid */}
+
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -309,7 +310,7 @@ export default function Projects() {
           ))}
         </motion.div>
 
-        {/* Project Modal */}
+
         <Dialog
           open={!!selectedProject}
           onClose={() => setSelectedProject(null)}
@@ -321,7 +322,7 @@ export default function Projects() {
             <Dialog.Panel className="bg-white dark:bg-navy-800 rounded-xl p-6 max-w-5xl w-full max-h-[90vh] overflow-y-auto">
               {selectedProject && (
                 <>
-                  {/* Modal Header */}
+
                   <div className="flex justify-between items-start mb-6">
                     <div className="flex-1">
                       <Dialog.Title className="text-3xl font-bold gradient-text flex items-center gap-2 mb-2">
@@ -334,7 +335,7 @@ export default function Projects() {
                         {selectedProject.tagline}
                       </p>
 
-                      {/* Project Meta Row */}
+
                       <div className="flex flex-wrap items-center gap-4 text-sm text-text-gray">
                         <span className={`px-3 py-1 rounded-full font-medium border ${statusColors[selectedProject.status]}`}>
                           {selectedProject.status}
@@ -368,14 +369,14 @@ export default function Projects() {
                     </button>
                   </div>
 
-                  {/* Modal Content */}
+
                   <div className="space-y-6">
-                    {/* Project Image */}
+
                     <div className="aspect-video bg-gradient-primary rounded-lg flex items-center justify-center text-white text-6xl font-bold">
                       {selectedProject.title.split(' ')[0]}
                     </div>
 
-                    {/* Project Story */}
+
                     <div className="prose dark:prose-invert max-w-none">
                       <div className="text-text-gray dark:text-gray-300 leading-relaxed space-y-4">
                         {selectedProject.details.map((section, index) => (
@@ -399,11 +400,11 @@ export default function Projects() {
                       </div>
                     </div>
 
-                    {/* Project Details Grid */}
+
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 pt-6 border-t border-gray-200 dark:border-gray-700">
-                      {/* Left Column */}
+
                       <div className="space-y-4">
-                        {/* Tech Stack */}
+
                         <div>
                           <h4 className="font-bold text-primary-pink mb-3">Tech Stack</h4>
                           <div className="flex flex-wrap gap-2">
@@ -419,7 +420,7 @@ export default function Projects() {
                           </div>
                         </div>
 
-                        {/* Tags */}
+
                         {selectedProject.tags && selectedProject.tags.length > 0 && (
                           <div>
                             <h4 className="font-bold text-secondary-teal mb-3">Tags</h4>
@@ -438,9 +439,9 @@ export default function Projects() {
                         )}
                       </div>
 
-                      {/* Right Column */}
+
                       <div className="space-y-4">
-                        {/* Project Insights */}
+
                         <div>
                           <h4 className="font-bold text-primary-pink mb-3">Project Insights</h4>
                           <div className="space-y-2">
@@ -476,7 +477,7 @@ export default function Projects() {
                         </div>
                       </div>
 
-                      {/* Key Lesson */}
+
                       <div className="col-span-1 lg:col-span-2">
                         <h4 className="font-bold text-secondary-teal mb-3">Key Lessons</h4>
                         <p className="text-sm text-text-gray dark:text-gray-300 italic leading-relaxed">
@@ -485,7 +486,7 @@ export default function Projects() {
                       </div>
                     </div>
 
-                    {/* Action Buttons */}
+
                     <div className="flex flex-wrap gap-3 pt-6 border-t border-gray-200 dark:border-gray-700">
                       {selectedProject.github !== "#" && selectedProject.github !== "" && (
                         <a
@@ -549,34 +550,8 @@ export default function Projects() {
           </div>
         </Dialog>
 
-        {/* Bottom CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8, duration: 0.8 }}
-          className="mt-20 text-center"
-        >
-          <div className="card bg-gradient-primary text-white">
-            <h3 className="text-2xl font-bold mb-4 flex items-center justify-center gap-2">
-              <Heart className="h-6 w-6" />
-              Like What You See?
-            </h3>
-            <p className="text-md leading-relaxed mb-6">
-              These projects reflect the craft, care, and curiosity in everything I build — whether it&apos;s
-              solving real-world problems, refining user experience, or exploring new technology.
-              <br />
-              <span className="font-semibold">Currently</span> open to new opportunities, side quests, and meaningful conversations.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/about" className="btn-secondary bg-white text-primary-pink border-white hover:bg-gray-100">
-                Get to Know Me
-              </Link>
-              <Link href="/resume" className="btn-secondary bg-white text-primary-pink border-white hover:bg-gray-100">
-                View My Resume
-              </Link>
-            </div>
-          </div>
-        </motion.div>
+
+        <CTA />
       </div>
     </main>
   )

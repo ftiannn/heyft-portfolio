@@ -8,8 +8,8 @@ import { motion } from "framer-motion"
 
 const navigation = [
   { name: "Home", href: "/" },
-  { name: "Projects", href: "/projects" },
   { name: "About", href: "/about" },
+  { name: "Projects", href: "/projects" },
   { name: "Resume", href: "/resume" },
   { name: "Gallery", href: "/gallery" },
 ]
@@ -22,12 +22,12 @@ export function Navigation() {
     <nav className="fixed top-0 w-full z-40 bg-white/80 dark:bg-navy-800/80 backdrop-blur-md border-b border-pink-100 dark:border-pink-500/20">
       <div className="container-custom">
         <div className="flex justify-between items-center h-16">
-          {/* Logo */}
+
           <Link href="/" className="text-2xl font-bold gradient-text">
             FT
           </Link>
 
-          {/* Desktop Navigation */}
+
           <div className="hidden md:flex items-center space-x-8">
             {navigation.map((item) => (
               <Link
@@ -43,7 +43,7 @@ export function Navigation() {
             ))}
           </div>
 
-          {/* Mobile menu button */}
+
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="md:hidden p-2 rounded-lg bg-primary-pink text-white"
@@ -52,7 +52,7 @@ export function Navigation() {
           </button>
         </div>
 
-        {/* Mobile Navigation */}
+
         {isOpen && (
           <motion.div
             initial={{ opacity: 0, y: -20 }}

@@ -14,7 +14,7 @@ export default function NotFound() {
           transition={{ duration: 0.8 }}
           className="max-w-2xl mx-auto"
         >
-          {/* 404 Number */}
+
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -24,7 +24,7 @@ export default function NotFound() {
             404
           </motion.div>
 
-          {/* Error Message */}
+
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -43,7 +43,7 @@ export default function NotFound() {
             </p>
           </motion.div>
 
-          {/* Fun Animation */}
+
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -51,11 +51,11 @@ export default function NotFound() {
             className="flex justify-center items-center gap-8 mb-12"
           >
             <motion.div
-              animate={{ 
+              animate={{
                 rotate: [0, 10, -10, 10, 0],
                 y: [0, -10, 0, -5, 0]
               }}
-              transition={{ 
+              transition={{
                 duration: 2,
                 repeat: Infinity,
                 repeatType: "reverse"
@@ -65,11 +65,11 @@ export default function NotFound() {
               🐞
             </motion.div>
             <motion.div
-              animate={{ 
+              animate={{
                 rotate: [0, -5, 5, -5, 0],
                 scale: [1, 1.1, 1, 1.05, 1]
               }}
-              transition={{ 
+              transition={{
                 duration: 2.5,
                 repeat: Infinity,
                 repeatType: "reverse"
@@ -79,11 +79,11 @@ export default function NotFound() {
               ☕
             </motion.div>
             <motion.div
-              animate={{ 
+              animate={{
                 y: [0, -15, 0, -8, 0],
                 rotate: [0, 5, -5, 0]
               }}
-              transition={{ 
+              transition={{
                 duration: 3,
                 repeat: Infinity,
                 repeatType: "reverse"
@@ -94,7 +94,7 @@ export default function NotFound() {
             </motion.div>
           </motion.div>
 
-          {/* Action Buttons */}
+
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -111,7 +111,7 @@ export default function NotFound() {
             </Link>
           </motion.div>
 
-          {/* Cheeky Message */}
+
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -120,7 +120,7 @@ export default function NotFound() {
           >
             <div className="card bg-gradient-subtle border-2 border-primary-pink/20">
               <p className="text-text-gray dark:text-gray-300 leading-relaxed">
-                <strong>Fun fact:</strong> This 404 page took longer to design than some of my actual features. 
+                <strong>Fun fact:</strong> This 404 page took longer to design than some of my actual features.
                 Priorities? What priorities? 😅
               </p>
               <div className="mt-3 flex justify-center gap-2">

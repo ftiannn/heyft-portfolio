@@ -6,6 +6,7 @@ import { motion, useScroll, useTransform } from "framer-motion"
 import { ChevronRight, Heart, X, ArrowUpRight } from "lucide-react"
 import { quickFacts, professionalJourney, skillCategories, personalInterests, drivingPrinciples } from "@/constants/about"
 import { ProfessionalExperience } from "@/types/about.type"
+import { CTA } from "../components"
 
 interface ModalProps {
   isOpen: boolean;
@@ -51,7 +52,7 @@ export default function About() {
   return (
     <main className="min-h-screen bg-gradient-light dark:bg-gradient-dark">
 
-      {/*  Hero Section */}
+
       <div ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary-pink/10 rounded-full blur-2xl"></div>
@@ -108,7 +109,7 @@ export default function About() {
             Product-focused developer who enjoys bridging technology and business to build impactful solutions. 7+ years of experience aligning cross-functional teams and delivering nationwide platforms.
           </motion.p>
 
-          {/* Quick facts carousel */}
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -132,7 +133,7 @@ export default function About() {
 
         </motion.div>
 
-        {/* Scroll indicator */}
+
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -166,7 +167,7 @@ export default function About() {
           </div>
 
           <div className="relative">
-            {/* Timeline line - responsive positioning */}
+
             <div className="absolute left-4 sm:left-6 md:left-8 top-0 bottom-0 w-0.5 sm:w-1 bg-gradient-to-b from-primary-pink via-purple-500 via-accent-blue to-secondary-teal opacity-60 rounded-full"></div>
 
             <div className="space-y-8 sm:space-y-12">
@@ -179,16 +180,16 @@ export default function About() {
                   viewport={{ once: true, margin: "-50px" }}
                   className="relative"
                 >
-                  {/* Timeline dot - responsive sizing and positioning */}
+
                   <div className="absolute left-2.5 sm:left-4.5 md:left-6 w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 bg-gradient-to-br from-primary-pink to-accent-blue border-2 sm:border-3 md:border-4 border-white dark:border-slate-800 rounded-full shadow-lg"></div>
 
-                  {/* Content card - responsive margin */}
+
                   <div className="ml-10 sm:ml-16 md:ml-20">
                     <div
                       className="bg-white dark:bg-slate-800 rounded-xl p-4 sm:p-5 md:p-6 shadow-soft hover:shadow-large transition-all duration-300 cursor-pointer group border-2 border-gray-100 dark:border-gray-700 hover:border-primary-pink/50 hover:shadow-primary-pink/10"
                       onClick={() => setSelectedExperience(experience)}
                     >
-                      {/* Header - responsive layout */}
+
                       <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-3 sm:mb-4">
                         <div className="flex-1 mb-3 sm:mb-0">
                           <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mb-2">
@@ -208,7 +209,7 @@ export default function About() {
                         </div>
                       </div>
 
-                      {/* Description - responsive text size */}
+
                       <div className="text-text-gray dark:text-gray-300 leading-relaxed mb-3 sm:mb-4 text-xs sm:text-sm">
                         {Array.isArray(experience.description) ? (
                           <div className="space-y-1">
@@ -221,9 +222,9 @@ export default function About() {
                         )}
                       </div>
 
-                      {/* Tech stack preview - responsive display */}
+
                       <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                        {/* Show first 3 on mobile, first 5 on larger screens */}
+
                         {experience.technologies.slice(0, 3).map((tech) => (
                           <span
                             key={tech}
@@ -232,7 +233,7 @@ export default function About() {
                             {tech}
                           </span>
                         ))}
-                        {/* Show additional tags on sm+ screens */}
+
                         {experience.technologies.slice(3, 5).map((tech) => (
                           <span
                             key={tech}
@@ -241,14 +242,14 @@ export default function About() {
                             {tech}
                           </span>
                         ))}
-                        {/* Responsive "more" indicator */}
+
                         {experience.technologies.length > 3 && (
                           <>
-                            {/* Mobile: show count based on 3 visible */}
+
                             <span className="sm:hidden px-2 py-1 bg-primary-pink/10 text-primary-pink text-xs rounded-full border border-primary-pink/20 font-medium">
                               +{experience.technologies.length - 3} more
                             </span>
-                            {/* Desktop: show count based on 5 visible (only if more than 5) */}
+
                             {experience.technologies.length > 5 && (
                               <span className="hidden sm:inline-flex px-3 py-1 bg-primary-pink/10 text-primary-pink text-xs rounded-full border border-primary-pink/20 font-medium">
                                 +{experience.technologies.length - 5} more
@@ -258,7 +259,7 @@ export default function About() {
                         )}
                       </div>
 
-                      {/* Mobile-only tap indicator */}
+
                       <div className="sm:hidden mt-3 pt-3 border-t border-gray-200 dark:border-gray-700">
                         <div className="flex items-center justify-center gap-2 text-text-gray text-xs">
                           <span>Tap for details</span>
@@ -273,7 +274,7 @@ export default function About() {
           </div>
         </motion.section>
 
-        {/* Skills with interactive elements */}
+
         <motion.section
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -358,7 +359,7 @@ export default function About() {
             ))}
           </div>        </motion.section>
 
-        {/* Personal Interests */}
+
         <motion.section
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -389,20 +390,20 @@ export default function About() {
                 onClick={() => window.open(interest.link, "_blank")}
                 className="bg-white dark:bg-slate-800 p-8 rounded-2xl cursor-pointer group relative overflow-hidden hover:shadow-2xl dark:hover:shadow-2xl dark:hover:shadow-primary-pink/20 transition-all duration-500 border border-gray-100 dark:border-gray-700 hover:border-primary-pink/30 dark:hover:border-primary-pink/40"
               >
-                {/* Decorative elements with dark mode enhancements */}
+
                 <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-white/20 dark:from-white/10 to-primary-pink/10 dark:to-primary-pink/20 rounded-full -translate-y-16 translate-x-16 group-hover:scale-150 group-hover:rotate-45 transition-all duration-700"></div>
                 <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-accent-blue/10 dark:from-accent-blue/20 to-transparent rounded-full translate-y-12 -translate-x-12 group-hover:scale-125 group-hover:-rotate-45 transition-all duration-700"></div>
 
                 <div className="relative z-10">
                   <div className="flex items-center gap-4 mb-4">
-                    {/* Dynamic icon color based on interest index */}
+
                     <interest.icon className={`w-8 h-8 group-hover:scale-110 transition-transform ${index === 0 ? 'text-primary-pink' :
                       index === 1 ? 'text-accent-blue' :
                         index === 2 ? 'text-secondary-teal' :
                           index === 3 ? 'text-purple-500' :
                             'text-primary-pink'
                       }`} />
-                    {/* Dynamic title color based on interest index */}
+
                     <h3 className={`text-xl md:text-2xl font-bold ${index === 0 ? 'text-primary-pink' :
                       index === 1 ? 'text-accent-blue' :
                         index === 2 ? 'text-secondary-teal' :
@@ -431,7 +432,7 @@ export default function About() {
           </div>
         </motion.section>
 
-        {/* What Drives Me */}
+
         <motion.section
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -476,39 +477,11 @@ export default function About() {
         </motion.section>
 
 
-        {/* Bottom CTA */}
-        <motion.section
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true, margin: "-100px" }}
-          className="section-padding text-center"
-        >
-          <div className="card bg-gradient-primary text-white">
-            <h3 className="text-2xl font-bold mb-4 flex items-center justify-center gap-2">
-              <Heart className="h-6 w-6" />
-              Ready to Connect?
-            </h3>
-            <p className="text-md leading-relaxed mb-6 max-w-3xl mx-auto">
-              Whether you&apos;re looking for a technical partner who bridges the gap between complex problems and elegant solutions,
-              or just want to chat about the intersection of technology, creativity, and meaningful impact — I&apos;d love to hear from you.
-              <br />
-              <span className="font-semibold">Currently:</span> Open to new opportunities, collaborations, and conversations that matter.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="mailto:tanft25@gmail.com" className="btn-secondary bg-white text-primary-pink border-white hover:bg-gray-100">
-                Get In Touch
-              </a>
-              <a href="/projects" className="btn-secondary bg-white text-primary-pink border-white hover:bg-gray-100">
-                View My Work
-              </a>
-            </div>
-          </div>
-        </motion.section>
 
+        <CTA />
       </div>
 
-      {/* Experience Detail Modal - Redesigned */}
+
       <Modal
         isOpen={!!selectedExperience}
         onClose={() => setSelectedExperience(null)}
@@ -516,7 +489,6 @@ export default function About() {
       >
         {selectedExperience && (
           <>
-            {/* Modal Header - more colorful */}
             <div className="bg-gradient-to-r from-primary-pink/10 via-purple-500/10 via-accent-blue/10 to-secondary-teal/10 p-6 border-b-2 border-gradient-to-r from-primary-pink/20 to-accent-blue/20">
               <div className="flex justify-between items-start">
                 <div>
@@ -546,11 +518,11 @@ export default function About() {
               </div>
             </div>
 
-            {/* Modal Content */}
+
             <div className="p-6 overflow-y-auto max-h-[calc(90vh-200px)]">
               <div className="space-y-8">
 
-                {/* Role Overview */}
+
                 <div>
                   <h3 className="text-base font-bold text-primary-pink mb-4 flex items-center gap-2">
                     <div className="w-3 h-3 bg-gradient-to-r from-primary-pink to-purple-500 rounded-full"></div>
@@ -571,7 +543,7 @@ export default function About() {
                   </div>
                 </div>
 
-                {/* Key Achievements */}
+
                 <div>
                   <h3 className="text-base font-bold text-accent-blue mb-4 flex items-center gap-2">
                     <div className="w-3 h-3 bg-gradient-to-r from-accent-blue to-cyan-400 rounded-full"></div>
@@ -589,7 +561,7 @@ export default function About() {
                   </div>
                 </div>
 
-                {/* Technologies */}
+
                 <div>
                   <h3 className="text-base font-bold text-secondary-teal mb-4 flex items-center gap-2">
                     <div className="w-3 h-3 bg-gradient-to-r from-secondary-teal to-emerald-400 rounded-full"></div>

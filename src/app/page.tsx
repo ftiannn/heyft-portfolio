@@ -120,7 +120,7 @@ export default function Home() {
 
   return (
     <main className="relative min-h-screen">
-      {/* Transition Overlay */}
+
       {isTransitioning && (
         <motion.div
           initial={{ opacity: 0 }}
@@ -130,12 +130,12 @@ export default function Home() {
         />
       )}
 
-      {/* Theme Toggle */}
+
       <div className="fixed bottom-6 left-6 z-50">
         <ThemeToggle />
       </div>
 
-      {/* Hero Section */}
+
       <motion.section
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -149,7 +149,7 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            {/* Main Heading with Typing Effect */}
+
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -183,7 +183,7 @@ export default function Home() {
               />
             </motion.div>
 
-            {/* CTA Buttons */}
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -213,7 +213,7 @@ export default function Home() {
               </button>
             </motion.div>
 
-            {/* Social Links */}
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}

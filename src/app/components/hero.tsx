@@ -1,4 +1,4 @@
-"use client" 
+"use client"
 
 import { motion } from "framer-motion"
 import { ArrowDown, Github, Mail, Instagram } from "lucide-react"
@@ -13,7 +13,7 @@ export function Hero() {
           transition={{ duration: 0.8 }}
           className="text-center"
         >
-          {/* Main Heading */}
+
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -27,7 +27,7 @@ export function Hero() {
             👋
           </motion.h1>
 
-          {/* Subtitle */}
+
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -40,7 +40,7 @@ export function Hero() {
             Building full-stack apps and fighting bugs by moonlight ✨
           </motion.p>
 
-          {/* CTA Buttons */}
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -55,7 +55,7 @@ export function Hero() {
             </button>
           </motion.div>
 
-          {/* Social Links */}
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -82,7 +82,7 @@ export function Hero() {
             ))}
           </motion.div>
 
-          {/* Scroll Indicator */}
+
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}

@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Camera, Filter, ChevronRight, MapPin } from "lucide-react"
 import Image from "next/image"
 import { useState, useMemo, useEffect } from "react"
+import { CTA } from "../components"
 
 export default function Gallery() {
     const [selectedCountry, setSelectedCountry] = useState<string | null>(null)
@@ -58,7 +59,7 @@ export default function Gallery() {
     return (
         <main className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
             <div className="container-custom section-padding">
-                {/* Header */}
+
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -76,7 +77,7 @@ export default function Gallery() {
                         that make each destination unique.
                     </p>
 
-                    {/* Gear Spec */}
+
                     <div className="flex justify-center mb-6">
                         <div className="inline-flex items-center gap-2 px-4 py-1 bg-white/70 dark:bg-slate-700/50 border border-gray-200 dark:border-slate-600 rounded-full text-xs text-gray-600 dark:text-gray-300 font-medium backdrop-blur-sm shadow-sm">
                             <Camera className="w-4 h-4 text-primary-pink" />
@@ -87,7 +88,7 @@ export default function Gallery() {
 
 
 
-                    {/* Stats */}
+
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto">
                         {countryStats.map((stat, index) => (
                             <motion.div
@@ -108,14 +109,14 @@ export default function Gallery() {
                     </div>
                 </motion.div>
 
-                {/* Country Filter */}
+
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2, duration: 0.6 }}
                     className="mb-16"
                 >
-                    {/* Toggle Control */}
+
                     <div className="flex justify-center mb-6">
                         <button
                             onClick={() => setShowCountryFilter(!showCountryFilter)}
@@ -132,7 +133,7 @@ export default function Gallery() {
                         </button>
                     </div>
 
-                    {/* Filter Pills */}
+
                     <AnimatePresence>
                         {showCountryFilter && (
                             <motion.div
@@ -143,7 +144,7 @@ export default function Gallery() {
                                 className="overflow-hidden"
                             >
                                 <div className="flex flex-wrap justify-center gap-3 px-4 py-4 bg-white/70 dark:bg-slate-800/40 backdrop-blur-md rounded-2xl border border-gray-200 dark:border-slate-700 max-w-5xl mx-auto">
-                                    {/* All Photos Pill */}
+
                                     <button
                                         onClick={() => {
                                             setSelectedCountry(null)
@@ -157,7 +158,7 @@ export default function Gallery() {
                                         All Photos ({allPhotos.length})
                                     </button>
 
-                                    {/* Country Pills */}
+
                                     {countries.map((country) => (
                                         <button
                                             key={country}
@@ -179,7 +180,7 @@ export default function Gallery() {
                     </AnimatePresence>
                 </motion.div>
 
-                {/* Artistic Masonry Gallery */}
+
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -205,7 +206,7 @@ export default function Gallery() {
                                     onClick={() => setActivePhoto(photo)}
                                     className="glass-card overflow-hidden hover:shadow-2xl transition-all duration-700 hover:scale-[1.02] relative cursor-zoom-in"
                                 >
-                                    {/* Photo Container - maintains aspect ratio */}
+
                                     <div className="relative w-full">
                                         <Image
                                             src={photo.src}
@@ -220,16 +221,16 @@ export default function Gallery() {
                                             }}
                                         />
 
-                                        {/* Elegant overlay with photo info */}
+
                                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 rounded-xl" />
 
-                                        {/* Country Tag */}
+
                                         <div className="absolute top-4 right-4 glass-tag flex items-center gap-2 opacity-0 group-hover:opacity-100 bg-black/60 px-2 py-1 rounded transition-all duration-300">
                                             <MapPin className="h-3 w-3 text-white" />
                                             <span className="text-xs font-medium text-white">{photo.country}</span>
                                         </div>
 
-                                        {/* Artistic corner accent */}
+
                                         <div className="absolute top-0 left-0 w-0 h-0 border-l-[30px] border-t-[30px] border-l-primary-pink/20 border-t-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
                                     </div>
                                 </div>
@@ -238,35 +239,11 @@ export default function Gallery() {
                     </div>
                 </motion.div>
 
-                {/* Bottom CTA */}
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 1.0, duration: 0.8 }}
-                    className="mt-24 text-center"
-                >
-                    <div className="bg-gradient-to-r from-primary-pink via-purple-600 to-secondary-teal p-12 rounded-3xl text-white shadow-2xl glass-card border border-white/20">
-                        <h3 className="text-3xl font-bold mb-6 flex items-center justify-center gap-3">
-                            <Camera className="h-8 w-8" />
-                            More Adventures Ahead
-                        </h3>
-                        <p className="text-xl leading-relaxed mb-8 max-w-3xl mx-auto opacity-90">
-                            This collection grows with every journey. Follow along as I continue documenting
-                            the beauty, culture, and stories found in every corner of the world.
-                        </p>
-                        <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                            <a href="/about" className="bg-white text-primary-pink px-8 py-4 rounded-2xl font-semibold hover:bg-gray-100 transition-all duration-200 hover:scale-105 shadow-lg">
-                                About the Photographer
-                            </a>
-                            <a href="/projects" className="border-2 border-white text-white px-8 py-4 rounded-2xl font-semibold hover:bg-white hover:text-primary-pink transition-all duration-200 hover:scale-105">
-                                Technical Projects
-                            </a>
-                        </div>
-                    </div>
-                </motion.div>
+
+                <CTA />
             </div>
 
-            {/* Fullscreen Modal */}
+
             <AnimatePresence>
                 {activePhoto && (
                     <motion.div

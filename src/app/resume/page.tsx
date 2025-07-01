@@ -7,6 +7,7 @@ import {
   Target, Building, Code, Briefcase
 } from "lucide-react"
 import { useState } from "react"
+import { CTA } from "../components"
 
 const quickStats = [
   {
@@ -120,7 +121,7 @@ export default function Resume() {
   return (
     <main className="min-h-screen bg-gray-50 dark:bg-slate-900">
       <div className="container-custom section-padding">
-        {/* Header */}
+
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -134,7 +135,7 @@ export default function Resume() {
             Versatile developer with 7+ years building products across frontend, backend, infra, and reporting — with growing focus on strategy and execution.
           </p>
 
-          {/* Contact Information */}
+
           <div className="flex items-center justify-center gap-8 mb-8 flex-wrap">
             <div className="flex items-center gap-2 text-gray-600 dark:text-gray-300">
               <MapPin className="h-4 w-4 text-primary-pink" />
@@ -155,7 +156,7 @@ export default function Resume() {
           </div>
         </motion.div>
 
-        {/* Quick Stats */}
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -181,7 +182,7 @@ export default function Resume() {
           ))}
         </motion.div>
 
-        {/* Top Section - PDF + Career Highlights */}
+
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-16">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -190,7 +191,7 @@ export default function Resume() {
             className="lg:col-span-2"
           >
             <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden">
-              {/* Header */}
+
               <div className="bg-gradient-to-r from-primary-pink to-accent-blue p-6 text-white">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
@@ -206,7 +207,7 @@ export default function Resume() {
                 </div>
               </div>
 
-              {/* PDF Viewer */}
+
               <div className="h-[600px] bg-gray-50 dark:bg-gray-800 relative">
                 <iframe
                   src="/cv.pdf#view=FitH&toolbar=0&navpanes=0"
@@ -215,7 +216,7 @@ export default function Resume() {
                   loading="lazy"
                 />
 
-                {/* Fallback */}
+
                 <div className="absolute inset-0 bg-gray-100 dark:bg-gray-800 flex items-center justify-center opacity-0 hover:opacity-95 transition-opacity duration-300 pointer-events-none">
                   <div className="text-center p-8 bg-white dark:bg-gray-700 rounded-lg shadow-lg pointer-events-auto">
                     <FileText className="h-16 w-16 text-primary-pink mx-auto mb-4" />
@@ -234,7 +235,7 @@ export default function Resume() {
                 </div>
               </div>
 
-              {/* Download Section */}
+
               <div className="p-6 border-t border-gray-200 dark:border-gray-700">
                 <button
                   onClick={downloadResume}
@@ -254,7 +255,7 @@ export default function Resume() {
             </div>
           </motion.div>
 
-          {/* Career Highlights Sidebar */}
+
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
@@ -295,9 +296,9 @@ export default function Resume() {
           </motion.div>
         </div>
 
-        {/* Bottom Section - Key Strengths + Technical Skills */}
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
-          {/* Key Strengths */}
+
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -329,7 +330,7 @@ export default function Resume() {
             </div>
           </motion.div>
 
-          {/* Technical Skills */}
+
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -358,34 +359,8 @@ export default function Resume() {
           </motion.div>
         </div>
 
-        {/* Professional CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8, duration: 0.8 }}
-          className="text-center"
-        >
-          <div className="bg-gradient-to-r from-primary-pink to-accent-blue p-8 rounded-xl text-white shadow-lg">
-            <h3 className="text-2xl font-bold mb-4">Ready to Collaborate</h3>
-            <p className="text-lg leading-relaxed mb-6 max-w-2xl mx-auto opacity-90">
-              I&lsquo;m interested in opportunities where I can contribute in full-stack development or technical product delivery.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="mailto:tanft25@gmail.com"
-                className="bg-white text-primary-pink px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors"
-              >
-                Contact Me
-              </a>
-              <a
-                href="/projects"
-                className="border-2 border-white text-white px-6 py-3 rounded-lg font-medium hover:bg-white hover:text-primary-pink transition-colors"
-              >
-                View Portfolio
-              </a>
-            </div>
-          </div>
-        </motion.div>
+
+        <CTA />
       </div>
     </main>
   )

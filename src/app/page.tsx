@@ -1,27 +1,147 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { ArrowDown, Github, Mail, Instagram, ArrowRight } from "lucide-react"
+import { ArrowDown, Github, Mail, Instagram } from "lucide-react"
 import Typewriter from 'typewriter-effect'
 import { useRouter } from 'next/navigation'
+import { useEffect, useRef, useState } from 'react'
 import { ThemeToggle } from '@/app/components'
 
 export default function Home() {
   const router = useRouter()
+  const isNavigating = useRef(false)
+  const scrollTimeout = useRef<NodeJS.Timeout | null>(null)
+  const touchStartY = useRef<number | null>(null)
+  const [isTransitioning, setIsTransitioning] = useState(false)
 
   const navigateTo = (path: string) => {
-    router.push(path)
+    if (isNavigating.current) return
+    setIsTransitioning(true)
+
+    setTimeout(() => {
+      router.push(path)
+    }, 100)
   }
+
+  const smoothNavigateToAbout = () => {
+    if (isNavigating.current) return
+    isNavigating.current = true
+    setIsTransitioning(true)
+
+    setTimeout(() => {
+      router.push('/about')
+    }, 200)
+  }
+
+  useEffect(() => {
+    let wheelTimeout: NodeJS.Timeout | null = null
+
+    const navigateToAbout = () => {
+      if (!isNavigating.current) {
+        isNavigating.current = true
+        setIsTransitioning(true)
+
+        setTimeout(() => {
+          router.push('/about')
+        }, 150)
+      }
+    }
+
+    const handleWheelTimeout = () => {
+      if (!isNavigating.current) {
+        navigateToAbout()
+      }
+    }
+
+    const handleWheel = (event: WheelEvent) => {
+      if (isNavigating.current) return
+
+      if (event.deltaY > 0) {
+        if (wheelTimeout) {
+          clearTimeout(wheelTimeout)
+        }
+
+        wheelTimeout = setTimeout(handleWheelTimeout, 100)
+
+        event.preventDefault()
+      }
+    }
+
+    const handleTouchNavigation = () => {
+      isNavigating.current = true
+      setIsTransitioning(true)
+      touchStartY.current = null
+
+      setTimeout(() => {
+        router.push('/about')
+      }, 100)
+    }
+
+    const handleTouchStart = (event: TouchEvent) => {
+      if (isNavigating.current) return
+
+      const touch = event.touches[0]
+      if (touch) {
+        touchStartY.current = touch.clientY
+      }
+    }
+
+    const handleTouchMove = (event: TouchEvent) => {
+      if (isNavigating.current || touchStartY.current === null) return
+
+      const touch = event.touches[0]
+      if (touch) {
+        const deltaY = touchStartY.current - touch.clientY
+
+        if (deltaY > 50) {
+          event.preventDefault()
+          handleTouchNavigation()
+        }
+      }
+    }
+
+    window.addEventListener('wheel', handleWheel, { passive: false })
+
+    window.addEventListener('touchstart', handleTouchStart, { passive: true })
+    window.addEventListener('touchmove', handleTouchMove, { passive: false })
+
+    return () => {
+      window.removeEventListener('wheel', handleWheel)
+      window.removeEventListener('touchstart', handleTouchStart)
+      window.removeEventListener('touchmove', handleTouchMove)
+      if (wheelTimeout) {
+        clearTimeout(wheelTimeout)
+      }
+      if (scrollTimeout.current) {
+        clearTimeout(scrollTimeout.current)
+      }
+    }
+  }, [router])
 
   return (
     <main className="relative min-h-screen">
+      {/* Transition Overlay */}
+      {isTransitioning && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
+          className="fixed inset-0 z-50 bg-gradient-to-br from-primary-pink/15 via-purple-500/15 to-accent-blue/15 backdrop-blur-sm pointer-events-none"
+        />
+      )}
+
       {/* Theme Toggle */}
       <div className="fixed bottom-6 left-6 z-50">
         <ThemeToggle />
       </div>
 
       {/* Hero Section */}
-      <section className="section-padding bg-gradient-light dark:bg-gradient-dark min-h-screen flex items-center">
+      <motion.section
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6 }}
+        className="section-padding bg-gradient-light dark:bg-gradient-dark min-h-screen flex items-center -mt-16"
+      >
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -40,7 +160,6 @@ export default function Home() {
               <span className="gradient-text">FT Tan</span> 👋
             </motion.h1>
 
-            {/* Typing Animation One-liner */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -50,11 +169,11 @@ export default function Home() {
               <Typewriter
                 options={{
                   strings: [
-                    "I turn coffee into code ☕",
-                    "I debug with cheeky confidence 🐞",
-                    "I build full-stack dreams ✨",
-                    "I fight merge conflicts by moonlight 🌙",
-                    "I create with bold imagination 🎨"
+                    "I am passionate about solving real world problems 🛠️",
+                    "I create user-friendly interfaces 🌐",
+                    "I translate ambiguous goals into features 💻",
+                    "I build scalable web applications 🚀",
+                    "I love learning new technologies 📚"
                   ],
                   autoStart: true,
                   loop: true,
@@ -62,7 +181,6 @@ export default function Home() {
                   deleteSpeed: 30,
                 }}
               />
-
             </motion.div>
 
             {/* CTA Buttons */}
@@ -75,19 +193,21 @@ export default function Home() {
               <button
                 onClick={() => navigateTo('/projects')}
                 className="btn-primary group"
+                disabled={isTransitioning}
               >
                 Projects
-                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </button>
               <button
-                onClick={() => navigateTo('/about')}
+                onClick={smoothNavigateToAbout}
                 className="btn-secondary"
+                disabled={isTransitioning}
               >
                 About
               </button>
               <button
                 onClick={() => navigateTo('/resume')}
                 className="btn-secondary bg-gradient-primary text-white border-none hover:scale-105"
+                disabled={isTransitioning}
               >
                 Let&apos;s Talk
               </button>
@@ -101,7 +221,7 @@ export default function Home() {
               className="flex justify-center gap-6 mb-12"
             >
               {[
-                { icon: Github, href: "#", label: "GitHub" },
+                { icon: Github, href: "https://github.com/ftiannn", label: "GitHub" },
                 { icon: Mail, href: "mailto:tanft25@gmail.com", label: "Email" },
                 { icon: Instagram, href: "https://instagram.com/ftiannn", label: "Instagram" },
               ].map(({ icon: Icon, href, label }) => (
@@ -120,19 +240,25 @@ export default function Home() {
               ))}
             </motion.div>
 
-            {/* Scroll Indicator */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1.2, duration: 0.8 }}
-              className="flex justify-center"
+              className="flex flex-col items-center gap-2"
             >
-              <ArrowDown className="h-6 w-6 text-text-gray animate-bounce-gentle" />
+              <p className="text-sm text-text-gray/70 font-medium">Scroll down to explore</p>
+              <button
+                onClick={smoothNavigateToAbout}
+                className="hover:scale-110 transition-transform duration-300 focus:outline-none focus:ring-2 focus:ring-primary-pink rounded-full p-2 group"
+                aria-label="Scroll to about section"
+                disabled={isTransitioning}
+              >
+                <ArrowDown className="h-6 w-6 text-text-gray animate-bounce-gentle hover:text-primary-pink transition-colors duration-300 group-hover:animate-pulse" />
+              </button>
             </motion.div>
           </motion.div>
         </div>
-      </section>
+      </motion.section>
     </main>
   )
 }
-

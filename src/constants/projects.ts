@@ -5,39 +5,50 @@ export const projects: Project[] = [
         id: 1,
         title: "🏆 Habitly",
         slug: "habitly",
-        tagline: "Habit tracking app",
-        description: "A cross-platform habit tracker built to support users with empathy and positive reinforcement.",
-        details: [
+        "tagline": "Empathy-led tracking of daily habits",
+        description: "A cross-platform habit tracker built to support users with positive reinforcement.",
+        "details": [
             {
-                heading: "Project background",
-                content: [
-                    "Habitly was built during a career break as a passion project that combined my love for design, systems thinking, and emotional wellness.",
-                    "I wanted to build something that people would actually enjoy using daily—without the guilt-tripping so common in productivity apps."
+                "heading": "Project Background",
+                "content": [
+                    "Built during my career break as a passion project blending product and architecture design - with the goal of promoting emotional wellness.",
+                    "Motivated by a gap in the market: habit apps often rely on instilling guilt rather than providing support.",
+                    "Habitly aims to celebrate progress, not create perfection."
                 ]
             },
             {
-                heading: "What makes it special",
-                content: [
-                    "Built with React, Vite, and Capacitor to support both web and native mobile platforms seamlessly",
-                    "Deployed frontend to AWS S3 with custom domain and secure HTTPS",
-                    "Gamified the experience with streaks, mood tracking, and dynamic celebration animations",
-                    "Provisioned full AWS infrastructure using Terraform with automated CI/CD pipelines",
-                    "Implemented secure authentication using Google OAuth and JWT tokens",
-                    "Designed with mobile-first styling, fluid animations, and deep linking for native navigation"
+                "heading": "Product Thinking & Design",
+                "content": [
+                    "Led product ideation based on user pain points — especially those who feel discouraged by traditional productivity tools.",
+                    "Prioritized tone and emotional UX: every word, animation, and interaction was tested to feel personal.",
+                    "Conducted informal interviews and user testing to validate features and UX flows."
                 ]
             },
             {
-                heading: "The design process",
-                content: [
-                    "I built this because I was tired of habit apps that made me feel guilty. Sometimes you need an app that celebrates small wins and doesn't shame you for being human.",
-                    "The real time sink was refining the experience and tone—everything from animations to button labels were tested to avoid feeling too robotic or clinical."
+                "heading": "Key Features",
+                "content": [
+                    "Cross-platform support via React, Vite, and Capacitor for native and PWA experiences.",
+                    "Gamification features like streaks, mood tracking, and celebration animations to reinforce positive behavior loops.",
+                    "Secure login via Google OAuth and JWT for seamless user flow.",
+                    "CI/CD setup with GitHub Actions and Terraform, deploying to a fully managed AWS stack.",
+                    "Mobile-first UI with smooth transitions and user-friendly design."
                 ]
             },
             {
-                heading: "Current status",
-                content: [
-                    "Live on web and mobile (PWA), currently used by public users and friends to build daily habits.",
-                    "Actively maintained with plans for onboarding improvements and better data visualization."
+                "heading": "Technical Implementation",
+                "content": [
+                    "Backend: Node.js and NestJS with PostgreSQL (Prisma).",
+                    "Infra: AWS (Lambda, S3, CloudFront, API Gateway), provisioned using Terraform.",
+                    "DevOps: CI/CD via GitHub Actions with zero-downtime deployments.",
+                    "Engineered with modularity and scalability in mind."
+                ]
+            },
+            {
+                "heading": "Current Status",
+                "content": [
+                    "Live on web and mobile (PWA).",
+                    "Active users include early testers providing feedback for roadmap iterations.",
+                    "Future roadmap to include onboarding improvements, retention tracking, and in-app analytics."
                 ]
             }
         ],
@@ -54,9 +65,9 @@ export const projects: Project[] = [
         featured: true,
         complexity: "Complex",
         impact: "Production",
-        timeInvested: "3 months",
-        lessonsLearned: "Involving real users early—even in the design phase—made a huge difference. Their feedback helped shape both UX decisions and feature priorities. I also learned how much discipline Terraform requires for stable, repeatable deployments.",
-        wouldBuildAgain: "Absolutely. Next time, I'd invest even earlier in observability and structured user onboarding, and continue building with feedback loops from day one.",
+        timeInvested: "2.5 months",
+        lessonsLearned: "Involving real users early on — even in the design phase — made a huge difference. Their feedback helped me shape both UX decisions and feature prioritization. I also learned how much discipline Terraform requires for stable, repeatable deployments.",
+        wouldBuildAgain: "Absolutely. If I had to redo this project, I will focus on observability and structured user onboarding from day 1, and continue building with feedback loops - this will create a more user-centric product.",
         metrics: {
             "Launch": "June 2025",
             "Status": "Recently launched",
@@ -72,41 +83,50 @@ export const projects: Project[] = [
     {
         id: 2,
         title: "🏋️‍♂️ Fitness Coach Portfolio",
-        tagline: "Clean, responsive site for a personal fitness coach",
-        description: "A responsive website with client showcase, built to convert visitors into loyal clients.",
-        details: [
+        tagline: "Clean and responsive site for a personal trainer",
+        description: "A website showcasing trainer profile and client testimonials, built to convert visitors into clients.",
+        "details": [
             {
-                heading: "Scope & Goal",
-                content: [
-                    "Developed a clean, professional site to showcase services, testimonials, and clear calls-to-action.",
-                    "Primary goals: increase conversions for PT services."
+                "heading": "Project Background",
+                "content": [
+                    "Commissioned by a fitness coach to improve his personal branding and credibility by building a website, creating a digital channel for client bookings.",
+                    "The site needed to reflect the trainer’s expertise and credentials while ensuring a seamless user journey from landing page to booking confirmation."
                 ]
             },
             {
-                heading: "Key Features",
-                content: [
-                    "Service pages with pricing tiers and booking links",
-                    "Client testimonials and success stories prominently displayed",
-                    "Optimized for SEO to improve local search visibility"
+                "heading": "Product Thinking & Design",
+                "content": [
+                    "Focused on conversion goals — clear calls-to-action, pricing visibility, and social proof through testimonials.",
+                    "Mapped and streamlined user flow from homepage to booking, reducing friction.",
+                    "Built a Figma prototype for early client validation, iterated based on direct feedback."
                 ]
             },
             {
-                heading: "Design & Prototype",
-                content: [
-                    "Interactive Figma prototype validated before development",
-                    "Responsive first, with fluid layouts optimized from mobile to desktop",
-                    "Color palette and typography selected to match PT's personal branding"
+                "heading": "Key Features",
+                "content": [
+                    "Pages designed with clear pricing and multiple booking touchpoints — Google Form for consultations, WhatsApp and email for direct enquiries.",
+                    "Client success stories and testimonials to build trust and authority.",
+                    "SEO-optimized content and metadata to enhance local search discoverability."
                 ]
             },
             {
-                heading: "Technical implementation",
-                content: [
-                    "Built with Next.js, TailwindCSS, and TypeScript for modern maintainable code",
-                    "Deployed on Vercel with continuous deployment pipelines",
-                    "Fast, optimized delivery with image and SEO enhancements"
+                "heading": "Technical Implementation",
+                "content": [
+                    "Developed using Next.js, TailwindCSS, and TypeScript for fast, maintainable, and scalable frontend architecture.",
+                    "Deployed to Vercel with continuous deployment setup for rapid iteration and previews.",
+                    "Performance-optimized with responsive design, semantic HTML, and image handling best practices."
+                ]
+            },
+            {
+                "heading": "Current Status",
+                "content": [
+                    "The page went live in March 2025, and has become a main channel used to attract and engage prospective clients (search engine optimized and posted on social media).",
+                    "Client bookings have increased by 30% since launch, with positive feedback on the site’s usability and design.",
+                    "Ongoing maintenance for content updates and performance monitoring.",
                 ]
             }
         ],
+
         image: "/api/placeholder/600/400",
         stack: ["Next.js", "React", "TailwindCSS", "TypeScript", "Vercel"],
         github: "#",
@@ -133,41 +153,41 @@ export const projects: Project[] = [
     {
         id: 3,
         title: "💎 This Personal Portfolio",
-        tagline: "A curated window into my work, personality, and growth",
-        description: "The website you're looking at - a reflection of my technical capabilities and creative identity",
+        tagline: "A curated collection of my best work, personality, and growth",
+        description: "This portfolio is a reflection of my technical capabilities and creative identity",
         details: [
             {
-                heading: "Purpose",
+                heading: "Project Background",
                 content: [
-                    "Created to consolidate my technical work, design interests, and career journey into one cohesive, responsive site.",
-                    "Also serves as a living document of my current capabilities and growth areas."
+                    "Created to consolidate my technical work, design interests, and career journey into one cohesive collection.",
+                    "Serves as a living document of my capabilities and growth areas."
                 ]
             },
             {
-                heading: "Highlights",
-                content: [
-                    "Project cards with tech stack, role, and key lessons",
-                    "Tag-based filtering to explore by type or purpose",
-                    "Detailed write-ups to showcase thinking behind the work"
+                "heading": "Product Thinking & Design",
+                "content": [
+                    "Focused on user flow for viewers - project presents clear outcomes, decisions, and tech context.",
+                    "Tag-based filtering and consistent structure to enable quick scanning and deep dives based on the reader's interest.",
+                    "Positioned to highlight both execution and strategic thinking behind each project."
                 ]
             },
             {
-                heading: "Design Process",
-                content: [
-                    "Researched modern portfolio layouts and design patterns before tailoring the structure to reflect my goals and voice.",
-                    "Prioritized clarity, consistency, and accessibility across light/dark modes.",
-                    "Color choices and microcopy reflect a slightly cheeky but warm tone, to sound more like me"
+                "heading": "Research & User Experience",
+                "content": [
+                    "Researched modern portfolio structures and adapted them to reflect a polished yet personal tone.",
+                    "Emphasized clarity, accessibility, and mobile responsiveness across light/dark modes.",
+                    "Microcopy and colors convey warmth with personality, balancing credibility with approachability."
                 ]
             },
             {
-                heading: "Technical Overview",
-                content: [
-                    "Built with Next.js App Router and TailwindCSS",
-                    "Deployed on Vercel with GitHub-integrated CI",
-                    "SEO and performance optimized for fast loads and visibility",
-                    "Scalable and modular project structure for easy additions"
+                "heading": "Technical Implementation",
+                "content": [
+                    "Built using Next.js App Router and TailwindCSS for performance and efficiency.",
+                    "CI/CD powered by GitHub and deployed to Vercel for rapid iteration and scalability.",
+                    "Optimized for SEO and fast page loads, with modular architecture to support future growth."
                 ]
             }
+
         ],
         image: "/api/placeholder/600/400",
         stack: ["Next.js", "React", "TailwindCSS", "TypeScript", "Framer Motion"],
@@ -179,8 +199,8 @@ export const projects: Project[] = [
         complexity: "Moderate",
         impact: "Professional",
         timeInvested: "2.5 weeks",
-        lessonsLearned: "Showcasing yourself is harder than it seems — the challenge was balancing tone, content, and UI to feel authentic yet polished.",
-        wouldBuildAgain: "Yes. I'd automate content updates via CMS or MDX, and eventually expand it into a mini design/dev playground.",
+        lessonsLearned: "Showcasing yourself is harder than it seems — the challenge was to balance tone, content, and UI to create a portfolio that feels authentic yet professional.",
+        wouldBuildAgain: "Yes. This portfolio is continuously evolving—next steps include automating content updates via CMS or MDX, and gradually expanding it into a design/dev experimentation playground.",
         metrics: {
             "Lines of Code": "Between 100 and existential crisis",
             "Build Time": "Shorter than my career crisis",
@@ -200,33 +220,33 @@ export const projects: Project[] = [
         description: "A task management app created as a frontend learning exercise, with a focus on interactive design and user engagement.",
         details: [
             {
-                heading: "The Why",
+                heading: "Project Background",
                 content: [
-                    "Built to explore frontend fundamentals using Angular",
-                    "The name 'Dudoo' is a playful spin on 'To-Do' — because productivity apps don't always have to sound serious.",
+                    "Built to explore frontend fundamentals using Angular.",
+                    "The name 'Dudoo' is a playful spin on 'To-Do' — because productivity apps don't have to sound too serious.",
                     "I wanted to build something simple, fast, and reliable with a clean UI",
                 ]
             },
             {
-                heading: "Features",
+                heading: "Key Features",
                 content: [
-                    "Add, delete, and mark tasks as complete",
-                    "Task categorisation and category management",
-                    "Persistent local storage to save your list across sessions",
-                    "Responsive and mobile-friendly layout"
+                    "Add, delete, and mark tasks as complete.",
+                    "Task categorisation and category management.",
+                    "Persistent local storage to save your list across sessions.",
+                    "Responsive and mobile-friendly layout."
                 ]
             },
             {
-                heading: "Tech Stack",
+                heading: "Technical Stack",
                 content: [
-                    "Built with Angular",
-                    "Deployed via GitHub Pages"
+                    "Built with Angular frontend framework.",
+                    "Deployed via GitHub Pages."
                 ]
             },
             {
                 heading: "Reflections",
                 content: [
-                    "Angular was my first frontend framework — this project was my way of revisiting it after years of React and Vue.",
+                    "Angular was the first frontend framework I learned as a software engineer — this project was for me to revisit it after years of using React and Vue.",
                     "What started as a basic to-do app got a cute facelift when I decided to breathe new life into it.",
                     "Turns out, revamping an old project is just as satisfying as completing a new one — but with more design drama and fewer bugs."
                 ]
@@ -261,29 +281,29 @@ export const projects: Project[] = [
         description: "Built as a backend logic challenge, this project simulates car check-in/check-out in a valet parking system — with everything stored in plain `.txt` files.",
         details: [
             {
-                heading: "The Why",
+                heading: "Project Background",
                 content: [
                     "Created to test backend logic under constraints — no database, no frameworks, just file manipulation and TypeScript.",
                     "Aimed to simulate a real-world scenario with check-in, check-out, and fee calculation workflows."
                 ]
             },
             {
-                heading: "Features",
+                heading: "Key Features",
                 content: [
-                    "CLI-based interaction for parking operations",
-                    "File-based state management with separate logs for check-in and check-out",
-                    "Dynamic fee calculation based on entry/exit time",
-                    "Plate number tracking with timestamps",
-                    "Custom rate configuration for parking logic"
+                    "CLI-based interaction for parking operations.",
+                    "File-based state management with separate logs for check-in and check-out.",
+                    "Dynamic fee calculation based on entry/exit time.",
+                    "Plate number tracking with timestamps.",
+                    "Custom rate configuration for parking logic."
                 ]
             },
             {
-                heading: "Technical Highlights",
+                heading: "Technical Implementation",
                 content: [
-                    "Written in TypeScript using `readline-sync` for CLI input",
-                    "Uses Node.js `fs` module to persist car data in plain `.txt` files",
-                    "Timestamp logic to calculate total time and fee on exit",
-                    "Structured and commented for clarity and maintainability"
+                    "Written in TypeScript using `readline-sync` for CLI input.",
+                    "Uses Node.js `fs` module to persist car data in plain `.txt` files.",
+                    "Timestamp logic to calculate total time and fee on exit.",
+                    "Structured and commented for clarity and maintainability."
                 ]
             },
             {
@@ -325,35 +345,35 @@ export const projects: Project[] = [
         description: "A Java-based Swing desktop app for managing students, subjects, and their results — featuring real-time form validation and a simple relational structure.",
         details: [
             {
-                heading: "The Why",
+                heading: "Project Background",
                 content: [
-                    "Built to practice Java Swing, GUI design, and core object-oriented programming concepts.",
+                    "Built while I was practising Java Swing, GUI design, and core object-oriented programming concepts.",
                     "Focused on making a functional and user-friendly admin panel for managing student records."
                 ]
             },
             {
-                heading: "Features",
+                heading: "Key Features",
                 content: [
-                    "Add, edit, and delete student records",
-                    "Assign subjects and input marks per student",
-                    "Dynamic calculation of total and average marks",
-                    "Basic result classification (e.g., pass/fail)",
-                    "Intuitive tab-based navigation for managing different data views"
+                    "Add, edit, and delete student records.",
+                    "Assign subjects and input marks per student.",
+                    "Dynamic calculation of total and average marks.",
+                    "Basic result classification (e.g., pass/fail).",
+                    "Intuitive tab-based navigation for managing different data views."
                 ]
             },
             {
                 heading: "Technical Highlights",
                 content: [
-                    "Java with Swing for the GUI",
-                    "Uses object-oriented principles for modularity",
-                    "Data stored in memory using collections (no database)",
-                    "Focus on clear UI layout, form validation, and clean event handling"
+                    "Java with Swing for the GUI.",
+                    "Uses object-oriented principles for modularity.",
+                    "Data stored in memory using collections (no database).",
+                    "Focus on clear UI layout, form validation, and clean event handling."
                 ]
             },
             {
                 heading: "Reflections",
                 content: [
-                    "Swing taught me how much design matters — aligning components manually is character-building.",
+                    "Swing taught me how much design matters — to avoid having to continuously align components manually.",
                     "Reinforced how to separate logic from UI in a desktop environment.",
                     "Good starter experience before moving to web-based frontend frameworks."
                 ]
@@ -384,43 +404,39 @@ export const projects: Project[] = [
         description: "A weather application that's crying out for a design makeover",
         details: [
             {
-                heading: "Current features",
+                heading: "Key features",
                 content: [
-                    "Basic weather data fetching",
-                    "Location-based forecasts",
-                    "Simple responsive layout",
-                    "API integration with weather services"
+                    "Basic weather data fetching.",
+                    "Location-based forecast.",
+                    "Simple responsive layout.",
+                    "API integration with weather services."
                 ]
             },
             {
-                heading: "What needs work",
+                heading: "Technical implementation",
                 content: [
-                    "UI/UX design (everything)",
-                    "Better data visualization",
-                    "Improved mobile experience",
-                    "More comprehensive weather data",
-                    "Actually decent styling"
+                    "UI/UX design (everything).",
+                    "Better data visualization.",
+                    "Improved mobile experience.",
+                    "More comprehensive weather data.",
+                    "Actually decent styling."
                 ]
             },
             {
-                heading: "Future plans",
+                heading: "Future work",
                 content: [
-                    "Complete design overhaul with better color scheme",
-                    "Add weather maps and radar",
-                    "Implement weather alerts",
-                    "Make it actually pleasant to use"
-                ]
-            },
-            {
-                content: [
-                    "Status: Functional but embarrassing. On the list for a major revamp."
+                    "Complete design overhaul with better color scheme.",
+                    "Add weather maps and radar.",
+                    "Implement weather alerts.",
+                    "Make it actually pleasant to use."
                 ]
             },
             {
                 content: [
-                    "Honest assessment: It tells you the weather, but you won't want to look at it."
+                    "Status: Functional but requires more work. On the list for a major revamp."
                 ]
-            }
+            },
+
         ],
         image: "/api/placeholder/600/400",
         stack: ["React", "JavaScript", "Weather API", "CSS3"],
@@ -431,7 +447,7 @@ export const projects: Project[] = [
         featured: false,
         complexity: "Simple",
         impact: "Personal",
-        timeInvested: "1 week years ago",
+        timeInvested: "1 week",
         lessonsLearned: "Revisiting the basics helps sharpen intuition. Good design doesn't need complexity.",
         wouldBuildAgain: "Would add geolocation and a cleaner way to handle units (C/F).",
     },
@@ -501,7 +517,7 @@ export const projects: Project[] = [
         description: "A first-person shooter built with Unreal Engine as part of my final-year project. What started as an exploration into game mechanics became my entry point into software development.",
         details: [
             {
-                heading: "The Why",
+                heading: "Project Background",
                 content: [
                     "Built for my final-year project in school, with the goal of understanding game engines, physics, and immersive player experiences.",
                     "This project kickstarted my transition from game development into full-stack engineering."
@@ -563,7 +579,7 @@ export const projects: Project[] = [
         description: "A VR experience built using Unity and Google Cardboard SDK, focused on environmental interaction and immersive feedback. This project was part of my early experimentation with spatial computing and player agency.",
         details: [
             {
-                heading: "The Why",
+                heading: "Project Background",
                 content: [
                     "I wanted to explore how presence and motion affect the player experience — and what better way than diving into VR?",
                     "This was an experimental project that helped me understand the fundamentals of spatial design, motion input, and immersion."
@@ -619,7 +635,7 @@ export const projects: Project[] = [
         description: "A mobile-first budgeting app concept grounded in user research. Created to reduce financial anxiety by simplifying the way users view, track, and plan their budgets.",
         details: [
             {
-                heading: "The Why",
+                heading: "Project Background",
                 content: [
                     "Personal finance tools often feel overwhelming or guilt-inducing. This project started with a simple question: how might we design a budgeting experience that feels *safe*, not stressful?",
                     "It became an opportunity to apply UX methodology — from research to ideation — in a real-world context."

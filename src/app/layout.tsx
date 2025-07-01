@@ -2,19 +2,19 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { ThemeProvider } from '@/providers/theme-provider'
-import { Navigation } from '@/app/components'
+import { Navigation, PageTransition } from '@/app/components'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'FT Tan - Developer & Creator',
-  description: 'Full-stack creator who codes by moonlight.',
+  description: 'Full-stack creator.',
   keywords: ['developer', 'full-stack', 'react', 'next.js', 'singapore'],
   authors: [{ name: 'FT Tan' }],
   openGraph: {
     title: 'FT Tan - Developer & Creator',
-    description: 'Full-stack creator who codes by moonlight.',
-    url: 'https://fttan.dev',
+    description: 'Full-stack creator.',
+    url: 'https://heyft.com',
     siteName: 'FT Tan Portfolio',
     locale: 'en_US',
     type: 'website',
@@ -37,7 +37,9 @@ export default function RootLayout({
         >
           <Navigation />
           <main className="pt-16">
-            {children}
+            <PageTransition>
+              {children}
+            </PageTransition>
           </main>
         </ThemeProvider>
       </body>

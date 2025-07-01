@@ -11,56 +11,57 @@ import { useState } from "react"
 const quickStats = [
   {
     icon: Clock,
-    label: "Experience",
-    value: "6+ Years",
+    label: "Years of Experience",
+    value: "7+",
     color: "text-primary-pink"
   },
   {
     icon: Building,
     label: "Live Applications",
-    value: "3 Production",
+    value: "10+",
     color: "text-secondary-teal"
   },
   {
     icon: Users,
-    label: "Team Experience",
-    value: "Government Scale",
+    label: "Project Scale",
+    value: "Nationwide",
     color: "text-accent-blue"
   },
   {
     icon: Target,
     label: "Specialization",
-    value: "Full-Stack Development",
+    value: "Full-Stack",
     color: "text-purple-500"
   }
 ]
 
 const highlights = [
   {
-    year: "2024",
-    achievement: "Built and deployed Habitly - Full-stack habit tracking application",
+    year: "2025",
+    achievement: "Launched Habitly - A gamified habit tracking application",
     tech: "React, NestJS, AWS, Terraform, PostgreSQL",
-    impact: "Production application serving 50+ active users with 99.9% uptime"
+    impact: "Production-grade app with CI/CD, mobile deployment, and 50+ active users running at 99.9% uptime"
   },
   {
-    year: "2023",
-    achievement: "Technical lead for GovRewards government partnership program",
+    year: "2024",
+    achievement: "Key Contributor to GovRewards, a public-facing rewards platform",
     tech: "NestJS, PostgreSQL, CI/CD, AWS",
-    impact: "Successfully onboarded 5+ government agencies, influenced product development"
+    impact: "Onboarded major agencies and scaled platform to 5,000+ users; shaped product direction through direct client input"
   },
   {
-    year: "2021",
-    achievement: "Frontend development for MOM Work Pass Portal system",
-    tech: "Vue.js, Node.js, Microservices Architecture",
-    impact: "Critical government infrastructure serving thousands of daily users"
+    year: "2020",
+    achievement: "Sole Frontend Contributor for award-winning COVID-19 dashboard",
+    tech: "React, GraphQL",
+    impact: "Built under time pressure from COVID-19 pandemic for real-time dormitory outbreak tracking — awarded GovTech Impact Award 2020"
   },
   {
-    year: "2019",
-    achievement: "Full-stack engineer for government digital transformation projects",
-    tech: "Vue.js, Node.js, PostgreSQL, Power BI",
-    impact: "Delivered enterprise-scale solutions for Singapore government agencies"
+    year: "2019-2023",
+    achievement: "Founding Engineer on MOM Work Pass Portal",
+    tech: "Vue.js, Node.js, Microservices, Power BI",
+    impact: "Contributed across engineering, QA, DevOps, and BI; Launched platform used by 1M+ users for work pass applications and appeals."
   }
 ]
+
 
 const keyStrengths = [
   {
@@ -71,7 +72,7 @@ const keyStrengths = [
   {
     icon: Briefcase,
     title: "Enterprise Experience",
-    description: "Government-scale applications with strict security and compliance requirements"
+    description: "Nation-wide applications with strict security and compliance requirements"
   },
   {
     icon: Target,
@@ -86,11 +87,20 @@ const keyStrengths = [
 ]
 
 const technicalSkills = {
-  "Frontend": ["React", "Next.js", "Vue.js", "TypeScript", "Tailwind CSS"],
-  "Backend": ["Node.js", "NestJS", "PostgreSQL", "REST APIs", "Microservices"],
-  "Cloud & DevOps": ["AWS", "Terraform", "CI/CD", "Docker", "GitHub Actions"],
-  "Tools & Methods": ["Git", "Agile", "Power BI", "Figma", "System Design"]
-}
+  "Frontend": [
+    "React", "Next.js", "Vue.js", "Angular", "TypeScript", "Tailwind CSS"
+  ],
+  "Backend": [
+    "Node.js", "NestJS", "Java", "GraphQL", "PostgreSQL", "Redis", "Microservices"
+  ],
+  "Cloud & DevOps": [
+    "AWS", "Terraform", "Docker", "CI/CD", "GitHub Actions", "GoCD", "ArgoCD"
+  ],
+  "Others": [
+    "Power BI", "RabbitMQ", "BullMQ", "System Design", "Python", "Figma", "Notion"
+  ]
+};
+
 
 export default function Resume() {
   const [isDownloading, setIsDownloading] = useState(false)
@@ -98,7 +108,6 @@ export default function Resume() {
   const downloadResume = async () => {
     setIsDownloading(true)
 
-    // Simple download without quirky animations
     setTimeout(() => {
       const link = document.createElement('a')
       link.href = '/cv.pdf'
@@ -122,8 +131,7 @@ export default function Resume() {
             Resume
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed mb-8">
-            Full-stack developer with 6+ years of experience building scalable web applications
-            and leading technical initiatives in government and enterprise environments.
+            Versatile developer with 7+ years building products across frontend, backend, infra, and reporting — with growing focus on strategy and execution.
           </p>
 
           {/* Contact Information */}
@@ -175,7 +183,6 @@ export default function Resume() {
 
         {/* Top Section - PDF + Career Highlights */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-16">
-          {/* Resume Viewer */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
@@ -241,7 +248,7 @@ export default function Resume() {
                 <div className="flex items-center justify-center gap-6 mt-4 text-sm text-gray-500">
                   <span>📄 PDF Format</span>
                   <span>📱 ATS Friendly</span>
-                  <span>🔄 Updated Monthly</span>
+                  <span>🔄 Updated Yearly</span>
                 </div>
               </div>
             </div>
@@ -256,7 +263,7 @@ export default function Resume() {
             <div className="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700">
               <h3 className="text-xl font-bold mb-6 flex items-center gap-2 text-gray-900 dark:text-white">
                 <Award className="h-5 w-5 text-primary-pink" />
-                Career Highlights
+                Highlights
               </h3>
               <div className="space-y-6">
                 {highlights.map((item, index) => (

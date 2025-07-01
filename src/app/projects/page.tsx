@@ -8,7 +8,6 @@ import Link from "next/link"
 import { projects, categories, statusColors } from "@/constants/projects"
 import { Project, ProjectCategory, ProjectComplexity, ProjectImpact } from "@/types/projects.type"
 
-// Complexity Indicator Component
 const ComplexityIndicator = ({ complexity }: { complexity: ProjectComplexity }) => {
   const config = {
     Simple: {
@@ -47,7 +46,6 @@ const ComplexityIndicator = ({ complexity }: { complexity: ProjectComplexity }) 
   );
 };
 
-// Impact Indicator Component
 const ImpactIndicator = ({ impact }: { impact: ProjectImpact }) => {
   const config = {
     Learning: {
@@ -82,7 +80,6 @@ const ImpactIndicator = ({ impact }: { impact: ProjectImpact }) => {
   );
 };
 
-// Updated Project Card Component
 const ProjectCard = ({ project, index, onClick }: { project: Project; index: number; onClick: () => void }) => (
   <motion.div
     initial={{ opacity: 0, y: 30 }}
@@ -91,7 +88,7 @@ const ProjectCard = ({ project, index, onClick }: { project: Project; index: num
     className="card cursor-pointer group hover:scale-[1.02] transition-all duration-300 flex flex-col h-full"
     onClick={onClick}
   >
-    {/* Project Header - Fixed Height */}
+    {/* Project Header */}
     <div className="flex items-start justify-between mb-4 min-h-[80px]">
       <div className="flex-1 min-w-0 pr-3">
         <div className="flex items-start gap-2 mb-2">
@@ -125,7 +122,7 @@ const ProjectCard = ({ project, index, onClick }: { project: Project; index: num
       {project.title.split(' ')[0]}
     </div>
 
-    {/* Project Description - Fixed Height */}
+    {/* Project Description */}
     <div className="flex-1 mb-4">
       <p className="text-text-gray dark:text-gray-300 leading-relaxed text-sm">
         {project.description}
@@ -295,7 +292,7 @@ export default function Projects() {
           ))}
         </motion.div>
 
-        {/* Projects Grid - EVEN LAYOUT */}
+        {/* Projects Grid */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -481,7 +478,7 @@ export default function Projects() {
 
                       {/* Key Lesson */}
                       <div className="col-span-1 lg:col-span-2">
-                        <h4 className="font-bold text-secondary-teal mb-3">Key Lesson</h4>
+                        <h4 className="font-bold text-secondary-teal mb-3">Key Lessons</h4>
                         <p className="text-sm text-text-gray dark:text-gray-300 italic leading-relaxed">
                           &quot;{selectedProject.lessonsLearned}&quot;
                         </p>

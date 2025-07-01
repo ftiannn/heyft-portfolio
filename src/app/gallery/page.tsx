@@ -71,7 +71,7 @@ export default function Gallery() {
                         </span>
                     </h1>
                     <p className="text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed mb-8">
-                        Capturing authentic moments and genuine connections during my travels.
+                        Capturing authentic moments during my travels.
                         From street portraits to candid scenes, these photos celebrate the people and cultures
                         that make each destination unique.
                     </p>

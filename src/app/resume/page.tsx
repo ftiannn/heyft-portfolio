@@ -165,14 +165,14 @@ export default function Resume() {
         </motion.div>
 
 
-        <div className="fade-in-up grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+        <div className="fade-in-up  grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
           {quickStats.map((stat) => (
             <div
               key={stat.label}
               className="bg-white dark:bg-slate-800 p-6 rounded-xl text-center shadow-sm border border-gray-200 dark:border-gray-700 hover:shadow-md transition-shadow"
             >
               <stat.icon className={`h-8 w-8 ${stat.color} mx-auto mb-3`} />
-              <div className={`text-2xl font-bold ${stat.color} mb-1`}>
+              <div className={`text-lg md:text-2xl font-bold ${stat.color} mb-1`}>
                 {stat.value}
               </div>
               <div className="text-sm text-gray-500 font-medium">

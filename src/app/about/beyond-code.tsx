@@ -32,26 +32,6 @@ const useMagnetic = (strength = 0.3) => {
     return { ref, position };
 };
 
-export const FloatingElements = ({ color, count = 5 }: { color: string; count?: number }) => (
-    <>
-        {[...Array(count)].map((_, i) => (
-            <motion.div
-                key={i}
-                className="absolute w-1 h-1 rounded-full"
-                style={{ backgroundColor: color }}
-                initial={{ x: Math.random() * 300, y: Math.random() * 300, opacity: 0 }}
-                animate={{
-                    x: [Math.random() * 300, Math.random() * 300, Math.random() * 300, Math.random() * 300],
-                    y: [Math.random() * 300, Math.random() * 300, Math.random() * 300, Math.random() * 300],
-                    opacity: [0, 0.6, 0.3, 0.8, 0],
-                    scale: [0, 1.5, 1, 2, 0],
-                }}
-                transition={{ duration: 6 + i, repeat: Infinity, delay: i * 0.5, ease: "easeInOut" }}
-            />
-        ))}
-    </>
-);
-
 const ModernInterestCard = ({ interest }: { interest: PersonalInterest }) => {
     const { ref, position } = useMagnetic(0.2);
     const cardRef = useRef<HTMLDivElement>(null);

@@ -124,35 +124,23 @@ export default function Home() {
         <ThemeToggle />
       </div>
 
-      <motion.section
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.6 }}
-        className="section-padding bg-gradient-light dark:bg-gradient-dark min-h-screen flex items-center -mt-16"
-      >
+      <section className="section-padding bg-gradient-light dark:bg-gradient-dark min-h-screen flex items-center -mt-16">
         <div className="container-custom">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center"
-          >
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
+          <div className="fade-in-up text-center">
+            {/* <motion.h1
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.8 }}
+              transition={{ duration: 0.8 }}
               className="text-5xl lg:text-7xl font-bold mb-6 mt-8"
-            >
+            > */}
+
+            <h1 className=" text-5xl lg:text-7xl font-bold mb-6 mt-8">
               Hey, I&apos;m{" "}
               <span className="gradient-text">FT Tan</span> 👋
-            </motion.h1>
+            </h1>
+            {/* </motion.h1> */}
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.8 }}
-              className="text-xl lg:text-2xl text-text-gray dark:text-gray-300 mb-8 mt-8 h-16 flex items-center justify-center"
-            >
+            <div className="text-xl lg:text-2xl text-text-gray dark:text-gray-300 mb-8 mt-8 h-16 flex items-center justify-center">
               <Typewriter
                 options={{
                   strings: [
@@ -168,14 +156,9 @@ export default function Home() {
                   deleteSpeed: 30,
                 }}
               />
-            </motion.div>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8, duration: 0.8 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center mb-12"
-            >
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
               <button
                 onClick={() => navigateTo('/projects')}
                 className="btn-primary group"
@@ -197,14 +180,9 @@ export default function Home() {
               >
                 Let&apos;s Talk
               </button>
-            </motion.div>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1, duration: 0.8 }}
-              className="flex justify-center gap-6 mb-12"
-            >
+            <div className="flex justify-center gap-6 mb-12">
               {[
                 { icon: Github, href: "https://github.com/ftiannn", label: "GitHub" },
                 { icon: Mail, href: "mailto:tanft25@gmail.com", label: "Email" },
@@ -223,14 +201,9 @@ export default function Home() {
                   <Icon className="h-5 w-5" />
                 </a>
               ))}
-            </motion.div>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1.2, duration: 0.8 }}
-              className="flex flex-col items-center gap-2"
-            >
+            <div className="flex flex-col items-center gap-2">
               <p className="text-sm text-text-gray/70 font-medium">Scroll down to explore</p>
               <button
                 onClick={smoothNavigateToAbout}
@@ -240,10 +213,10 @@ export default function Home() {
               >
                 <ArrowDown className="h-6 w-6 text-text-gray animate-bounce-gentle hover:text-primary-pink transition-colors duration-300 group-hover:animate-pulse" />
               </button>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         </div>
-      </motion.section>
+      </section>
     </main>
   )
 }

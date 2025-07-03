@@ -236,23 +236,32 @@ export default function Projects() {
     <main className="min-h-screen bg-gradient-light dark:bg-gradient-dark">
       <div className="container-custom section-padding">
 
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-center text-4xl lg:text-6xl font-bold mb-6"
+        >
+          <span className="gradient-text">
+            My Projects
+          </span>
+        </motion.h1>
+
+        <p
+          className="fade-in-up text-center text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed mb-8 mt-8"
+        >
+          A collection of projects spanning web, mobile, and
+          experimental prototypes. Each represents a different challenge that I have tackled. From production apps serving real users,
+          to practice exercises that honed my skillset, each has contributed
+          to my growth as a developer.
+        </p>
+
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h1 className="text-4xl lg:text-6xl font-bold mb-6">
-            <span className="gradient-text">My Projects</span>
-          </h1>
-          <p className="text-xl text-text-gray dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
-            A collection of projects spanning web, mobile, and
-            experimental prototypes. Each represents a different challenge that I have tackled. From production apps serving real users,
-            to practice exercises that honed my skillset, each has contributed
-            to my growth as a developer.
-          </p>
-
-
           <div className="flex justify-center gap-8 mt-8 flex-wrap">
             <div className="text-center">
               <div className="text-2xl font-bold text-primary-pink">12</div>
@@ -268,7 +277,6 @@ export default function Projects() {
             </div>
           </div>
         </motion.div>
-
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -545,6 +553,6 @@ export default function Projects() {
 
         <Cta />
       </div>
-    </main>
+    </main >
   )
 }

@@ -173,7 +173,7 @@ const personalInterests: PersonalInterest[] = [
             "assets/photography/italy-14.webp",
             "assets/photography/japan-1.webp",
             "assets/photography/thai-2.webp",
-            "assets/photography/u2-3.webp",
+            "assets/photography/us-3.webp",
         ]
     },
     {

@@ -1,6 +1,5 @@
 "use client"
 
-import { motion } from "framer-motion"
 import {
   Download, FileText, Award, Clock, Users,
   MapPin, Mail, Linkedin, Github,
@@ -8,6 +7,7 @@ import {
 } from "lucide-react"
 import { useState } from "react"
 import { Cta } from "../components"
+import { motion } from "framer-motion"
 
 const quickStats = [
   {
@@ -122,19 +122,27 @@ export default function Resume() {
     <main className="min-h-screen bg-gray-50 dark:bg-slate-900">
       <div className="container-custom section-padding">
 
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-center text-4xl lg:text-6xl font-bold mb-6"
+        >
+          <span className="gradient-text">
+            Resume
+          </span>
+        </motion.h1>
+        <p className="fade-in-up text-center text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed mb-8 mt-8">
+          Versatile developer with 7+ years building products across frontend, backend, infra, and reporting — with growing focus on strategy and execution.
+        </p>
+
+
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h1 className="text-4xl lg:text-5xl font-bold mb-6 bg-gradient-to-r from-primary-pink to-accent-blue bg-clip-text text-transparent">
-            Resume
-          </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed mb-8 mt-8">
-            Versatile developer with 7+ years building products across frontend, backend, infra, and reporting — with growing focus on strategy and execution.
-          </p>
-
 
           <div className="flex items-center justify-center gap-8 mb-8 mt-8 flex-wrap">
             <div className="flex items-center gap-2 text-gray-600 dark:text-gray-300">
@@ -157,18 +165,10 @@ export default function Resume() {
         </motion.div>
 
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.8 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16"
-        >
-          {quickStats.map((stat, index) => (
-            <motion.div
+        <div className="fade-in-up grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+          {quickStats.map((stat) => (
+            <div
               key={stat.label}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.1 * index, duration: 0.6 }}
               className="bg-white dark:bg-slate-800 p-6 rounded-xl text-center shadow-sm border border-gray-200 dark:border-gray-700 hover:shadow-md transition-shadow"
             >
               <stat.icon className={`h-8 w-8 ${stat.color} mx-auto mb-3`} />
@@ -178,18 +178,13 @@ export default function Resume() {
               <div className="text-sm text-gray-500 font-medium">
                 {stat.label}
               </div>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
 
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-16">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
-            className="lg:col-span-2"
-          >
+          <div className="fade-in-up lg:col-span-2">
             <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden">
 
               <div className="bg-gradient-to-r from-primary-pink to-accent-blue p-6 text-white">
@@ -253,14 +248,10 @@ export default function Resume() {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
 
 
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.6, duration: 0.8 }}
-          >
+          <div className="fade-in-up">
             <div className="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700">
               <h3 className="text-xl font-bold mb-6 flex items-center gap-2 text-gray-900 dark:text-white">
                 <Award className="h-5 w-5 text-primary-pink" />
@@ -268,11 +259,8 @@ export default function Resume() {
               </h3>
               <div className="space-y-6">
                 {highlights.map((item, index) => (
-                  <motion.div
+                  <div
                     key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.1 * index, duration: 0.6 }}
                     className="border-l-4 border-primary-pink pl-4"
                   >
                     <div className="flex items-center gap-2 mb-2">
@@ -289,30 +277,23 @@ export default function Resume() {
                     <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
                       {item.impact}
                     </p>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
 
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8, duration: 0.8 }}
-          >
+          <div className="fade-in-up">
             <div className="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700">
               <h3 className="text-xl font-bold mb-6 text-gray-900 dark:text-white">Key Strengths</h3>
               <div className="space-y-6">
                 {keyStrengths.map((strength, index) => (
-                  <motion.div
+                  <div
                     key={index}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.1 * index, duration: 0.6 }}
                     className="flex items-start gap-3"
                   >
                     <strength.icon className="h-5 w-5 text-primary-pink mt-1 flex-shrink-0" />
@@ -324,18 +305,14 @@ export default function Resume() {
                         {strength.description}
                       </p>
                     </div>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
             </div>
-          </motion.div>
+          </div>
 
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.0, duration: 0.8 }}
-          >
+          <div className="fade-in-up">
             <div className="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700">
               <h3 className="text-xl font-bold mb-6 text-gray-900 dark:text-white">Technical Skills</h3>
               <div className="space-y-4">
@@ -356,12 +333,12 @@ export default function Resume() {
                 ))}
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
 
 
         <Cta />
       </div>
-    </main>
+    </main >
   )
 }

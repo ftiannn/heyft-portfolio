@@ -71,9 +71,7 @@ export default function Gallery() {
                         Photography Gallery
                     </span>
                 </motion.h1>
-                <p
-                    className="fade-in-up text-center text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed mb-8 mt-8"
-                >
+                <p className="text-center text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed mb-8 mt-8">
                     Capturing authentic moments during my travels.
                     From street portraits to candid scenes, these photos celebrate the people and cultures
                     that make each destination unique.
@@ -273,20 +271,6 @@ export default function Gallery() {
                     -webkit-box-orient: vertical;
                     overflow: hidden;
                 }
-
-                @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-.fade-in-up {
-  animation: fadeInUp 0.7s cubic-bezier(0.4,0,0.2,1) both;
-}
             `}</style>
         </main>
     )

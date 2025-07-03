@@ -22,6 +22,7 @@ export default function About() {
   const mainRef = useRef<HTMLDivElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
   const { scrollY } = useScroll();
+
   const beyondStart = 1800;
   const beyondEnd = beyondStart + 400;
   const background = useTransform(scrollY, [0, beyondStart, beyondEnd], ["rgba(255,255,255,0)", "rgba(255,255,255,0)", "#181926"]);
@@ -66,7 +67,8 @@ export default function About() {
             <Hero imageLoaded={imageLoaded} setImageLoaded={setImageLoaded} />
           </ScrollIndicator>
         </section>
-        <div className="container-custom">
+
+        <div className="container-custom h-min-screen">
           <section id="journey">
             <motion.section
               initial={{ opacity: 0, y: 50 }}
@@ -98,7 +100,6 @@ export default function About() {
               </div>
 
               <div className="relative">
-                {/* Timeline Line */}
                 <div className="absolute left-4 sm:left-6 md:left-8 top-0 bottom-0 w-0.5 sm:w-1 bg-gradient-to-b from-primary-pink via-purple-500 via-accent-blue to-secondary-teal opacity-60 rounded-full"></div>
 
                 <div className="space-y-8 sm:space-y-12">

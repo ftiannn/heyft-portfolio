@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { ThemeProvider } from '@/providers/theme-provider'
 import { Navigation, PageTransition } from '@/app/components'
+import { Analytics } from "@vercel/analytics/next"
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -39,6 +40,7 @@ export default function RootLayout({
           <main className="pt-16">
             <PageTransition>
               {children}
+              <Analytics />
             </PageTransition>
           </main>
         </ThemeProvider>

@@ -1,5 +1,6 @@
 "use client"
 
+import links from "@/constants/link"
 import { motion } from "framer-motion"
 import { usePathname } from "next/navigation"
 import React from "react"
@@ -49,7 +50,7 @@ export function Cta({ variant }: { variant?: "light" | "dark" }) {
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <a
-                                href="mailto:tanft25@gmail.com"
+                                href={links.email}
                                 className={`btn-secondary ${btnBg} transition-colors duration-200`}
                             >
                                 Get In Touch

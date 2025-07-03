@@ -8,6 +8,7 @@ import {
 import { useState } from "react"
 import { Cta } from "../components"
 import { motion } from "framer-motion"
+import links from "@/constants/link"
 
 const quickStats = [
   {
@@ -149,15 +150,15 @@ export default function Resume() {
               <MapPin className="h-4 w-4 text-primary-pink" />
               <span>Singapore</span>
             </div>
-            <a href="mailto:tanft25@gmail.com" className="flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-primary-pink transition-colors">
+            <a href={links.email} className="flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-primary-pink transition-colors">
               <Mail className="h-4 w-4" />
               <span>tanft25@gmail.com</span>
             </a>
-            <a href="https://linkedin.com/in/fttan" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-secondary-teal transition-colors">
+            <a href={links.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-secondary-teal transition-colors">
               <Linkedin className="h-4 w-4" />
               <span>LinkedIn</span>
             </a>
-            <a href="https://github.com/ftiannn" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-accent-blue transition-colors">
+            <a href="{links.github}" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-accent-blue transition-colors">
               <Github className="h-4 w-4" />
               <span>GitHub</span>
             </a>

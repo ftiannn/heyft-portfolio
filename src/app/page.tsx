@@ -6,6 +6,7 @@ import Typewriter from 'typewriter-effect'
 import { useRouter } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
 import { ThemeToggle } from '@/app/components'
+import links from "@/constants/link"
 
 export default function Home() {
   const router = useRouter()
@@ -184,9 +185,9 @@ export default function Home() {
 
             <div className="flex justify-center gap-6 mb-12">
               {[
-                { icon: Github, href: "https://github.com/ftiannn", label: "GitHub" },
-                { icon: Mail, href: "mailto:tanft25@gmail.com", label: "Email" },
-                { icon: Instagram, href: "https://instagram.com/ftiannn", label: "Instagram" },
+                { icon: Github, href: links.github, label: "GitHub" },
+                { icon: Mail, href: links.email, label: "Email" },
+                { icon: Instagram, href: links.instagram, label: "Instagram" },
               ].map(({ icon: Icon, href, label }) => (
                 <a
                   key={label}

@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   authors: [{ name: 'FT Tan' }],
   openGraph: {
     title: 'FT Tan - Developer & Creator',
-    description: 'Full-stack creator.',
+    description: 'Full-stack Creator.',
     url: 'https://heyft.com',
     siteName: 'FT Tan Portfolio',
     locale: 'en_US',

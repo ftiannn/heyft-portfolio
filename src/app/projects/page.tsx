@@ -3,7 +3,7 @@
 import { motion } from "framer-motion"
 import { Github, ExternalLink, X, Clock, Zap, Sparkles, Calendar, Users, Play, FileText, Brain, Rocket, Building, GraduationCap, User, Briefcase, Globe } from "lucide-react"
 import { useState } from "react"
-import { Dialog } from "@headlessui/react"
+import dynamic from "next/dynamic"
 import { projects, categories, statusColors } from "@/constants/projects"
 import { Project, ProjectCategory, ProjectComplexity, ProjectImpact } from "@/types/projects.type"
 import { Cta } from "../components"
@@ -220,6 +220,10 @@ const renderContent = (text: string) => {
   });
 };
 
+const Dialog = dynamic(() => import("@headlessui/react").then(mod => mod.Dialog), { ssr: false });
+const DialogPanel = dynamic(() => import("@headlessui/react").then(mod => mod.Dialog.Panel), { ssr: false });
+const DialogTitle = dynamic(() => import("@headlessui/react").then(mod => mod.Dialog.Title), { ssr: false });
+
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
   const [selectedCategory, setSelectedCategory] = useState<ProjectCategory>("All")
@@ -312,18 +316,18 @@ export default function Projects() {
           <div className="fixed inset-0 bg-black/30 backdrop-blur-sm" aria-hidden="true" />
 
           <div className="fixed inset-0 flex items-center justify-center p-4">
-            <Dialog.Panel className="bg-white dark:bg-navy-800 rounded-xl p-6 max-w-5xl w-full max-h-[90vh] overflow-y-auto">
+            <DialogPanel className="bg-white dark:bg-navy-800 rounded-xl p-6 max-w-5xl w-full max-h-[90vh] overflow-y-auto">
               {selectedProject && (
                 <>
 
                   <div className="flex justify-between items-start mb-6">
                     <div className="flex-1">
-                      <Dialog.Title className="text-3xl font-bold gradient-text flex items-center gap-2 mb-2">
+                      <DialogTitle className="text-3xl font-bold gradient-text flex items-center gap-2 mb-2">
                         {selectedProject.title}
                         {selectedProject.featured && (
                           <Sparkles className="h-6 w-6 text-amber-500" />
                         )}
-                      </Dialog.Title>
+                      </DialogTitle>
                       <p className="text-lg text-secondary-teal font-medium mb-3">
                         {selectedProject.tagline}
                       </p>
@@ -534,7 +538,7 @@ export default function Projects() {
                   </div>
                 </>
               )}
-            </Dialog.Panel>
+            </DialogPanel>
           </div>
         </Dialog>
 

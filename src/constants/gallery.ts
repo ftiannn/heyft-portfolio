@@ -1,7 +1,7 @@
 import { CountryCount, CountryStat, Photo } from "@/types/gallery.type";
 
-const allPhotos: Photo[] = [
-    ...Array.from({ length: 36 }, (_, i) => ({
+const photos: Photo[] = [
+    ...Array.from({ length: 35 }, (_, i) => ({
         id: i + 1,
         src: `/assets/photography/china-${i + 1}.webp`,
         title: `China Photo ${i + 1}`,
@@ -10,9 +10,8 @@ const allPhotos: Photo[] = [
         date: "2023-2024",
         description: "Captured moments from my journey through China"
     })),
-
     ...Array.from({ length: 18 }, (_, i) => ({
-        id: i + 37,
+        id: i + 36,
         src: `/assets/photography/italy-${i + 1}.webp`,
         title: `Italy Photo ${i + 1}`,
         country: "Italy",
@@ -20,10 +19,8 @@ const allPhotos: Photo[] = [
         date: "2023-2024",
         description: "Italian adventures and authentic moments"
     })),
-
-    // Japan photos
     ...Array.from({ length: 16 }, (_, i) => ({
-        id: i + 55,
+        id: i + 54,
         src: `/assets/photography/japan-${i + 1}.webp`,
         title: `Japan Photo ${i + 1}`,
         country: "Japan",
@@ -31,10 +28,8 @@ const allPhotos: Photo[] = [
         date: "2023-2024",
         description: "Exploring the land of the rising sun"
     })),
-
-    // Singapore photos
     ...Array.from({ length: 2 }, (_, i) => ({
-        id: i + 71,
+        id: i + 70,
         src: `/assets/photography/singapore-${i + 1}.webp`,
         title: `Singapore Photo ${i + 1}`,
         country: "Singapore",
@@ -42,10 +37,8 @@ const allPhotos: Photo[] = [
         date: "2023-2024",
         description: "Moments captured in Singapore"
     })),
-
-    // Thailand photos
     ...Array.from({ length: 2 }, (_, i) => ({
-        id: i + 73,
+        id: i + 72,
         src: `/assets/photography/thai-${i + 1}.webp`,
         title: `Thailand Photo ${i + 1}`,
         country: "Thailand",
@@ -53,10 +46,8 @@ const allPhotos: Photo[] = [
         date: "2023-2024",
         description: "Thai adventures and local culture"
     })),
-
-    // US photos
     ...Array.from({ length: 3 }, (_, i) => ({
-        id: i + 75,
+        id: i + 74,
         src: `/assets/photography/us-${i + 1}.webp`,
         title: `US Photo ${i + 1}`,
         country: "United States",
@@ -65,6 +56,13 @@ const allPhotos: Photo[] = [
         description: "American travels and discoveries"
     }))
 ];
+
+for (let i = photos.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [photos[i], photos[j]] = [photos[j], photos[i]];
+}
+
+const allPhotos: Photo[] = photos;
 
 const countries = [...new Set(allPhotos.map(photo => photo.country))];
 

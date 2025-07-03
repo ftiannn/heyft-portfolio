@@ -3,10 +3,13 @@
 import { allPhotos, countryStats, countries, countryCounts } from "@/constants/gallery"
 import { Photo } from "@/types/gallery.type"
 import { motion, AnimatePresence } from "framer-motion"
-import { Camera, Filter, ChevronRight, MapPin } from "lucide-react"
-import Image from "next/image"
+import { Camera, Filter, ChevronRight } from "lucide-react"
 import { useState, useMemo, useEffect } from "react"
 import { Cta } from "../components"
+import dynamic from "next/dynamic"
+
+const Modal = dynamic(() => import("./modal").then(mod => mod.Modal), { ssr: false })
+const Grid = dynamic(() => import("./grid"), { ssr: false })
 
 export default function Gallery() {
     const [selectedCountry, setSelectedCountry] = useState<string | null>(null)
@@ -58,24 +61,29 @@ export default function Gallery() {
     return (
         <main className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
             <div className="container-custom section-padding">
+                <motion.h1
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8 }}
+                    className="text-center text-4xl lg:text-6xl font-bold mb-6"
+                >
+                    <span className="bg-gradient-to-r from-primary-pink via-purple-600 to-secondary-teal bg-clip-text text-transparent">
+                        Photography Gallery
+                    </span>
+                </motion.h1>
+                <p
+                    className="fade-in-up text-center text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed mb-8 mt-8"
+                >
+                    Capturing authentic moments during my travels.
+                    From street portraits to candid scenes, these photos celebrate the people and cultures
+                    that make each destination unique.
+                </p>
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
                     className="text-center mb-16"
                 >
-                    <h1 className="text-4xl lg:text-6xl font-bold mb-6">
-                        <span className="bg-gradient-to-r from-primary-pink via-purple-600 to-secondary-teal bg-clip-text text-transparent">
-                            Photography Gallery
-                        </span>
-                    </h1>
-                    <p className="text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed mb-8 mt-8">
-                        Capturing authentic moments during my travels.
-                        From street portraits to candid scenes, these photos celebrate the people and cultures
-                        that make each destination unique.
-                    </p>
-
-
                     <div className="flex justify-center mb-6">
                         <div className="inline-flex items-center gap-2 px-4 py-1 bg-white/70 dark:bg-slate-700/50 border border-gray-200 dark:border-slate-600 rounded-full text-xs text-gray-600 dark:text-gray-300 font-medium backdrop-blur-sm shadow-sm">
                             <Camera className="w-4 h-4 text-primary-pink" />
@@ -181,93 +189,14 @@ export default function Gallery() {
                     transition={{ delay: 0.4, duration: 0.8 }}
                     className="masonry-container"
                 >
-                    <div className="columns-1 md:columns-2 lg:columns-3 xl:columns-4 gap-6 space-y-6">
-                        {photoLayout.map((photo, index) => (
-                            <motion.div
-                                key={photo.id}
-                                initial={{ opacity: 0, y: 30, scale: 0.9 }}
-                                animate={{ opacity: 1, y: 0, scale: 1 }}
-                                transition={{
-                                    delay: 0.1 * (index % 8),
-                                    duration: 0.6,
-                                    type: "spring",
-                                    damping: 25,
-                                    stiffness: 200
-                                }}
-                                className="break-inside-avoid mb-6 group"
-                            >
-                                <div
-                                    onClick={() => setActivePhoto(photo)}
-                                    className="glass-card overflow-hidden hover:shadow-2xl transition-all duration-700 hover:scale-[1.02] relative cursor-zoom-in"
-                                >
-
-                                    <div className="relative w-full">
-                                        <Image
-                                            src={photo.src}
-                                            alt={photo.title}
-                                            width={photo.layout.width}
-                                            height={photo.layout.minHeight}
-                                            className="w-full h-auto rounded-xl group-hover:scale-105 transition-transform duration-1000"
-                                            loading={index < 8 ? 'eager' : 'lazy'}
-                                            style={{
-                                                minHeight: `${photo.layout.minHeight}px`,
-                                                objectFit: 'cover'
-                                            }}
-                                        />
-
-
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 rounded-xl" />
-
-
-                                        <div className="absolute top-4 right-4 glass-tag flex items-center gap-2 opacity-0 group-hover:opacity-100 bg-black/60 px-2 py-1 rounded transition-all duration-300">
-                                            <MapPin className="h-3 w-3 text-white" />
-                                            <span className="text-xs font-medium text-white">{photo.country}</span>
-                                        </div>
-
-
-                                        <div className="absolute top-0 left-0 w-0 h-0 border-l-[30px] border-t-[30px] border-l-primary-pink/20 border-t-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
-                                    </div>
-                                </div>
-                            </motion.div>
-                        ))}
-                    </div>
+                    <Grid photoLayout={photoLayout} setActivePhoto={setActivePhoto} />
                 </motion.div>
 
 
                 <Cta />
             </div>
 
-            <AnimatePresence>
-                {activePhoto && (
-                    <motion.div
-                        key="modal"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4"
-                        onClick={() => setActivePhoto(null)}
-                    >
-                        <div
-                            className="relative max-w-6xl max-h-[90vh] w-full h-[90vh] overflow-hidden rounded-lg shadow-lg"
-                            onClick={(e) => e.stopPropagation()} // prevent closing when clicking the image
-                        >
-                            <Image
-                                src={activePhoto.src}
-                                alt={activePhoto.title}
-                                fill
-                                className="object-contain"
-                            />
-                            <button
-                                className="absolute top-4 right-4 text-white text-3xl font-bold hover:text-primary-pink transition-colors duration-200"
-                                onClick={() => setActivePhoto(null)}
-                            >
-                                ×
-                            </button>
-                        </div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
+            <Modal activePhoto={activePhoto} onClose={() => setActivePhoto(null)} />
 
             <style jsx global>{`
                 .glass-card {
@@ -344,6 +273,20 @@ export default function Gallery() {
                     -webkit-box-orient: vertical;
                     overflow: hidden;
                 }
+
+                @keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.fade-in-up {
+  animation: fadeInUp 0.7s cubic-bezier(0.4,0,0.2,1) both;
+}
             `}</style>
         </main>
     )

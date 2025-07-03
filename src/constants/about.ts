@@ -1,5 +1,14 @@
+import { NavigationSection } from "@/app/components";
 import { DrivingPrinciple, PersonalInterest, ProfessionalExperience, QuickFact, SkillCategory } from "@/types/about.type";
-import { Rocket, Users, Lightbulb, Camera, Globe, Music, Book } from "lucide-react";
+import { Rocket, Users, Lightbulb, Camera, Globe, Music, Book, Home, Briefcase, Heart, Sparkles, Target } from "lucide-react";
+
+const aboutSections: NavigationSection[] = [
+    { id: 'hero', label: 'Introduction', icon: Home },
+    { id: 'journey', label: 'Career Journey', icon: Briefcase },
+    { id: 'skills', label: 'Skills & Expertise', icon: Target },
+    { id: 'principles', label: 'Driving Principles', icon: Sparkles },
+    { id: 'beyond', label: 'Beyond Code', icon: Heart },
+];
 
 const quickFacts: QuickFact[] = [
     { icon: "💻", text: "7+ years in full-stack development" },
@@ -148,39 +157,58 @@ const skillCategories: SkillCategory[] = [
 const personalInterests: PersonalInterest[] = [
     {
         icon: Camera,
-        title: "Quiet Gallery",
+        title: "Photography Gallery",
         description: "Capturing moments that make me pause",
-        color: "text-primary-pink",
-        bgColor: "bg-pink-50 dark:bg-pink-900/20",
-        details: "I take photos of the places I visit, the people I meet, and the moments that make me stop and think. It’s my way of slowing down and appreciating the world.",
-        link: "/gallery"
+        color: "#ec4899",
+        details: "I take photos of the places I visit, the people I meet, and the moments that make me stop and think. It's my way of slowing down and appreciating the world.",
+        link: "/gallery",
+        preview: [
+            "assets/photography/china-14.webp",
+            "assets/photography/italy-5.webp",
+            "assets/photography/us-2.webp",
+            "assets/photography/china-27.webp",
+            "assets/photography/japan-12.webp",
+            "assets/photography/italy-6.webp",
+            "assets/photography/singapore-1.webp",
+            "assets/photography/italy-14.webp",
+            "assets/photography/japan-1.webp",
+            "assets/photography/thai-2.webp",
+            "assets/photography/u2-3.webp",
+        ]
     },
     {
         icon: Music,
-        title: "Slow Pulse Playlist",
+        title: "Music Playlist",
         description: "A soundtrack for slowing down",
-        color: "text-amber-600",
-        bgColor: "bg-amber-50 dark:bg-amber-900/20",
-        details: "A collection of songs that help me unwind, reflect, and find calm in the chaos. It’s a mix of genres that resonate with my mood.",
-        link: "https://open.spotify.com/playlist/6YNQThiuPydf1827HTyZX3?si=1e9a29b6dc354c34"
+        color: "#f59e0b",
+        details: "A collection of songs that help me unwind, reflect, and find calm in the chaos. It's a mix of genres that resonate with my mood.",
+        link: "https://open.spotify.com/playlist/6YNQThiuPydf1827HTyZX3?si=1e9a29b6dc354c34",
+        embed: "https://open.spotify.com/embed/playlist/6YNQThiuPydf1827HTyZX3?utm_source=generator"
     },
     {
         icon: Book,
         title: "My Bookshelf",
         description: "Books that moved me, slowed me down, or helped me see clearer",
-        color: "text-secondary-teal",
-        bgColor: "bg-teal-50 dark:bg-teal-900/20",
-        details: "I’ve started collecting the ones that stayed with me. Books that changed my perspective, made me think, or simply entertained me. It’s a work in progress.",
+        color: "#14b8a6",
+        details: "I've started collecting the ones that stayed with me. Books that changed my perspective, made me think, or simply entertained me. It's a work in progress.",
         link: "https://www.notion.so/2227e8ab80ff81118d26db2c4cc74988?v=2227e8ab80ff8186849a000c2a55bef1&source=copy_link"
     },
     {
         icon: Globe,
-        title: "Language Flex",
-        description: "Just to show off my duolingo streak",
-        color: "text-accent-blue",
-        bgColor: "bg-blue-50 dark:bg-blue-900/20",
-        details: "Learning Spanish and Korean on Duolingo. I can order food in both languages, but still working on grammar and conversation skills. It’s a fun challenge that keeps my brain active. Maybe one day I'll take the certification tests!",
+        title: "Language Learning",
+        description: "Just to show off my duolingo streak for Spanish and Korean",
+        color: "#3b82f6",
+        details:
+            "I can order food in both languages, but still working on grammar and conversation skills. Maybe one day I'll take the certification tests!",
         link: "https://invite.duolingo.com/BDHTZTB5CWWKTB5WTEFBHUJQOY"
+    },
+    {
+        icon: Sparkles,
+        title: "✨ Side Quests",
+        description: "I am always a work in progress - always learning, always playing.",
+        details: "Drawing, guitar, gym, design—where I get to just play.",
+        color: "#a855f7",
+        link: null
     }
 ];
 
@@ -203,12 +231,13 @@ const drivingPrinciples: DrivingPrinciple[] = [
     },
     {
         icon: "✨",
-        title: "Simplicity from Complexity",
+        title: "Simplicity > Complexity",
         description: "Great experiences feel simple because someone handled the complexity with care. I aim to be that someone."
     }
 ];
 
 export {
+    aboutSections,
     quickFacts,
     professionalJourney,
     skillCategories,

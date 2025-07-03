@@ -151,7 +151,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.8 }}
-              className="text-xl lg:text-2xl text-text-gray dark:text-gray-300 mb-8 h-16 flex items-center justify-center"
+              className="text-xl lg:text-2xl text-text-gray dark:text-gray-300 mb-8 mt-8 h-16 flex items-center justify-center"
             >
               <Typewriter
                 options={{

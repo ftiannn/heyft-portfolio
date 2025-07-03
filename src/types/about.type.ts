@@ -37,9 +37,10 @@ export interface PersonalInterest {
   title: string;
   description: string;
   color: string;
-  bgColor: string;
   details: string;
-  link: string;
+  link: string | null;
+  preview?: string[];
+  embed?: string;
 }
 
 export interface DrivingPrinciple {

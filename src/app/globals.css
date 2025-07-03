@@ -6,7 +6,7 @@
   html {
     scroll-behavior: smooth;
   }
-  
+
   body {
     @apply transition-colors duration-300;
   }
@@ -17,27 +17,27 @@
     @apply bg-gradient-primary text-white font-semibold py-3 px-6 rounded-lg 
            hover:scale-105 transition-transform duration-200 shadow-pink;
   }
-  
+
   .btn-secondary {
     @apply border-2 border-secondary-teal text-secondary-teal font-semibold 
            py-3 px-6 rounded-lg hover:bg-secondary-teal hover:text-white 
            transition-all duration-200;
   }
-  
+
   .card {
     @apply bg-white dark:bg-navy-800/50 p-6 rounded-xl border border-pink-100 
            dark:border-pink-500/20 shadow-soft hover:shadow-medium 
            transition-all duration-300 hover:-translate-y-1;
   }
-  
+
   .gradient-text {
     @apply bg-gradient-hero bg-clip-text text-transparent;
   }
-  
+
   .section-padding {
     @apply py-16 lg:py-24;
   }
-  
+
   .container-custom {
     @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
   }
@@ -47,9 +47,13 @@
   .text-shadow {
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
   }
-  
+
   .glass {
     backdrop-filter: blur(10px);
-    background: rgba(255, 255, 255, 0.1);
+    background: #fff;
+  }
+
+  .dark .glass {
+    background: #181926;
   }
 }

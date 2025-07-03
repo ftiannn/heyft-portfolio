@@ -131,12 +131,12 @@ export default function Resume() {
           <h1 className="text-4xl lg:text-5xl font-bold mb-6 bg-gradient-to-r from-primary-pink to-accent-blue bg-clip-text text-transparent">
             Resume
           </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed mb-8">
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed mb-8 mt-8">
             Versatile developer with 7+ years building products across frontend, backend, infra, and reporting — with growing focus on strategy and execution.
           </p>
 
 
-          <div className="flex items-center justify-center gap-8 mb-8 flex-wrap">
+          <div className="flex items-center justify-center gap-8 mb-8 mt-8 flex-wrap">
             <div className="flex items-center gap-2 text-gray-600 dark:text-gray-300">
               <MapPin className="h-4 w-4 text-primary-pink" />
               <span>Singapore</span>

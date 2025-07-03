@@ -13,7 +13,6 @@ export default function Gallery() {
     const [showCountryFilter, setShowCountryFilter] = useState(false)
     const [activePhoto, setActivePhoto] = useState<Photo | null>(null)
 
-    // Handle escape key to close modal
     useEffect(() => {
         const handleEscape = (e: KeyboardEvent) => {
             if (e.key === 'Escape' && activePhoto) {
@@ -59,7 +58,6 @@ export default function Gallery() {
     return (
         <main className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
             <div className="container-custom section-padding">
-
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -71,7 +69,7 @@ export default function Gallery() {
                             Photography Gallery
                         </span>
                     </h1>
-                    <p className="text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed mb-8">
+                    <p className="text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed mb-8 mt-8">
                         Capturing authentic moments during my travels.
                         From street portraits to candid scenes, these photos celebrate the people and cultures
                         that make each destination unique.
@@ -84,10 +82,6 @@ export default function Gallery() {
                             Canon R10 · Sigma 17–50mm · iPhone 14 Pro
                         </div>
                     </div>
-
-
-
-
 
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto">
                         {countryStats.map((stat, index) => (
@@ -242,7 +236,6 @@ export default function Gallery() {
 
                 <Cta />
             </div>
-
 
             <AnimatePresence>
                 {activePhoto && (

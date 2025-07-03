@@ -118,11 +118,6 @@ const ProjectCard = ({ project, index, onClick }: { project: Project; index: num
     </div>
 
 
-    <div className="aspect-video bg-gradient-primary rounded-lg mb-4 overflow-hidden flex items-center justify-center text-white text-3xl font-bold flex-shrink-0">
-      {project.title.split(' ')[0]}
-    </div>
-
-
     <div className="flex-1 mb-4">
       <p className="text-text-gray dark:text-gray-300 leading-relaxed text-sm">
         {project.description}
@@ -169,7 +164,7 @@ const ProjectCard = ({ project, index, onClick }: { project: Project; index: num
         {project.github !== "#" && project.github !== "" && (
           <a
             href={project.github}
-            className="flex items-center gap-1 text-text-gray hover:text-primary-pink transition-colors text-sm"
+            className="btn-primary flex items-center gap-1 px-3 py-2 text-sm rounded-lg shadow-pink hover:scale-105 transition-transform"
             onClick={(e) => e.stopPropagation()}
           >
             <Github className="h-3 w-3" />
@@ -179,7 +174,7 @@ const ProjectCard = ({ project, index, onClick }: { project: Project; index: num
         {project.demo !== "#" && project.demo !== "" && (
           <a
             href={project.demo}
-            className="flex items-center gap-1 text-text-gray hover:text-secondary-teal transition-colors text-sm"
+            className="btn-secondary flex items-center gap-1 px-3 py-2 text-sm rounded-lg hover:scale-105 transition-transform"
             onClick={(e) => e.stopPropagation()}
           >
             <ExternalLink className="h-3 w-3" />
@@ -189,7 +184,7 @@ const ProjectCard = ({ project, index, onClick }: { project: Project; index: num
         {project.videoDemo && (
           <a
             href={project.videoDemo}
-            className="flex items-center gap-1 text-text-gray hover:text-accent-blue transition-colors text-sm"
+            className="btn-secondary flex items-center gap-1 px-3 py-2 text-sm rounded-lg hover:scale-105 transition-transform"
             onClick={(e) => e.stopPropagation()}
           >
             <Play className="h-3 w-3" />
@@ -246,11 +241,10 @@ export default function Projects() {
           <h1 className="text-4xl lg:text-6xl font-bold mb-6">
             <span className="gradient-text">My Projects</span>
           </h1>
-          <p className="text-md text-text-gray dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
-            A collection of projects spanning web applications, mobile apps, and
-            experimental prototypes. Each represents a different challenge and
-            creative problem that I have tackled. From production applications serving real users,
-            to practice exercises that honed my skillset — each project here has contributed
+          <p className="text-xl text-text-gray dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
+            A collection of projects spanning web, mobile, and
+            experimental prototypes. Each represents a different challenge that I have tackled. From production apps serving real users,
+            to practice exercises that honed my skillset, each has contributed
             to my growth as a developer.
           </p>
 
@@ -370,11 +364,6 @@ export default function Projects() {
 
 
                   <div className="space-y-6">
-
-                    <div className="aspect-video bg-gradient-primary rounded-lg flex items-center justify-center text-white text-6xl font-bold">
-                      {selectedProject.title.split(' ')[0]}
-                    </div>
-
 
                     <div className="prose dark:prose-invert max-w-none">
                       <div className="text-text-gray dark:text-gray-300 leading-relaxed space-y-4">

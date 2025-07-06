@@ -15,7 +15,7 @@ export function GoogleAnalytics() {
         src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
         strategy="afterInteractive"
       />
-      <Script id="google-analytics" strategy="afterInteractive">
+              <Script id="google-analytics" strategy="afterInteractive">
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
@@ -24,6 +24,7 @@ export function GoogleAnalytics() {
             page_title: document.title,
             page_location: window.location.href,
           });
+          window.gtag = gtag;
         `}
       </Script>
     </>

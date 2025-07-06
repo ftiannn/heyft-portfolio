@@ -7,6 +7,7 @@ import { Camera, Filter, ChevronRight } from "lucide-react"
 import { useState, useMemo, useEffect } from "react"
 import { Cta } from "../components"
 import dynamic from "next/dynamic"
+import { useAnalytics } from '@/hooks/use-analytics'
 
 const Modal = dynamic(() => import("./modal").then(mod => mod.Modal), { ssr: false })
 const Grid = dynamic(() => import("./grid"), { ssr: false })
@@ -15,6 +16,7 @@ export default function Gallery() {
     const [selectedCountry, setSelectedCountry] = useState<string | null>(null)
     const [showCountryFilter, setShowCountryFilter] = useState(false)
     const [activePhoto, setActivePhoto] = useState<Photo | null>(null)
+    const { trackModalOpen, trackModalClose, trackButtonClick } = useAnalytics()
 
     useEffect(() => {
         const handleEscape = (e: KeyboardEvent) => {
@@ -117,7 +119,10 @@ export default function Gallery() {
 
                     <div className="flex justify-center mb-6">
                         <button
-                            onClick={() => setShowCountryFilter(!showCountryFilter)}
+                            onClick={() => {
+                                trackButtonClick('filter', 'toggle_country_filter')
+                                setShowCountryFilter(!showCountryFilter)
+                            }}
                             className="inline-flex items-center gap-2 text-sm px-5 py-2 border border-gray-300 dark:border-slate-600 rounded-full text-gray-700 dark:text-gray-200 hover:border-primary-pink transition-all"
                         >
                             <Filter className="w-4 h-4 text-primary-pink" />
@@ -145,6 +150,7 @@ export default function Gallery() {
 
                                     <button
                                         onClick={() => {
+                                            trackButtonClick('filter', 'all_photos')
                                             setSelectedCountry(null)
                                             setShowCountryFilter(false)
                                         }}
@@ -161,6 +167,7 @@ export default function Gallery() {
                                         <button
                                             key={country}
                                             onClick={() => {
+                                                trackButtonClick('filter', `country_${country}`)
                                                 setSelectedCountry(country)
                                                 setShowCountryFilter(false)
                                             }}
@@ -185,14 +192,30 @@ export default function Gallery() {
                     transition={{ delay: 0.4, duration: 0.8 }}
                     className="masonry-container"
                 >
-                    <Grid photoLayout={photoLayout} setActivePhoto={setActivePhoto} />
+                    <Grid 
+                        photoLayout={photoLayout} 
+                        setActivePhoto={(photo) => {
+                            if (photo) {
+                                trackModalOpen('photo', photo.title)
+                            }
+                            setActivePhoto(photo)
+                        }} 
+                    />
                 </motion.div>
 
 
                 <Cta />
             </div>
 
-            <Modal activePhoto={activePhoto} onClose={() => setActivePhoto(null)} />
+            <Modal 
+                activePhoto={activePhoto} 
+                onClose={() => {
+                    if (activePhoto) {
+                        trackModalClose('photo', activePhoto.title)
+                    }
+                    setActivePhoto(null)
+                }} 
+            />
 
             <style jsx global>{`
                 .glass-card {

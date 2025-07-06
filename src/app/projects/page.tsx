@@ -9,6 +9,7 @@ import { Project, ProjectCategory, ProjectComplexity, ProjectImpact } from "@/ty
 import { Cta } from "../components"
 
 import { complexityConfig, impactConfig } from "@/constants/project-indicators"
+import { useAnalytics } from '@/hooks/use-analytics'
 
 const ComplexityIndicator = ({ complexity }: { complexity: ProjectComplexity }) => {
   const { icon: Icon, color, bg, label } = complexityConfig[complexity];
@@ -32,7 +33,7 @@ const ImpactIndicator = ({ impact }: { impact: ProjectImpact }) => {
   );
 };
 
-const ProjectCard = ({ project, index, onClick }: { project: Project; index: number; onClick: () => void }) => (
+const ProjectCard = ({ project, index, onClick, onLinkClick }: { project: Project; index: number; onClick: () => void; onLinkClick: (projectTitle: string, linkType: string, href: string) => void }) => (
   <motion.div
     initial={{ opacity: 0, y: 30 }}
     animate={{ opacity: 1, y: 0 }}
@@ -114,34 +115,40 @@ const ProjectCard = ({ project, index, onClick }: { project: Project; index: num
 
       <div className="flex gap-3 pt-2">
         {project.github !== "#" && project.github !== "" && (
-          <a
-            href={project.github}
+          <button
+            onClick={(e) => {
+              e.stopPropagation()
+              onLinkClick(project.title, 'github', project.github)
+            }}
             className="btn-primary flex items-center gap-1 px-3 py-2 text-sm rounded-lg shadow-pink hover:scale-105 transition-transform"
-            onClick={(e) => e.stopPropagation()}
           >
             <Github className="h-3 w-3" />
             Code
-          </a>
+          </button>
         )}
         {project.demo !== "#" && project.demo !== "" && (
-          <a
-            href={project.demo}
+          <button
+            onClick={(e) => {
+              e.stopPropagation()
+              onLinkClick(project.title, 'demo', project.demo)
+            }}
             className="btn-secondary flex items-center gap-1 px-3 py-2 text-sm rounded-lg hover:scale-105 transition-transform"
-            onClick={(e) => e.stopPropagation()}
           >
             <ExternalLink className="h-3 w-3" />
             {project.isClientWork ? "View" : "Demo"}
-          </a>
+          </button>
         )}
         {project.videoDemo && (
-          <a
-            href={project.videoDemo}
+          <button
+            onClick={(e) => {
+              e.stopPropagation()
+              onLinkClick(project.title, 'video', project.videoDemo!)
+            }}
             className="btn-secondary flex items-center gap-1 px-3 py-2 text-sm rounded-lg hover:scale-105 transition-transform"
-            onClick={(e) => e.stopPropagation()}
           >
             <Play className="h-3 w-3" />
             Video
-          </a>
+          </button>
         )}
       </div>
     </div>
@@ -179,10 +186,23 @@ const DialogTitle = dynamic(() => import("@headlessui/react").then(mod => mod.Di
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
   const [selectedCategory, setSelectedCategory] = useState<ProjectCategory>("All")
+  const { trackProjectView, trackModalOpen, trackModalClose, trackButtonClick, trackExternalLink } = useAnalytics()
 
   const filteredProjects = selectedCategory === "All"
     ? projects
     : projects.filter(project => project.category === selectedCategory)
+
+  const handleProjectClick = (project: Project) => {
+    trackProjectView(project.title)
+    trackModalOpen('project', project.title)
+    setSelectedProject(project)
+  }
+
+  const handleProjectLinkClick = (projectTitle: string, linkType: string, href: string) => {
+    trackButtonClick('project_link', `${projectTitle}_${linkType}`)
+    trackExternalLink(linkType, projectTitle)
+    window.open(href, '_blank', 'noopener,noreferrer')
+  }
 
       return (
       <main className="min-h-screen bg-gradient-light dark:bg-gradient-dark">
@@ -239,7 +259,10 @@ export default function Projects() {
           {categories.map((category) => (
             <button
               key={category}
-              onClick={() => setSelectedCategory(category)}
+              onClick={() => {
+                trackButtonClick('filter', category)
+                setSelectedCategory(category)
+              }}
               className={`px-4 py-2 rounded-full font-medium transition-all duration-200 ${selectedCategory === category
                 ? 'bg-primary-pink text-white shadow-pink'
                 : 'border-2 border-primary-pink text-primary-pink hover:bg-primary-pink hover:text-white'
@@ -262,7 +285,8 @@ export default function Projects() {
               key={project.id}
               project={project}
               index={index}
-              onClick={() => setSelectedProject(project)}
+              onClick={() => handleProjectClick(project)}
+              onLinkClick={handleProjectLinkClick}
             />
           ))}
         </motion.div>
@@ -270,7 +294,12 @@ export default function Projects() {
 
         <Dialog
           open={!!selectedProject}
-          onClose={() => setSelectedProject(null)}
+          onClose={() => {
+            if (selectedProject) {
+              trackModalClose('project', selectedProject.title)
+            }
+            setSelectedProject(null)
+          }}
           className="relative z-50"
         >
           <div className="fixed inset-0 bg-black/30 backdrop-blur-sm" aria-hidden="true" />

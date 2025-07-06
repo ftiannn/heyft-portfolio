@@ -8,16 +8,19 @@ import { useEffect, useRef, useState } from 'react'
 import { ThemeToggle } from '@/app/components'
 import links from "@/constants/link"
 import { typewriterOptions, navigationPaths, navigationSourceKey } from "@/constants/home"
+import { useAnalytics } from '@/hooks/use-analytics'
 
 export default function Home() {
   const router = useRouter()
   const isNavigating = useRef(false)
   const touchStartY = useRef<number | null>(null)
   const [isTransitioning, setIsTransitioning] = useState(false)
+  const { trackSocialClick, trackContactClick, trackNavigation, trackButtonClick } = useAnalytics()
 
   const navigateTo = (path: string) => {
     if (isNavigating.current) return
     setIsTransitioning(true)
+    trackNavigation('home', path.replace('/', '') || 'home')
 
     setTimeout(() => {
       router.push(path)
@@ -34,6 +37,16 @@ export default function Home() {
     setTimeout(() => {
       router.push(navigationPaths.about)
     }, 80)
+  }
+
+  const handleSocialClick = (platform: string, href: string) => {
+    trackSocialClick(platform)
+    window.open(href, '_blank', 'noopener,noreferrer')
+  }
+
+  const handleContactClick = () => {
+    trackContactClick('resume_page')
+    navigateTo(navigationPaths.resume)
   }
 
   useEffect(() => {
@@ -143,21 +156,27 @@ export default function Home() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
               <button
-                onClick={() => navigateTo(navigationPaths.projects)}
+                onClick={() => {
+                  trackButtonClick('navigation', 'projects')
+                  navigateTo(navigationPaths.projects)
+                }}
                 className="btn-primary group"
                 disabled={isTransitioning}
               >
                 Projects
               </button>
               <button
-                onClick={smoothNavigateToAbout}
+                onClick={() => {
+                  trackButtonClick('navigation', 'about')
+                  smoothNavigateToAbout()
+                }}
                 className="btn-secondary"
                 disabled={isTransitioning}
               >
                 About
               </button>
               <button
-                onClick={() => navigateTo(navigationPaths.resume)}
+                onClick={handleContactClick}
                 className="btn-secondary bg-gradient-primary text-white border-none hover:scale-105"
                 disabled={isTransitioning}
               >
@@ -167,14 +186,14 @@ export default function Home() {
 
             <div className="flex justify-center gap-6 mb-12">
               {[
-                { icon: Github, href: links.github, label: "GitHub" },
-                { icon: Linkedin, href: links.linkedin, label: "LinkedIn" },
-                { icon: Mail, href: links.email, label: "Email" },
-                { icon: Instagram, href: links.instagram, label: "Instagram" },
-              ].map(({ icon: Icon, href, label }) => (
-                <a
+                { icon: Github, href: links.github, label: "GitHub", platform: "github" },
+                { icon: Linkedin, href: links.linkedin, label: "LinkedIn", platform: "linkedin" },
+                { icon: Mail, href: links.email, label: "Email", platform: "email" },
+                { icon: Instagram, href: links.instagram, label: "Instagram", platform: "instagram" },
+              ].map(({ icon: Icon, href, label, platform }) => (
+                <button
                   key={label}
-                  href={href}
+                  onClick={() => handleSocialClick(platform, href)}
                   className="w-12 h-12 rounded-full bg-white dark:bg-navy-800 
                            border-2 border-pink-100 dark:border-pink-500/20 
                            shadow-soft hover:shadow-pink transition-all duration-300
@@ -183,7 +202,7 @@ export default function Home() {
                   aria-label={label}
                 >
                   <Icon className="h-5 w-5" />
-                </a>
+                </button>
               ))}
             </div>
 

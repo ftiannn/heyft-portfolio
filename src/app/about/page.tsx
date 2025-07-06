@@ -8,6 +8,7 @@ import { Cta, FloatingNavigation, ScrollIndicator } from "../components"
 import BeyondCodeSection from "./beyond-code"
 import dynamic from "next/dynamic"
 import { professionalJourney, skillCategories, drivingPrinciples, aboutSections } from "@/constants/about"
+import { useAnalytics } from '@/hooks/use-analytics'
 
 const Modal = dynamic(() => import("./modal").then(mod => mod.Modal), { ssr: false });
 const Hero = dynamic(() => import("./hero"), { ssr: false });
@@ -22,6 +23,7 @@ export default function About() {
   const mainRef = useRef<HTMLDivElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
   const { scrollY } = useScroll();
+  const { trackModalOpen, trackModalClose, trackButtonClick } = useAnalytics()
 
   const beyondStart = 1800;
   const beyondEnd = beyondStart + 400;
@@ -119,7 +121,10 @@ export default function About() {
                         <motion.div
                           whileHover={{ y: -2, scale: 1.01 }}
                           transition={{ duration: 0.3 }}
-                          onClick={() => setSelectedExperience(experience)}
+                          onClick={() => {
+                            trackModalOpen('experience', experience.title)
+                            setSelectedExperience(experience)
+                          }}
                           className="card cursor-pointer group"
                         >
                           <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-3 sm:mb-4">
@@ -359,7 +364,12 @@ export default function About() {
 
         <Modal
           isOpen={!!selectedExperience}
-          onClose={() => setSelectedExperience(null)}
+          onClose={() => {
+            if (selectedExperience) {
+              trackModalClose('experience', selectedExperience.title)
+            }
+            setSelectedExperience(null)
+          }}
           className="glass rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden mx-4 shadow-large border-2 border-primary-pink/20"
         >
           {selectedExperience && (
@@ -385,7 +395,13 @@ export default function About() {
                     </div>
                   </div>
                   <button
-                    onClick={() => setSelectedExperience(null)}
+                    onClick={() => {
+                      trackButtonClick('modal', 'close_experience')
+                      if (selectedExperience) {
+                        trackModalClose('experience', selectedExperience.title)
+                      }
+                      setSelectedExperience(null)
+                    }}
                     className="text-text-gray hover:text-primary-pink transition-colors p-2 hover:bg-primary-pink/10 rounded-lg"
                   >
                     <X className="w-5 h-5" />

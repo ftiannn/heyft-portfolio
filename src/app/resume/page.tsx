@@ -9,13 +9,16 @@ import { Cta } from "../components"
 import { motion } from "framer-motion"
 import links from "@/constants/link"
 import { quickStats, highlights, keyStrengths, technicalSkills } from "@/constants/resume"
+import { useAnalytics } from '@/hooks/use-analytics'
 
 
 export default function Resume() {
   const [isDownloading, setIsDownloading] = useState(false)
+  const { trackResumeDownload, trackSocialClick, trackContactClick } = useAnalytics()
 
   const downloadResume = async () => {
     setIsDownloading(true)
+    trackResumeDownload() // Track the download event
 
     setTimeout(() => {
       const link = document.createElement('a')
@@ -24,6 +27,16 @@ export default function Resume() {
       link.click()
       setIsDownloading(false)
     }, 500)
+  }
+
+  const handleSocialClick = (platform: string, href: string) => {
+    trackSocialClick(platform)
+    window.open(href, '_blank', 'noopener,noreferrer')
+  }
+
+  const handleContactClick = (method: string, href: string) => {
+    trackContactClick(method)
+    window.open(href, '_blank', 'noopener,noreferrer')
   }
 
   return (
@@ -57,18 +70,27 @@ export default function Resume() {
               <MapPin className="h-4 w-4 text-primary-pink" />
               <span>Singapore</span>
             </div>
-            <a href={links.email} className="flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-primary-pink transition-colors">
+            <button
+              onClick={() => handleContactClick('email', links.email)}
+              className="flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-primary-pink transition-colors"
+            >
               <Mail className="h-4 w-4" />
               <span>tanft25@gmail.com</span>
-            </a>
-            <a href={links.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-secondary-teal transition-colors">
+            </button>
+            <button
+              onClick={() => handleSocialClick('linkedin', links.linkedin)}
+              className="flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-secondary-teal transition-colors"
+            >
               <Linkedin className="h-4 w-4" />
               <span>LinkedIn</span>
-            </a>
-            <a href="{links.github}" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-accent-blue transition-colors">
+            </button>
+            <button
+              onClick={() => handleSocialClick('github', links.github)}
+              className="flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-accent-blue transition-colors"
+            >
               <Github className="h-4 w-4" />
               <span>GitHub</span>
-            </a>
+            </button>
           </div>
         </motion.div>
 

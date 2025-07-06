@@ -6,6 +6,7 @@ import { ExternalLink, ArrowUpRight } from "lucide-react";
 import { personalInterests } from "@/constants/about";
 import { PersonalInterest } from "@/types/about.type";
 import { allPhotos, countries } from "@/constants/gallery";
+import { useAnalytics } from '@/hooks/use-analytics';
 
 const useMagnetic = (strength = 0.3) => {
     const ref = useRef<HTMLDivElement>(null);
@@ -40,9 +41,12 @@ const ModernInterestCard = ({ interest }: { interest: PersonalInterest }) => {
     const { scrollYProgress } = useScroll({ target: cardRef, offset: ["start end", "end start"] });
     const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
     const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0]);
+    const { trackExternalLink } = useAnalytics();
+    
     const handleClick = () => {
         if (interest.link) {
             if (interest.link.startsWith("http") || interest.link.startsWith("/")) {
+                trackExternalLink('interest_card', interest.title);
                 window.open(interest.link, "_blank");
             }
         }
@@ -159,9 +163,13 @@ const ModernInterestCard = ({ interest }: { interest: PersonalInterest }) => {
                                     <motion.div
                                         className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 flex items-center justify-center rounded-xl transition-opacity duration-300"
                                         whileHover={{ backgroundColor: "rgba(0,0,0,0.3)" }}
+                                        onClick={() => {
+                                            trackExternalLink('spotify', interest.title);
+                                            window.open(interest.embed, "_blank");
+                                        }}
                                     >
                                         <motion.div
-                                            className="bg-white/20 backdrop-blur-sm rounded-full p-2 sm:p-3 flex items-center gap-2"
+                                            className="bg-white/20 backdrop-blur-sm rounded-full p-2 sm:p-3 flex items-center gap-2 cursor-pointer"
                                             whileHover={{ scale: 1.1 }}
                                         >
                                             <ExternalLink className="w-4 h-4 text-white" />

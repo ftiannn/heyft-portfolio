@@ -25,7 +25,7 @@ export const quickStats = [
     icon: Target,
     label: "Specialization",
     value: "Full-Stack",
-    color: "text-teal-700"
+    color: "text-purple-500"
   }
 ]
 

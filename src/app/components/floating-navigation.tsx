@@ -70,6 +70,7 @@ const DesktopLeftFloatingNav = ({
                                         }`}
                                     animate={{ scale: isActive ? 1.1 : 1 }}
                                     transition={{ duration: 0.3 }}
+                                    aria-label={section.label}
                                 >
                                     <Icon className="w-4 h-4" />
 
@@ -193,6 +194,7 @@ const MobileCollapsibleNav = ({
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="fixed bottom-4 right-4 z-50 bg-white dark:bg-slate-800 shadow-xl border border-gray-200 dark:border-gray-700 rounded-full p-3 backdrop-blur-xl"
+                aria-label={currentSection ? `Open navigation for ${currentSection.label}` : 'Open navigation menu'}
             >
                 <div className="relative">
                     <div className="w-6 h-6 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center">
@@ -238,6 +240,7 @@ const MobileCollapsibleNav = ({
                                                 ? "bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900"
                                                 : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600"
                                                 }`}
+                                            aria-label={section.label}
                                         >
                                             <div className="flex flex-col items-center">
                                                 <Icon className="w-5 h-5 mb-1" />

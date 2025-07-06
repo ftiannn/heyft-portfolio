@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { ArrowDown, Github, Mail, Instagram } from "lucide-react"
+import { ArrowDown, Github, Mail, Instagram, Linkedin } from "lucide-react"
 import Typewriter from 'typewriter-effect'
 import { useRouter } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
@@ -168,6 +168,7 @@ export default function Home() {
             <div className="flex justify-center gap-6 mb-12">
               {[
                 { icon: Github, href: links.github, label: "GitHub" },
+                { icon: Linkedin, href: links.linkedin, label: "LinkedIn" },
                 { icon: Mail, href: links.email, label: "Email" },
                 { icon: Instagram, href: links.instagram, label: "Instagram" },
               ].map(({ icon: Icon, href, label }) => (

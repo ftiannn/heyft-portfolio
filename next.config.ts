@@ -12,6 +12,7 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   generateEtags: true,
   reactStrictMode: true,
+  swcMinify: true,
   experimental: {
     optimizeCss: true,
   },
@@ -35,6 +36,10 @@ const nextConfig: NextConfig = {
           {
             key: 'Referrer-Policy',
             value: 'origin-when-cross-origin',
+          },
+          {
+            key: 'Content-Security-Policy',
+            value: "default-src 'self'; img-src 'self' data: https:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; connect-src 'self' https://www.google-analytics.com; frame-ancestors 'none';",
           },
         ],
       },

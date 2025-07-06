@@ -102,7 +102,6 @@ const DesktopLeftFloatingNav = ({
                                     )}
                                 </motion.button>
 
-                                {/* Tooltip */}
                                 <AnimatePresence>
                                     {(isHovered || isActive) && (
                                         <motion.div
@@ -127,7 +126,6 @@ const DesktopLeftFloatingNav = ({
                                     )}
                                 </AnimatePresence>
 
-                                {/* Active Dot */}
                                 {isActive && (
                                     <motion.div
                                         layoutId="activeDesktopIndicator"
@@ -140,7 +138,6 @@ const DesktopLeftFloatingNav = ({
                     })}
                 </div>
 
-                {/* Progress Footer */}
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: isHovered ? 1 : 0.4 }}
@@ -217,14 +214,12 @@ const MobileCollapsibleNav = ({
                         className="fixed bottom-0 left-0 w-full z-40"
                     >
                         <div className="w-full bg-white dark:bg-slate-800 rounded-t-2xl p-4 shadow-2xl border-t border-gray-200 dark:border-gray-700 backdrop-blur-xl">
-                            {/* Header */}
                             <div className="text-center mb-4">
                                 <div className="text-sm font-medium text-gray-600 dark:text-gray-400">
                                     Navigate to Section
                                 </div>
                             </div>
 
-                            {/* Section Buttons */}
                             <div className="grid grid-cols-3 gap-3">
                                 {sections.map((section, index) => {
                                     const isActive = activeSection === section.id;
@@ -249,7 +244,6 @@ const MobileCollapsibleNav = ({
                                                 <span className="text-xs text-center">{section.label}</span>
                                             </div>
 
-                                            {/* Active dot */}
                                             {isActive && (
                                                 <motion.div
                                                     layoutId="activeMobileIndicator"
@@ -262,7 +256,6 @@ const MobileCollapsibleNav = ({
                                 })}
                             </div>
 
-                            {/* Progress Bar */}
                             <div className="mt-4">
                                 <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5 overflow-hidden">
                                     <motion.div

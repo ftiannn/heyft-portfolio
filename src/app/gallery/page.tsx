@@ -5,7 +5,7 @@ import { Photo } from "@/types/gallery.type"
 import { motion, AnimatePresence } from "framer-motion"
 import { Camera, Filter, ChevronRight } from "lucide-react"
 import { useState, useMemo, useEffect } from "react"
-import { Cta } from "../components"
+import { Cta, SEO } from "../components"
 import dynamic from "next/dynamic"
 
 const Modal = dynamic(() => import("./modal").then(mod => mod.Modal), { ssr: false })
@@ -25,7 +25,6 @@ export default function Gallery() {
 
         if (activePhoto) {
             document.addEventListener('keydown', handleEscape)
-            // Prevent background scrolling when modal is open
             document.body.style.overflow = 'hidden'
         } else {
             document.body.style.overflow = 'unset'
@@ -41,7 +40,6 @@ export default function Gallery() {
         ? allPhotos.filter(photo => photo.country === selectedCountry)
         : allPhotos
 
-    // Create irregular grid pattern with natural aspect ratios
     const photoLayout = useMemo(() => {
         const patterns = [
             { width: 300, minHeight: 200 },
@@ -60,6 +58,7 @@ export default function Gallery() {
 
     return (
         <main className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
+            <SEO page="gallery" />
             <div className="container-custom section-padding">
                 <motion.h1
                     initial={{ opacity: 0, y: 30 }}
@@ -210,7 +209,6 @@ export default function Gallery() {
                     padding: 0 20px;
                 }
                 
-                /* Consistent column gaps and spacing */
                 .columns-1 {
                     column-gap: 1.5rem;
                 }
@@ -227,13 +225,11 @@ export default function Gallery() {
                     column-gap: 1.5rem;
                 }
                 
-                /* Prevent images from breaking across columns */
                 .break-inside-avoid {
                     break-inside: avoid;
                     page-break-inside: avoid;
                 }
                 
-                /* Ensure consistent spacing between items */
                 .space-y-6 > * + * {
                     margin-top: 1.5rem;
                 }

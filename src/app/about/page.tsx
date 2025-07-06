@@ -8,6 +8,7 @@ import { Cta, FloatingNavigation, ScrollIndicator } from "../components"
 import BeyondCodeSection from "./beyond-code"
 import dynamic from "next/dynamic"
 import { professionalJourney, skillCategories, drivingPrinciples, aboutSections } from "@/constants/about"
+import { SEO } from "@/app/components"
 
 const Modal = dynamic(() => import("./modal").then(mod => mod.Modal), { ssr: false });
 const Hero = dynamic(() => import("./hero"), { ssr: false });
@@ -58,10 +59,12 @@ export default function About() {
   };
 
   return (
-    <div ref={mainRef} className="relative bg-transparent">
-      <motion.div style={{ background }} className="fixed inset-0 z-0 pointer-events-none transition-colors duration-700 dark:hidden" aria-hidden />
-      <motion.div style={{ background: backgroundDark }} className="fixed inset-0 z-0 pointer-events-none transition-colors duration-700 hidden dark:block" aria-hidden />
-      <main className="relative z-10">
+    <>
+      <SEO page="about" />
+      <div ref={mainRef} className="relative bg-transparent">
+        <motion.div style={{ background }} className="fixed inset-0 z-0 pointer-events-none transition-colors duration-700 dark:hidden" aria-hidden />
+        <motion.div style={{ background: backgroundDark }} className="fixed inset-0 z-0 pointer-events-none transition-colors duration-700 hidden dark:block" aria-hidden />
+        <main className="relative z-10">
         <section id="hero">
           <ScrollIndicator scrollOffset={-20}>
             <Hero imageLoaded={imageLoaded} setImageLoaded={setImageLoaded} />
@@ -112,10 +115,8 @@ export default function About() {
                       viewport={{ once: true, margin: "-50px" }}
                       className="relative"
                     >
-                      {/* Timeline Dot */}
                       <div className="absolute left-2.5 sm:left-4.5 md:left-6 w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 bg-gradient-to-br from-primary-pink to-accent-blue border-2 sm:border-3 md:border-4 border-white dark:border-slate-800 rounded-full shadow-lg"></div>
 
-                      {/* Experience Card */}
                       <div className="ml-10 sm:ml-16 md:ml-20">
                         <motion.div
                           whileHover={{ y: -2, scale: 1.01 }}
@@ -358,7 +359,6 @@ export default function About() {
           scrollProgress={scrollProgress}
         />
 
-        {/* Modal */}
         <Modal
           isOpen={!!selectedExperience}
           onClose={() => setSelectedExperience(null)}
@@ -398,7 +398,6 @@ export default function About() {
               <div className="p-6 overflow-y-auto max-h-[calc(90vh-200px)]">
                 <div className="space-y-8">
 
-                  {/* Role Overview */}
                   <div>
                     <h3 className="text-base font-bold text-primary-pink mb-4 flex items-center gap-2">
                       <div className="w-3 h-3 bg-gradient-to-r from-primary-pink to-purple-500 rounded-full"></div>
@@ -419,7 +418,6 @@ export default function About() {
                     </div>
                   </div>
 
-                  {/* Key Achievements */}
                   <div>
                     <h3 className="text-base font-bold text-accent-blue mb-4 flex items-center gap-2">
                       <div className="w-3 h-3 bg-gradient-to-r from-accent-blue to-cyan-400 rounded-full"></div>
@@ -437,7 +435,6 @@ export default function About() {
                     </div>
                   </div>
 
-                  {/* Technologies & Tools */}
                   <div>
                     <h3 className="text-base font-bold text-secondary-teal dark:text-secondary-teal text-[#17817b] dark:text-secondary-teal mb-4 flex items-center gap-2">
                       <div className="w-3 h-3 bg-gradient-to-r from-secondary-teal to-emerald-400 rounded-full"></div>
@@ -463,6 +460,7 @@ export default function About() {
           )}
         </Modal>
       </main>
-    </div>
+      </div>
+    </>
   );
 }

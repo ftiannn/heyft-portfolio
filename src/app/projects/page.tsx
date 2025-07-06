@@ -6,7 +6,7 @@ import { useState } from "react"
 import dynamic from "next/dynamic"
 import { projects, categories, statusColors } from "@/constants/projects"
 import { Project, ProjectCategory, ProjectComplexity, ProjectImpact } from "@/types/projects.type"
-import { Cta } from "../components"
+import { Cta, SEO } from "../components"
 
 const ComplexityIndicator = ({ complexity }: { complexity: ProjectComplexity }) => {
   const config = {
@@ -232,9 +232,10 @@ export default function Projects() {
     ? projects
     : projects.filter(project => project.category === selectedCategory)
 
-  return (
-    <main className="min-h-screen bg-gradient-light dark:bg-gradient-dark">
-      <div className="container-custom section-padding">
+      return (
+      <main className="min-h-screen bg-gradient-light dark:bg-gradient-dark">
+        <SEO page="projects" />
+        <div className="container-custom section-padding">
 
         <motion.h1
           initial={{ opacity: 0, y: 30 }}

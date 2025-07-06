@@ -76,7 +76,6 @@ const ModernInterestCard = ({ interest }: { interest: PersonalInterest }) => {
                 className={`h-full w-full rounded-[2rem] ${interest.link ? 'cursor-pointer' : 'cursor-default'} overflow-hidden group relative min-h-[320px] md:min-h-[380px] flex flex-col`}
                 style={{ boxShadow: isHovered ? `0 25px 50px ${interest.color.replace('text-', '#')}40` : '0 10px 30px rgba(0,0,0,0.1)' }}
             >
-                {/* Glass reflection effect */}
                 <motion.div
                     className="absolute inset-0 opacity-0 group-hover:opacity-100"
                     animate={isHovered ? {
@@ -91,7 +90,6 @@ const ModernInterestCard = ({ interest }: { interest: PersonalInterest }) => {
                     transition={{ duration: 2, repeat: Infinity }}
                 />
                 <div className="relative z-10 p-3 sm:p-5 h-full flex flex-col flex-1">
-                    {/* Header with magnetic icon */}
                     <motion.div className="flex items-start justify-between mb-3">
                         <motion.div
                             className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl flex items-center justify-center text-white relative overflow-hidden"
@@ -108,7 +106,6 @@ const ModernInterestCard = ({ interest }: { interest: PersonalInterest }) => {
                             {interest.link && <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5 text-white/70" />}
                         </motion.div>
                     </motion.div>
-                    {/* Title */}
                     <motion.h3
                         className="text-lg sm:text-xl font-bold text-white mb-2"
                         whileHover={{
@@ -123,7 +120,6 @@ const ModernInterestCard = ({ interest }: { interest: PersonalInterest }) => {
                     >
                         {interest.title}
                     </motion.h3>
-                    {/* Special content for gallery, playlist, etc. */}
                     <div className="flex-1 mb-3 flex flex-col">
                         {interest.preview && interest.preview.length > 0 && (
                             <div className="flex-1 rounded-xl overflow-hidden mb-4 relative">
@@ -160,7 +156,6 @@ const ModernInterestCard = ({ interest }: { interest: PersonalInterest }) => {
                                         loading="lazy"
                                         className="rounded-xl"
                                     />
-                                    {/* Click indicator overlay */}
                                     <motion.div
                                         className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 flex items-center justify-center rounded-xl transition-opacity duration-300"
                                         whileHover={{ backgroundColor: "rgba(0,0,0,0.3)" }}
@@ -182,7 +177,6 @@ const ModernInterestCard = ({ interest }: { interest: PersonalInterest }) => {
                             </div>
                         )}
                     </div>
-                    {/* Description, Details, and Action Indicator improved */}
                     <div className="flex flex-col min-h-[120px] gap-y-2 h-full">
                         <div className="flex flex-col gap-y-2">
                             <motion.p
@@ -290,14 +284,12 @@ const BeyondCodeSection = () => {
                     animate="visible"
                     variants={{ visible: { transition: { staggerChildren: 0.15 } } }}
                 >
-                    {/* 1st row: 2col photo + 1col spotify */}
                     <div className="md:col-span-2 h-full">
                         <ModernInterestCard interest={personalInterests[0]} />
                     </div>
                     <div className="h-full">
                         <ModernInterestCard interest={personalInterests[1]} />
                     </div>
-                    {/* 2nd row: 1col each for the rest */}
                     <div className="h-full">
                         <ModernInterestCard interest={personalInterests[2]} />
                     </div>

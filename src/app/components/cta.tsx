@@ -20,8 +20,6 @@ export function Cta({ variant }: { variant?: "light" | "dark" }) {
 
     const secondButton = getSecondButton()
 
-    // Determine background and text color based on variant and dark mode
-    // bg-gradient-light/dark are for the section, the card uses its own gradient
     let sectionBg = "bg-transparent";
     let cardBg = "bg-gradient-to-r from-primary-pink to-accent-blue text-white";
     let btnBg = "bg-white text-primary-pink border-white hover:bg-gray-100";

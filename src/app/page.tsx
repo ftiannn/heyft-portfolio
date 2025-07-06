@@ -5,7 +5,7 @@ import { ArrowDown, Github, Mail, Instagram } from "lucide-react"
 import Typewriter from 'typewriter-effect'
 import { useRouter } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
-import { ThemeToggle } from '@/app/components'
+import { ThemeToggle, SEO } from '@/app/components'
 import links from "@/constants/link"
 
 export default function Home() {
@@ -110,36 +110,30 @@ export default function Home() {
   }, [router])
 
   return (
-    <main className="relative min-h-screen">
-      {/* Simplified transition overlay */}
-      {isTransitioning && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.2, ease: "easeOut" }}
-          className="fixed inset-0 z-50 bg-gradient-to-br from-primary-pink/10 via-purple-500/10 to-accent-blue/10 backdrop-blur-sm pointer-events-none"
-        />
-      )}
+    <>
+      <SEO page="home" />
+      <main className="relative min-h-screen">
+        {isTransitioning && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="fixed inset-0 z-50 bg-gradient-to-br from-primary-pink/10 via-purple-500/10 to-accent-blue/10 backdrop-blur-sm pointer-events-none"
+          />
+        )}
 
-      <div className="fixed bottom-6 left-6 z-50">
-        <ThemeToggle />
-      </div>
+        <div className="fixed bottom-6 left-6 z-50">
+          <ThemeToggle />
+        </div>
 
       <section className="section-padding bg-gradient-light dark:bg-gradient-dark min-h-screen flex items-center -mt-16">
         <div className="container-custom">
           <div className="fade-in-up text-center">
-            {/* <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-5xl lg:text-7xl font-bold mb-6 mt-8"
-            > */}
 
             <h1 className=" text-5xl lg:text-7xl font-bold mb-6 mt-8">
               Hey, I&apos;m{" "}
               <span className="gradient-text">FT Tan</span> 👋
             </h1>
-            {/* </motion.h1> */}
 
             <div className="text-xl lg:text-2xl text-text-gray dark:text-gray-300 mb-8 mt-8 h-16 flex items-center justify-center">
               <Typewriter
@@ -218,6 +212,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-    </main>
+      </main>
+    </>
   )
 }

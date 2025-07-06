@@ -49,7 +49,6 @@ export function ScrollIndicator({
     return (
         <div ref={heroRef} className={`relative min-h-0 flex items-center justify-center overflow-hidden ${className}`}>
 
-            {/* Background Elements */}
             <div className="absolute inset-0 overflow-hidden">
                 {backgroundElements || (
                     <>
@@ -59,7 +58,6 @@ export function ScrollIndicator({
                 )}
             </div>
 
-            {/* Content with Scroll Animation */}
             <motion.div
                 style={{ y: heroY, opacity: heroOpacity }}
                 className="relative z-10 text-center px-8 max-w-4xl pb-16"
@@ -67,7 +65,6 @@ export function ScrollIndicator({
                 {children}
             </motion.div>
 
-            {/* Scroll Indicator */}
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}

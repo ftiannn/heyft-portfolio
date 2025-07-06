@@ -8,7 +8,6 @@ import { Cta, FloatingNavigation, ScrollIndicator } from "../components"
 import BeyondCodeSection from "./beyond-code"
 import dynamic from "next/dynamic"
 import { professionalJourney, skillCategories, drivingPrinciples, aboutSections } from "@/constants/about"
-import { SEO } from "@/app/components"
 
 const Modal = dynamic(() => import("./modal").then(mod => mod.Modal), { ssr: false });
 const Hero = dynamic(() => import("./hero"), { ssr: false });
@@ -60,7 +59,6 @@ export default function About() {
 
   return (
     <>
-      <SEO page="about" />
       <div ref={mainRef} className="relative bg-transparent">
         <motion.div style={{ background }} className="fixed inset-0 z-0 pointer-events-none transition-colors duration-700 dark:hidden" aria-hidden />
         <motion.div style={{ background: backgroundDark }} className="fixed inset-0 z-0 pointer-events-none transition-colors duration-700 hidden dark:block" aria-hidden />

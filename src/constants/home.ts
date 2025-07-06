@@ -12,4 +12,12 @@ export const typewriterOptions = {
   loop: true,
   delay: 50,
   deleteSpeed: 30,
-} 
+}
+
+export const navigationPaths = {
+  about: '/about',
+  projects: '/projects',
+  resume: '/resume',
+} as const
+
+export const navigationSourceKey = 'navigationSource' 

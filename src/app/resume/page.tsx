@@ -8,7 +8,6 @@ import { useState } from "react"
 import { Cta } from "../components"
 import { motion } from "framer-motion"
 import links from "@/constants/link"
-import { SEO } from "@/app/components"
 import { quickStats, highlights, keyStrengths, technicalSkills } from "@/constants/resume"
 
 
@@ -29,7 +28,6 @@ export default function Resume() {
 
   return (
     <main className="min-h-screen bg-gray-50 dark:bg-slate-900">
-      <SEO page="resume" />
       <div className="container-custom section-padding">
 
         <motion.h1

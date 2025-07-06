@@ -5,9 +5,9 @@ import { ArrowDown, Github, Mail, Instagram } from "lucide-react"
 import Typewriter from 'typewriter-effect'
 import { useRouter } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
-import { ThemeToggle, SEO } from '@/app/components'
+import { ThemeToggle } from '@/app/components'
 import links from "@/constants/link"
-import { typewriterOptions } from "@/constants/home"
+import { typewriterOptions, navigationPaths, navigationSourceKey } from "@/constants/home"
 
 export default function Home() {
   const router = useRouter()
@@ -29,10 +29,10 @@ export default function Home() {
     isNavigating.current = true
     setIsTransitioning(true)
 
-    sessionStorage.setItem('navigationSource', 'home')
+    sessionStorage.setItem(navigationSourceKey, 'home')
 
     setTimeout(() => {
-      router.push('/about')
+      router.push(navigationPaths.about)
     }, 80)
   }
 
@@ -45,10 +45,10 @@ export default function Home() {
         isNavigating.current = true
         setIsTransitioning(true)
 
-        sessionStorage.setItem('navigationSource', 'home')
+        sessionStorage.setItem(navigationSourceKey, 'home')
 
         setTimeout(() => {
-          router.push('/about')
+          router.push(navigationPaths.about)
         }, 50)
       }
     }
@@ -90,10 +90,10 @@ export default function Home() {
           setIsTransitioning(true)
           touchStartY.current = null
 
-          sessionStorage.setItem('navigationSource', 'home')
+          sessionStorage.setItem(navigationSourceKey, 'home')
 
           setTimeout(() => {
-            router.push('/about')
+            router.push(navigationPaths.about)
           }, 30)
         }
       }
@@ -112,7 +112,6 @@ export default function Home() {
 
   return (
     <>
-      <SEO page="home" />
       <main className="relative min-h-screen">
         {isTransitioning && (
           <motion.div
@@ -144,7 +143,7 @@ export default function Home() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
               <button
-                onClick={() => navigateTo('/projects')}
+                onClick={() => navigateTo(navigationPaths.projects)}
                 className="btn-primary group"
                 disabled={isTransitioning}
               >
@@ -158,7 +157,7 @@ export default function Home() {
                 About
               </button>
               <button
-                onClick={() => navigateTo('/resume')}
+                onClick={() => navigateTo(navigationPaths.resume)}
                 className="btn-secondary bg-gradient-primary text-white border-none hover:scale-105"
                 disabled={isTransitioning}
               >
@@ -204,4 +203,4 @@ export default function Home() {
       </main>
     </>
   )
-}
+} 

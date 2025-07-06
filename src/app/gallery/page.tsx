@@ -5,7 +5,7 @@ import { Photo } from "@/types/gallery.type"
 import { motion, AnimatePresence } from "framer-motion"
 import { Camera, Filter, ChevronRight } from "lucide-react"
 import { useState, useMemo, useEffect } from "react"
-import { Cta, SEO } from "../components"
+import { Cta } from "../components"
 import dynamic from "next/dynamic"
 
 const Modal = dynamic(() => import("./modal").then(mod => mod.Modal), { ssr: false })
@@ -58,7 +58,6 @@ export default function Gallery() {
 
     return (
         <main className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
-            <SEO page="gallery" />
             <div className="container-custom section-padding">
                 <motion.h1
                     initial={{ opacity: 0, y: 30 }}

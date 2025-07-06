@@ -4,11 +4,13 @@ import { Inter } from 'next/font/google'
 import { ThemeProvider } from '@/providers/theme-provider'
 import { Navigation, PageTransition } from '@/app/components'
 import { Analytics } from "@vercel/analytics/next"
-import { defaultMetadata } from '@/constants/seo'
+import { LAYOUT_CONFIG, createBaseMetadata } from '@/constants/seo'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export const metadata: Metadata = defaultMetadata
+export const viewport = LAYOUT_CONFIG.viewport
+
+export const metadata: Metadata = createBaseMetadata()
 
 export default function RootLayout({
   children,
@@ -18,17 +20,17 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <link rel="manifest" href="/manifest.json" />
-        <meta name="theme-color" content="#ec4899" />
+        <link rel="manifest" href={LAYOUT_CONFIG.app.manifest} />
+        <meta name="theme-color" content={LAYOUT_CONFIG.theme.color} />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="apple-mobile-web-app-title" content="FT Tan" />
-        <link rel="apple-touch-icon" href="/avatar.png" />
+        <meta name="apple-mobile-web-app-title" content={LAYOUT_CONFIG.app.name} />
+        <link rel="apple-touch-icon" href={LAYOUT_CONFIG.app.appleTouchIcon} />
       </head>
       <body className={`${inter.className} bg-light-bg dark:bg-gradient-dark min-h-screen`}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="light"
+          defaultTheme={LAYOUT_CONFIG.theme.defaultTheme}
           enableSystem
           disableTransitionOnChange={false}
         >

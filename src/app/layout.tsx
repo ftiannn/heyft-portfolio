@@ -2,7 +2,7 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { ThemeProvider } from '@/providers/theme-provider'
-import { Navigation, PageTransition } from '@/app/components'
+import { Navigation, PageTransition, GoogleAnalytics } from '@/app/components'
 import { Analytics } from "@vercel/analytics/next"
 import { LAYOUT_CONFIG, createBaseMetadata } from '@/constants/seo'
 
@@ -41,6 +41,7 @@ export default function RootLayout({
             <PageTransition>
               {children}
               <Analytics />
+              <GoogleAnalytics />
             </PageTransition>
           </main>
         </ThemeProvider>

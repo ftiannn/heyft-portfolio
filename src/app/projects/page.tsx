@@ -1,42 +1,17 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Github, ExternalLink, X, Clock, Zap, Sparkles, Calendar, Users, Play, FileText, Brain, Rocket, Building, GraduationCap, User, Briefcase, Globe } from "lucide-react"
+import { Github, ExternalLink, X, Clock, Zap, Sparkles, Calendar, Users, Play, FileText } from "lucide-react"
 import { useState } from "react"
 import dynamic from "next/dynamic"
 import { projects, categories, statusColors } from "@/constants/projects"
 import { Project, ProjectCategory, ProjectComplexity, ProjectImpact } from "@/types/projects.type"
 import { Cta, SEO } from "../components"
 
-const ComplexityIndicator = ({ complexity }: { complexity: ProjectComplexity }) => {
-  const config = {
-    Simple: {
-      icon: Zap,
-      color: "text-green-600",
-      bg: "bg-green-50 border-green-200",
-      label: "Simple"
-    },
-    Moderate: {
-      icon: Brain,
-      color: "text-blue-600",
-      bg: "bg-blue-50 border-blue-200",
-      label: "Moderate"
-    },
-    Complex: {
-      icon: Rocket,
-      color: "text-purple-600",
-      bg: "bg-purple-50 border-purple-200",
-      label: "Complex"
-    },
-    Enterprise: {
-      icon: Building,
-      color: "text-orange-600",
-      bg: "bg-orange-50 border-orange-200",
-      label: "Enterprise"
-    }
-  };
+import { complexityConfig, impactConfig } from "@/constants/project-indicators"
 
-  const { icon: Icon, color, bg, label } = config[complexity];
+const ComplexityIndicator = ({ complexity }: { complexity: ProjectComplexity }) => {
+  const { icon: Icon, color, bg, label } = complexityConfig[complexity];
 
   return (
     <div className={`flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium border ${bg}`}>
@@ -47,30 +22,7 @@ const ComplexityIndicator = ({ complexity }: { complexity: ProjectComplexity }) 
 };
 
 const ImpactIndicator = ({ impact }: { impact: ProjectImpact }) => {
-  const config = {
-    Learning: {
-      icon: GraduationCap,
-      color: "text-amber-600",
-      label: "Learning"
-    },
-    Personal: {
-      icon: User,
-      color: "text-teal-600",
-      label: "Personal"
-    },
-    Professional: {
-      icon: Briefcase,
-      color: "text-blue-600",
-      label: "Professional"
-    },
-    Production: {
-      icon: Globe,
-      color: "text-green-600",
-      label: "Production"
-    }
-  };
-
-  const { icon: Icon, color, label } = config[impact];
+  const { icon: Icon, color, label } = impactConfig[impact];
 
   return (
     <div className="flex items-center gap-1 text-xs text-gray-600">

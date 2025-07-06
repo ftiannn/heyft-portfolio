@@ -7,6 +7,7 @@ import { useRouter } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
 import { ThemeToggle, SEO } from '@/app/components'
 import links from "@/constants/link"
+import { typewriterOptions } from "@/constants/home"
 
 export default function Home() {
   const router = useRouter()
@@ -137,19 +138,7 @@ export default function Home() {
 
             <div className="text-xl lg:text-2xl text-text-gray dark:text-gray-300 mb-8 mt-8 h-16 flex items-center justify-center">
               <Typewriter
-                options={{
-                  strings: [
-                    "I am passionate about solving real world problems",
-                    "I create user-friendly interfaces",
-                    "I translate ambiguous goals into features",
-                    "I build scalable web applications",
-                    "I love learning new technologies"
-                  ],
-                  autoStart: true,
-                  loop: true,
-                  delay: 50,
-                  deleteSpeed: 30,
-                }}
+                options={typewriterOptions}
               />
             </div>
 

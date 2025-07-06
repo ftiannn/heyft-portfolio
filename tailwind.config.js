@@ -6,6 +6,7 @@ module.exports = {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',   
   ],
   darkMode: 'class',
+  safelist: ['text-pink-700', 'text-teal-700'],
   theme: {
     extend: {
       colors: {

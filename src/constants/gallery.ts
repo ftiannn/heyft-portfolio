@@ -90,7 +90,7 @@ const countryStats: CountryStat[] = [
     {
         label: "Continents",
         value: "4",
-        color: "text-purple-500"
+        color: "text-teal-700"
     }
 ]
 

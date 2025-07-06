@@ -90,7 +90,7 @@ export const projects: Project[] = [
                 "heading": "Project Background",
                 "content": [
                     "Commissioned by a fitness coach to improve his personal branding and credibility by building a website, creating a digital channel for client bookings.",
-                    "The site needed to reflect the trainer’s expertise and credentials while ensuring a seamless user journey from landing page to booking confirmation."
+                    "The site needed to reflect the trainer's expertise and credentials while ensuring a seamless user journey from landing page to booking confirmation."
                 ]
             },
             {
@@ -121,7 +121,7 @@ export const projects: Project[] = [
                 "heading": "Current Status",
                 "content": [
                     "The page went live in March 2025, and has become a main channel used to attract and engage prospective clients (search engine optimized and posted on social media).",
-                    "Client bookings have increased by 30% since launch, with positive feedback on the site’s usability and design.",
+                    "Client bookings have increased by 30% since launch, with positive feedback on the site's usability and design.",
                     "Ongoing maintenance for content updates and performance monitoring.",
                 ]
             }
@@ -697,10 +697,10 @@ export const projects: Project[] = [
 export const categories: ProjectCategory[] = ["All", "Featured", "Professional", "Learning", "Fun", "Coming Soon", "Needs Love"];
 
 export const statusColors: Record<ProjectStatus, string> = {
-    "Live": "bg-green-100 text-green-800 border-green-200",
+    "Live": "bg-teal-100 text-teal-800 border-teal-200",
     "In Progress": "bg-blue-100 text-blue-800 border-blue-200",
     "Complete": "bg-purple-100 text-purple-800 border-purple-200",
-    "Learning Project": "bg-yellow-100 text-yellow-800 border-yellow-200",
-    "Needs Revamp": "bg-orange-100 text-orange-800 border-orange-200",
+    "Learning Project": "bg-blue-100 text-blue-800 border-blue-200",
+    "Needs Revamp": "bg-pink-100 text-pink-800 border-pink-200",
     "Planning": "bg-gray-100 text-gray-800 border-gray-200"
 };

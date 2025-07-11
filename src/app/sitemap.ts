@@ -4,7 +4,7 @@ export const dynamic = 'force-static'
 export const revalidate = false // Disable revalidation for static export
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://heyft.com'
+  const baseUrl = 'https://www.heyft.com'
 
   const currentDate = new Date().toISOString().split('T')[0]
   

@@ -39,7 +39,7 @@ export default function robots(): MetadataRoute.Robots {
         ],
       }
     ],
-    sitemap: 'https://heyft.com/sitemap.xml',
-    host: 'https://heyft.com',
+    sitemap: 'https://www.heyft.com/sitemap.xml',
+    host: 'https://www.heyft.com',
   }
 } 

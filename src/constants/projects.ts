@@ -192,7 +192,7 @@ export const projects: Project[] = [
         image: "/api/placeholder/600/400",
         stack: ["Next.js", "React", "TailwindCSS", "TypeScript", "Framer Motion"],
         github: "https://github.com/ftiannn/heyft-portfolio",
-        demo: "https://heyft.com",
+        demo: "https://www.heyft.com",
         category: "Featured",
         status: "Live",
         featured: true,

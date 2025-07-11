@@ -14,9 +14,9 @@ export const PERSON = {
   experience: '7+ years',
   skills: ['React', 'Next.js', 'Node.js', 'TypeScript', 'AWS', 'PostgreSQL', 'Full-Stack Development', 'Cloud Infrastructure', 'DevOps'],
   social: {
-    twitter: '@heyft',
-    linkedin: 'heyft',
-    github: 'heyft'
+    linkedin: 'https://www.linkedin.com/in/tanfangtian',
+    github: 'https://github.com/ftiannn',
+    instagram: 'https://instagram.com/ftiannn'
   }
 } as const
 

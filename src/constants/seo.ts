@@ -3,7 +3,7 @@ import links from './link'
 import { projects } from './projects'
 import { allPhotos } from './gallery'
 
-export const BASE_URL = 'https://heyft.com'
+export const BASE_URL = 'https://www.heyft.com'
 
 export const PERSON = {
   name: 'Fang Tian Tan',
@@ -347,7 +347,7 @@ export function generateMetadata(page: keyof typeof PAGE_CONFIGS): Metadata {
     openGraph: {
       type: 'website',
       locale: 'en_US',
-      url,
+      url: `${BASE_URL}${url}`,
       siteName: `${PERSON.name} Portfolio`,
       title: pageConfig.title,
       description: pageConfig.description,
@@ -368,9 +368,9 @@ export function generateMetadata(page: keyof typeof PAGE_CONFIGS): Metadata {
       countryName: 'Singapore',
     },
     alternates: {
-      canonical: url,
+      canonical: `${BASE_URL}${url}`,
       languages: {
-        'en-US': url,
+        'en-US': `${BASE_URL}${url}`,
       },
     },
     other: {

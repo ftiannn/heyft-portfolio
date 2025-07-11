@@ -44,6 +44,18 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  async redirects() {
+    return [
+      {
+        source: '/:path*',
+        has: [
+          { type: 'host', value: 'heyft.com' },
+        ],
+        destination: 'https://www.heyft.com/:path*',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

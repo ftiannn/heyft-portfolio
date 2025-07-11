@@ -54,6 +54,21 @@ const nextConfig: NextConfig = {
         destination: 'https://www.heyft.com/:path*',
         permanent: true,
       },
+      {
+        source: '/from-linkedin',
+        destination: '/?utm_source=linkedin&utm_medium=social&utm_campaign=portfolio',
+        permanent: false,
+      },
+      {
+        source: '/from-github',
+        destination: '/?utm_source=github&utm_medium=social&utm_campaign=portfolio',
+        permanent: false,
+      },
+      {
+        source: '/from-resume',
+        destination: '/?utm_source=resume&utm_medium=referral&utm_campaign=portfolio',
+        permanent: false,
+      },
     ];
   },
 };

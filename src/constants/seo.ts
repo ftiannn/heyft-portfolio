@@ -143,8 +143,6 @@ export const createBaseMetadata = (): Partial<Metadata> => ({
   category: 'technology',
   classification: 'portfolio',
   referrer: 'origin-when-cross-origin',
-
-
   applicationName: `${PERSON.name} Portfolio`,
   appleWebApp: {
     capable: true,
@@ -414,11 +412,11 @@ export function generateMetadata(page: keyof typeof PAGE_CONFIGS): Metadata {
           alt: IMAGES.og.alt,
         },
         {
-          url: `${BASE_URL}${IMAGES.avatar.url}`, 
+          url: IMAGES.avatar.url,
           width: IMAGES.avatar.width,
           height: IMAGES.avatar.height,
-          alt: IMAGES.og.alt,
-        },
+          alt: IMAGES.avatar.alt,
+        }
       ],
       countryName: 'Singapore',
     },
@@ -430,11 +428,24 @@ export function generateMetadata(page: keyof typeof PAGE_CONFIGS): Metadata {
     },
     other: {
       'application/ld+json': (() => {
-        const data = pageConfig.structuredData()
-        if (Array.isArray(data)) {
-          return data.map((item: Record<string, unknown>) => JSON.stringify(item)).join('\n')
+        try {
+          const data = pageConfig.structuredData()
+          if (Array.isArray(data)) {
+            return data.map((item: Record<string, unknown>) => JSON.stringify(item)).join('\n')
+          }
+          return JSON.stringify(data)
+        } catch (error) {
+          console.error('Error generating structured data:', error)
+          // Fallback to basic Person schema
+          return JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": PERSON.name,
+            "jobTitle": PERSON.jobTitle,
+            "url": BASE_URL,
+            "sameAs": [links.github, links.linkedin]
+          })
         }
-        return JSON.stringify(data)
       })()
     }
   }

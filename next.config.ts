@@ -15,7 +15,6 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizeCss: true,
   },
-  // Performance optimizations
   swcMinify: true,
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',

@@ -144,7 +144,7 @@ export const createBaseMetadata = (): Partial<Metadata> => ({
 
 const PAGE_CONFIGS = {
   home: {
-    title: `${PERSON.name} - Full-Stack Developer`,
+    title: `${PERSON.name} - Full-Stack Developer Portfolio`,
     description: `Full-stack developer in Singapore with ${PERSON.experience} experience building scalable web applications. Expert in React, Next.js, TypeScript, and AWS cloud infrastructure.`,
     keywords: [PERSON.name, ...PERSON.alternateNames, 'full-stack developer', 'react', 'next.js', 'typescript', 'aws', 'cloud infrastructure', 'scalable applications', 'modern web development'],
     path: '',
@@ -199,7 +199,7 @@ const PAGE_CONFIGS = {
     ]
   },
   about: {
-    title: `About Me - Personal Journey`,
+    title: `About Me - My Story & What I Do`,
     description: `Discover my journey from software development to technology leadership. ${PERSON.experience} experience in full-stack development, cloud infrastructure, and building scalable web applications.`,
     keywords: [PERSON.name, ...PERSON.alternateNames, 'about', 'experience', 'skills', 'career', 'professional background', 'technology leadership', 'software development journey'],
     path: 'about',
@@ -230,7 +230,7 @@ const PAGE_CONFIGS = {
     })
   },
   projects: {
-    title: `Projects - Technical Portfolio`,
+    title: `Technical Projects - What I've Built & Created`,
     description: `Explore my portfolio of full-stack web applications, React projects, and cloud infrastructure solutions. Real-world projects showcasing modern web development and AWS expertise.`,
     keywords: [PERSON.name, ...PERSON.alternateNames, 'projects', 'portfolio', 'web applications', 'real-world projects', 'modern web development', 'aws expertise', 'cloud solutions'],
     path: 'projects',
@@ -280,7 +280,7 @@ const PAGE_CONFIGS = {
     })
   },
   gallery: {
-    title: `Gallery - Travel Photography`,
+    title: `PhotographyGallery - Photos From My Travels`,
     description: `Travel photography collection featuring authentic moments from around the world. Street portraits, candid scenes, and cultural photography from Singapore, Japan, Italy, China, and beyond.`,
     keywords: [PERSON.name, 'photography', 'travel', 'gallery', 'travel photography', 'street photography', 'cultural photography', 'authentic moments', 'world photography', 'travel photos'],
     path: 'gallery',
@@ -332,7 +332,7 @@ const PAGE_CONFIGS = {
     })
   },
   resume: {
-    title: `Resume - Professional Experience`,
+    title: `Resume - My Work & Experience`,
     description: `Professional resume showcasing ${PERSON.experience} experience in full-stack development, cloud infrastructure, and enterprise applications. Detailed work history and technical expertise.`,
     keywords: [PERSON.name, ...PERSON.alternateNames, 'resume', 'cv', 'experience', 'professional experience', 'work history', 'technical expertise', 'enterprise applications'],
     path: 'resume',

@@ -425,28 +425,23 @@ export function generateMetadata(page: keyof typeof PAGE_CONFIGS): Metadata {
       languages: {
         'en-US': url,
       },
-    },
-    other: {
-      'application/ld+json': (() => {
-        try {
-          const data = pageConfig.structuredData()
-          if (Array.isArray(data)) {
-            return data.map((item: Record<string, unknown>) => JSON.stringify(item)).join('\n')
-          }
-          return JSON.stringify(data)
-        } catch (error) {
-          console.error('Error generating structured data:', error)
-          // Fallback to basic Person schema
-          return JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Person",
-            "name": PERSON.name,
-            "jobTitle": PERSON.jobTitle,
-            "url": BASE_URL,
-            "sameAs": [links.github, links.linkedin]
-          })
-        }
-      })()
+    }
+  }
+}
+
+export function getStructuredData(page: keyof typeof PAGE_CONFIGS) {
+  const pageConfig = PAGE_CONFIGS[page]
+  try {
+    return pageConfig.structuredData()
+  } catch (error) {
+    console.error('Error generating structured data:', error)
+    return {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": PERSON.name,
+      "jobTitle": PERSON.jobTitle,
+      "url": BASE_URL,
+      "sameAs": [links.github, links.linkedin]
     }
   }
 }

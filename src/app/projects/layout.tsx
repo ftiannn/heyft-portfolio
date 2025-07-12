@@ -1,5 +1,6 @@
-import { generateMetadata } from "@/constants/seo"
+import { generateMetadata, getStructuredData } from "@/constants/seo"
 import type { Metadata } from "next"
+import { StructuredData } from "@/app/components"
 
 export const metadata: Metadata = generateMetadata('projects')
 
@@ -8,5 +9,12 @@ export default function ProjectsLayout({
 }: {
   children: React.ReactNode
 }) {
-  return children
+  const structuredData = getStructuredData('projects')
+  
+  return (
+    <>
+      <StructuredData data={structuredData} />
+      {children}
+    </>
+  )
 } 

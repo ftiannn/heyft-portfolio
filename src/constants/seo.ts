@@ -347,7 +347,7 @@ export function generateMetadata(page: keyof typeof PAGE_CONFIGS): Metadata {
     openGraph: {
       type: 'website',
       locale: 'en_US',
-      url: `${BASE_URL}${url}`,
+      url: url,
       siteName: `${PERSON.name} Portfolio`,
       title: pageConfig.title,
       description: pageConfig.description,
@@ -368,9 +368,9 @@ export function generateMetadata(page: keyof typeof PAGE_CONFIGS): Metadata {
       countryName: 'Singapore',
     },
     alternates: {
-      canonical: `${BASE_URL}${url}`,
+      canonical: url,
       languages: {
-        'en-US': `${BASE_URL}${url}`,
+        'en-US': url,
       },
     },
     other: {

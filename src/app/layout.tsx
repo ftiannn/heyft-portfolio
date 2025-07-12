@@ -6,7 +6,12 @@ import { Navigation, PageTransition, GoogleAnalytics } from '@/app/components'
 import { Analytics } from "@vercel/analytics/next"
 import { LAYOUT_CONFIG, createBaseMetadata } from '@/constants/seo'
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  preload: true,
+  fallback: ['system-ui', 'arial']
+})
 
 export const viewport = LAYOUT_CONFIG.viewport
 
@@ -19,6 +24,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="preload" href="/avatar.png" as="image" type="image/png" />
+        <link rel="preload" href="/favicon.ico" as="image" type="image/x-icon" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/avatar.png" type="image/png" sizes="512x512" />
+        <link rel="apple-touch-icon" href="/avatar.png" />
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#ec4899" />
+        <meta name="msapplication-TileColor" content="#ec4899" />
+        <meta name="msapplication-config" content="/browserconfig.xml" />
+      </head>
       <body className={`${inter.className} bg-light-bg dark:bg-gradient-dark min-h-screen`}>
         <ThemeProvider
           attribute="class"
@@ -30,11 +46,11 @@ export default function RootLayout({
           <main className="pt-16">
             <PageTransition>
               {children}
-              <Analytics />
-              <GoogleAnalytics />
             </PageTransition>
           </main>
         </ThemeProvider>
+        <Analytics />
+        <GoogleAnalytics />
       </body>
     </html>
   )

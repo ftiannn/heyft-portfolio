@@ -21,10 +21,9 @@ export const PERSON = {
 } as const
 
 const BASE_KEYWORDS = [
-  PERSON.name, ...PERSON.alternateNames, 'developer', 'full-stack', 'react', 'next.js', 'singapore',
-  'web development', 'software engineer', 'frontend', 'backend', 'typescript', 'node.js', 'aws', 'portfolio',
-  'cloud developer', 'javascript engineer', 'software portfolio', 'web developer singapore', 'react developer',
-  'nextjs developer', 'typescript developer', 'aws developer', 'full stack developer singapore'
+  PERSON.name, ...PERSON.alternateNames, 'full-stack developer', 'react', 'next.js', 'typescript', 'node.js', 'aws',
+  'web development', 'software engineer', 'singapore', 'portfolio', 'cloud infrastructure', 'scalable applications',
+  'modern web development', 'freelance developer', 'contract developer'
 ]
 
 const IMAGES = {
@@ -101,7 +100,7 @@ export const createBaseMetadata = (): Partial<Metadata> => ({
   metadataBase: new URL(BASE_URL),
   title: {
     default: `${PERSON.name} - ${PERSON.jobTitle}`,
-    template: `%s | ${PERSON.name}`
+    template: `%s | ${PERSON.alternateNames[0]}`
   },
   description: `${PERSON.name} is a ${PERSON.location}-based ${PERSON.jobTitle.toLowerCase()} with ${PERSON.experience} of experience building scalable web applications using React, Next.js, and Node.js.`,
   keywords: BASE_KEYWORDS,
@@ -145,9 +144,9 @@ export const createBaseMetadata = (): Partial<Metadata> => ({
 
 const PAGE_CONFIGS = {
   home: {
-    title: `${PERSON.name} - Full-Stack Developer Singapore`,
-    description: `${PERSON.name} (Heyft) is a full-stack developer in Singapore with ${PERSON.experience} of experience building web applications using React, Next.js, and Node.js.`,
-    keywords: [PERSON.name, ...PERSON.alternateNames, 'developer', 'full-stack', 'react', 'next.js', 'singapore', 'web development'],
+    title: `${PERSON.name} - Full-Stack Developer`,
+    description: `Full-stack developer in Singapore with ${PERSON.experience} experience building scalable web applications. Expert in React, Next.js, TypeScript, and AWS cloud infrastructure.`,
+    keywords: [PERSON.name, ...PERSON.alternateNames, 'full-stack developer', 'react', 'next.js', 'typescript', 'aws', 'cloud infrastructure', 'scalable applications', 'modern web development'],
     path: '',
     structuredData: () => [
       createWebsiteSchema(),
@@ -200,9 +199,9 @@ const PAGE_CONFIGS = {
     ]
   },
   about: {
-    title: `About ${PERSON.name} - Professional Journey & Skills`,
-    description: `Learn about ${PERSON.name}'s professional journey, skills, and experience as a ${PERSON.jobTitle.toLowerCase()} with ${PERSON.experience} in web development.`,
-    keywords: [PERSON.name, ...PERSON.alternateNames, 'about', 'experience', 'skills', 'career', 'full-stack developer', 'singapore'],
+    title: `About Me - Personal Journey`,
+    description: `Discover my journey from software development to technology leadership. ${PERSON.experience} experience in full-stack development, cloud infrastructure, and building scalable web applications.`,
+    keywords: [PERSON.name, ...PERSON.alternateNames, 'about', 'experience', 'skills', 'career', 'professional background', 'technology leadership', 'software development journey'],
     path: 'about',
     structuredData: () => ({
       "@context": "https://schema.org",
@@ -231,9 +230,9 @@ const PAGE_CONFIGS = {
     })
   },
   projects: {
-    title: `Projects - ${PERSON.name} Portfolio`,
-    description: `Explore ${PERSON.name}'s portfolio of web development projects including full-stack applications, frontend interfaces, and cloud infrastructure solutions.`,
-    keywords: [PERSON.name, ...PERSON.alternateNames, 'projects', 'portfolio', 'web applications', 'full-stack', 'react', 'next.js'],
+    title: `Projects - Technical Portfolio`,
+    description: `Explore my portfolio of full-stack web applications, React projects, and cloud infrastructure solutions. Real-world projects showcasing modern web development and AWS expertise.`,
+    keywords: [PERSON.name, ...PERSON.alternateNames, 'projects', 'portfolio', 'web applications', 'real-world projects', 'modern web development', 'aws expertise', 'cloud solutions'],
     path: 'projects',
     structuredData: () => ({
       "@context": "https://schema.org",
@@ -281,9 +280,9 @@ const PAGE_CONFIGS = {
     })
   },
   gallery: {
-    title: `Photography Gallery - ${PERSON.name}`,
-    description: `A collection of travel photography by ${PERSON.name} capturing authentic moments from around the world, including street portraits and candid scenes from various countries.`,
-    keywords: [PERSON.name, 'photography', 'travel', 'gallery', 'photos', 'travel photography'],
+    title: `Gallery - Travel Photography`,
+    description: `Travel photography collection featuring authentic moments from around the world. Street portraits, candid scenes, and cultural photography from Singapore, Japan, Italy, China, and beyond.`,
+    keywords: [PERSON.name, 'photography', 'travel', 'gallery', 'travel photography', 'street photography', 'cultural photography', 'authentic moments', 'world photography', 'travel photos'],
     path: 'gallery',
     structuredData: () => ({
       "@context": "https://schema.org",
@@ -333,9 +332,9 @@ const PAGE_CONFIGS = {
     })
   },
   resume: {
-    title: `Resume - ${PERSON.name}`,
-    description: `Professional resume and experience of ${PERSON.name}, a ${PERSON.jobTitle.toLowerCase()} with ${PERSON.experience} of experience in web development, cloud infrastructure, and enterprise applications.`,
-    keywords: [PERSON.name, ...PERSON.alternateNames, 'resume', 'cv', 'experience', 'full-stack developer', 'singapore'],
+    title: `Resume - Professional Experience`,
+    description: `Professional resume showcasing ${PERSON.experience} experience in full-stack development, cloud infrastructure, and enterprise applications. Detailed work history and technical expertise.`,
+    keywords: [PERSON.name, ...PERSON.alternateNames, 'resume', 'cv', 'experience', 'professional experience', 'work history', 'technical expertise', 'enterprise applications'],
     path: 'resume',
     structuredData: () => ({
       "@context": "https://schema.org",

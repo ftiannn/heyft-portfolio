@@ -75,14 +75,6 @@ const createPersonSchema = () => ({
   "alumniOf": {
     "@type": "Organization",
     "name": "GovTech Singapore"
-  },
-  "hasOccupation": {
-    "@type": "Occupation",
-    "name": PERSON.jobTitle,
-    "occupationLocation": {
-      "@type": "Place",
-      "name": PERSON.location
-    }
   }
 })
 
@@ -102,14 +94,6 @@ const createWebsiteSchema = () => ({
       "width": IMAGES.avatar.width,
       "height": IMAGES.avatar.height
     }
-  },
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": {
-      "@type": "EntryPoint",
-      "urlTemplate": `${BASE_URL}/search?q={search_term_string}`
-    },
-    "query-input": "required name=search_term_string"
   }
 })
 

@@ -70,6 +70,19 @@ const createPersonSchema = () => ({
     "url": `${BASE_URL}${IMAGES.avatar.url}`,
     "width": IMAGES.avatar.width,
     "height": IMAGES.avatar.height
+  },
+  "nationality": "Singaporean",
+  "alumniOf": {
+    "@type": "Organization",
+    "name": "GovTech Singapore"
+  },
+  "hasOccupation": {
+    "@type": "Occupation",
+    "name": PERSON.jobTitle,
+    "occupationLocation": {
+      "@type": "Place",
+      "name": PERSON.location
+    }
   }
 })
 
@@ -103,10 +116,10 @@ const createWebsiteSchema = () => ({
 export const createBaseMetadata = (): Partial<Metadata> => ({
   metadataBase: new URL(BASE_URL),
   title: {
-    default: `${PERSON.name} - ${PERSON.jobTitle} & Creator`,
+    default: `${PERSON.name} - ${PERSON.jobTitle}`,
     template: `%s | ${PERSON.name}`
   },
-  description: `${PERSON.name} (${PERSON.alternateNames[0]}) is a ${PERSON.location}-based ${PERSON.jobTitle.toLowerCase()} with ${PERSON.experience} of experience in building scalable, secure, and user-friendly web applications using React, Next.js, Node.js, and AWS.`,
+  description: `${PERSON.name} is a ${PERSON.location}-based ${PERSON.jobTitle.toLowerCase()} with ${PERSON.experience} of experience building scalable web applications using React, Next.js, and Node.js.`,
   keywords: BASE_KEYWORDS,
   authors: [{ name: PERSON.name, url: BASE_URL }],
   creator: PERSON.name,
@@ -150,8 +163,8 @@ export const createBaseMetadata = (): Partial<Metadata> => ({
 
 const PAGE_CONFIGS = {
   home: {
-    title: `${PERSON.name} - ${PERSON.jobTitle} & Creator`,
-    description: `${PERSON.name} (${PERSON.alternateNames[0]}) is a ${PERSON.jobTitle.toLowerCase()} with ${PERSON.experience} of experience building scalable web applications. Specializing in React, Next.js, Node.js, and cloud infrastructure.`,
+    title: `${PERSON.name} - Full-Stack Developer Singapore`,
+    description: `${PERSON.name} (Heyft) is a full-stack developer in Singapore with ${PERSON.experience} of experience building web applications using React, Next.js, and Node.js.`,
     keywords: [PERSON.name, ...PERSON.alternateNames, 'developer', 'full-stack', 'react', 'next.js', 'singapore', 'web development'],
     path: '',
     structuredData: () => [
@@ -159,6 +172,48 @@ const PAGE_CONFIGS = {
       {
         "@context": "https://schema.org",
         ...createPersonSchema()
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": BASE_URL
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What does FT Tan do?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "FT Tan is a full-stack developer in Singapore with 7+ years of experience building scalable web applications using React, Next.js, and Node.js."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Where is FT Tan based?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "FT Tan is based in Singapore and works as a full-stack developer specializing in modern web technologies."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What technologies does FT Tan use?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "FT Tan specializes in React, Next.js, Node.js, TypeScript, and AWS for building scalable web applications."
+            }
+          }
+        ]
       }
     ]
   },

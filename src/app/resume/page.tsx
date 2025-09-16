@@ -71,13 +71,6 @@ export default function Resume() {
               <span>Singapore</span>
             </div>
             <button
-              onClick={() => handleContactClick('email', links.email)}
-              className="flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-primary-pink transition-colors"
-            >
-              <Mail className="h-4 w-4" />
-              <span>tanft25@gmail.com</span>
-            </button>
-            <button
               onClick={() => handleSocialClick('linkedin', links.linkedin)}
               className="flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-secondary-teal transition-colors"
             >
@@ -97,7 +90,7 @@ export default function Resume() {
 
         <div className="fade-in-up  grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
           {quickStats.map((stat) => (
-           
+
             <div
               key={stat.label}
               className="bg-white dark:bg-slate-800 p-6 rounded-xl text-center shadow-sm border border-gray-200 dark:border-gray-700 hover:shadow-md transition-shadow"
